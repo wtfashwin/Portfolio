@@ -1112,3 +1112,20 @@ img {
     border-radius: 20px;
 }
 
+.visitor-counter {
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg-color);
+}
+
+.visitor-counter h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.count {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--main-color);
+}
