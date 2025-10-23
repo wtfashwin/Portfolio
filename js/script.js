@@ -1,13 +1,6 @@
-/*=================================================================
-  ASHWIN UPADHYAY - ELITE MLOPS & GENAI PORTFOLIO
-  JavaScript: Particle System, Animations, & Interactive Features
-  =================================================================*/
-
-// ========== UTILITY FUNCTIONS ==========
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-// ========== PARTICLE CANVAS (THREE.JS) ==========
 class ParticleSystem {
     constructor() {
         this.canvas = $('#particleCanvas');
@@ -1123,6 +1116,343 @@ class VisitorTracker {
         }
         
         setTimeout(() => toast.remove(), 5000);
+    }
+}
+
+// ========== THEME TOGGLE ==========
+class ThemeToggle {
+    constructor() {
+        this.themeToggle = $('#themeToggle');
+        this.currentTheme = localStorage.getItem('theme') || 'dark';
+        this.init();
+    }
+    
+    init() {
+        if (!this.themeToggle) return;
+        
+        // Apply saved theme
+        this.applyTheme(this.currentTheme);
+        
+        // Toggle button click
+        this.themeToggle.addEventListener('click', () => {
+            this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
+            this.applyTheme(this.currentTheme);
+            localStorage.setItem('theme', this.currentTheme);
+        });
+    }
+    
+    applyTheme(theme) {
+        if (theme === 'light') {
+            document.documentElement.style.setProperty('--color-dark', '#f5f5f5');
+            document.documentElement.style.setProperty('--color-darker', '#ffffff');
+            document.documentElement.style.setProperty('--color-surface', '#ffffff');
+            document.documentElement.style.setProperty('--color-surface-elevated', '#f0f0f0');
+            document.documentElement.style.setProperty('--color-text-primary', '#1a1a1a');
+            document.documentElement.style.setProperty('--color-text-secondary', '#4a4a4a');
+            document.documentElement.style.setProperty('--color-text-tertiary', '#7a7a7a');
+            document.documentElement.style.setProperty('--color-border', 'rgba(0, 0, 0, 0.1)');
+            document.body.classList.add('light-theme');
+        } else {
+            document.documentElement.style.setProperty('--color-dark', '#0a0a0f');
+            document.documentElement.style.setProperty('--color-darker', '#050508');
+            document.documentElement.style.setProperty('--color-surface', '#121218');
+            document.documentElement.style.setProperty('--color-surface-elevated', '#1a1a24');
+            document.documentElement.style.setProperty('--color-text-primary', '#e8e8e8');
+            document.documentElement.style.setProperty('--color-text-secondary', '#a0a0a8');
+            document.documentElement.style.setProperty('--color-text-tertiary', '#606068');
+            document.documentElement.style.setProperty('--color-border', 'rgba(255, 255, 255, 0.08)');
+            document.body.classList.remove('light-theme');
+        }
+    }
+}
+
+// ========== MULTI-LANGUAGE SUPPORT ==========
+class LanguageSelector {
+    constructor() {
+        this.languageBtn = $('#languageBtn');
+        this.languageDropdown = $('#languageDropdown');
+        this.langOptions = $$('.lang-option');
+        this.currentLang = localStorage.getItem('language') || 'en';
+        this.translations = {
+            en: {
+                blog_title: 'Technical <span class="highlight">Articles</span>',
+                blog_subtitle: 'In-depth explorations of MLOps, GenAI, and Cloud-Native architectures',
+                timeline_title: 'Career <span class="highlight">Timeline</span>',
+                timeline_subtitle: 'Journey through expertise milestones and achievements',
+                github_title: 'GitHub <span class="highlight">Activity</span>',
+                github_subtitle: 'Continuous contributions and open-source engagement',
+                analytics_title: 'Portfolio <span class="highlight">Analytics</span>',
+                analytics_subtitle: 'Real-time insights and visitor metrics'
+            },
+            es: {
+                blog_title: 'Artículos <span class="highlight">Técnicos</span>',
+                blog_subtitle: 'Exploraciones profundas de MLOps, GenAI y arquitecturas Cloud-Native',
+                timeline_title: 'Línea <span class="highlight">Temporal</span>',
+                timeline_subtitle: 'Viaje a través de hitos de experiencia y logros',
+                github_title: 'Actividad en <span class="highlight">GitHub</span>',
+                github_subtitle: 'Contribuciones continuas y participación en código abierto',
+                analytics_title: 'Análisis del <span class="highlight">Portafolio</span>',
+                analytics_subtitle: 'Información en tiempo real y métricas de visitantes'
+            },
+            hi: {
+                blog_title: 'तकनीकी <span class="highlight">लेख</span>',
+                blog_subtitle: 'MLOps, GenAI और Cloud-Native आर्किटेक्चर का गहन अन्वेषण',
+                timeline_title: 'कैरियर <span class="highlight">टाइमलाइन</span>',
+                timeline_subtitle: 'विशेषज्ञता मील के पत्थर और उपलब्धियों की यात्रा',
+                github_title: 'GitHub <span class="highlight">गतिविधि</span>',
+                github_subtitle: 'निरंतर योगदान और ओपन-सोर्स सहभागिता',
+                analytics_title: 'पोर्टफोलियो <span class="highlight">विश्लेषण</span>',
+                analytics_subtitle: 'वास्तविक समय अंतर्दृष्टि और आगंतुक मीट्रिक'
+            }
+        };
+        this.init();
+    }
+    
+    init() {
+        if (!this.languageBtn) return;
+        
+        // Apply saved language
+        this.applyLanguage(this.currentLang);
+        this.updateCurrentLangDisplay();
+        
+        // Toggle dropdown
+        this.languageBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.languageDropdown.classList.toggle('active');
+        });
+        
+        // Close dropdown on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-selector')) {
+                this.languageDropdown.classList.remove('active');
+            }
+        });
+        
+        // Language option click
+        this.langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                this.currentLang = lang;
+                this.applyLanguage(lang);
+                this.updateCurrentLangDisplay();
+                localStorage.setItem('language', lang);
+                this.languageDropdown.classList.remove('active');
+            });
+        });
+    }
+    
+    applyLanguage(lang) {
+        const translations = this.translations[lang] || this.translations.en;
+        
+        // Update all translatable elements
+        $$('[data-translate]').forEach(elem => {
+            const key = elem.getAttribute('data-translate');
+            if (translations[key]) {
+                elem.innerHTML = translations[key];
+            }
+        });
+    }
+    
+    updateCurrentLangDisplay() {
+        const currentLangSpan = $('.current-lang');
+        if (currentLangSpan) {
+            const langMap = { en: 'EN', es: 'ES', hi: 'हि' };
+            currentLangSpan.textContent = langMap[this.currentLang] || 'EN';
+        }
+    }
+}
+
+// ========== GITHUB CONTRIBUTIONS GRAPH ==========
+class GitHubContributionsGraph {
+    constructor() {
+        this.grid = $('#contributionGrid');
+        this.init();
+    }
+    
+    init() {
+        if (!this.grid) return;
+        
+        // Generate contribution graph for past year
+        const weeks = 52;
+        const daysPerWeek = 7;
+        
+        for (let week = 0; week < weeks; week++) {
+            const weekColumn = document.createElement('div');
+            weekColumn.className = 'contribution-week';
+            
+            for (let day = 0; day < daysPerWeek; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'contribution-day';
+                
+                // Generate random contribution level (0-4)
+                const level = Math.random() > 0.3 ? Math.floor(Math.random() * 5) : 0;
+                dayCell.setAttribute('data-level', level);
+                dayCell.setAttribute('data-count', level * Math.floor(Math.random() * 10 + 1));
+                
+                // Tooltip
+                dayCell.title = `${level * Math.floor(Math.random() * 10 + 1)} contributions`;
+                
+                weekColumn.appendChild(dayCell);
+            }
+            
+            this.grid.appendChild(weekColumn);
+        }
+        
+        // Animate in sequence
+        const days = $$('.contribution-day');
+        days.forEach((day, index) => {
+            setTimeout(() => {
+                day.style.opacity = '1';
+                day.style.transform = 'scale(1)';
+            }, index * 2);
+        });
+        
+        // Animate GitHub stats
+        this.animateGitHubStats();
+    }
+    
+    animateGitHubStats() {
+        const statNumbers = $$('.github-stat-card .stat-number[data-target]');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    this.animateValue(entry.target);
+                    entry.target.classList.add('counted');
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(stat => observer.observe(stat));
+    }
+    
+    animateValue(elem) {
+        const target = parseInt(elem.getAttribute('data-target'));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                elem.textContent = target.toLocaleString();
+                clearInterval(timer);
+            } else {
+                elem.textContent = Math.floor(current).toLocaleString();
+            }
+        }, 16);
+    }
+}
+
+// ========== ANALYTICS DASHBOARD ==========
+class AnalyticsDashboard {
+    constructor() {
+        this.visitorChart = $('#visitorChart');
+        this.init();
+    }
+    
+    init() {
+        if (!this.visitorChart || typeof Chart === 'undefined') return;
+        
+        // Create visitor trend chart
+        const ctx = this.visitorChart.getContext('2d');
+        
+        // Generate sample data for past 7 days
+        const labels = [];
+        const data = [];
+        const today = new Date();
+        
+        for (let i = 6; i >= 0; i--) {
+            const date = new Date(today);
+            date.setDate(date.getDate() - i);
+            labels.push(date.toLocaleDateString('en-US', { weekday: 'short' }));
+            data.push(Math.floor(Math.random() * 200 + 50));
+        }
+        
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Daily Visitors',
+                    data: data,
+                    borderColor: '#00ffff',
+                    backgroundColor: 'rgba(0, 255, 255, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#00ffff',
+                    pointBorderColor: '#0a0a0f',
+                    pointBorderWidth: 2,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(18, 18, 24, 0.95)',
+                        titleColor: '#00ffff',
+                        bodyColor: '#e8e8e8',
+                        borderColor: '#00ffff',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return `Visitors: ${context.parsed.y}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        },
+                        ticks: {
+                            color: '#a0a0a8'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#a0a0a8'
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Animate performance metrics
+        this.animatePerformanceMetrics();
+    }
+    
+    animatePerformanceMetrics() {
+        const performanceFills = $$('.performance-fill');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transition = 'width 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0';
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 100);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        performanceFills.forEach(fill => observer.observe(fill));
     }
 }
 

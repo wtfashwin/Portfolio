@@ -20,6 +20,9 @@
     <!-- Three.js for Particle Animation -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     
@@ -110,9 +113,11 @@
         </div>
     </div>
 
+    <!-- Global Particle Canvas for All Sections -->
+    <canvas id="particleCanvas"></canvas>
+    
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <canvas id="particleCanvas"></canvas>
         
         <div class="hero-content">
             <div class="hero-label" data-reveal="fade-up">
@@ -735,6 +740,451 @@
             </div>
         </div>
     </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="section-header" data-reveal="fade-up">
+            <h2 class="section-title" data-translate="blog_title">Technical <span class="highlight">Articles</span></h2>
+            <p class="section-subtitle" data-translate="blog_subtitle">In-depth explorations of MLOps, GenAI, and Cloud-Native architectures</p>
+        </div>
+        
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <article class="blog-card" data-reveal="fade-up" data-delay="100">
+                <div class="blog-image">
+                    <div class="blog-category">MLOps</div>
+                    <div class="blog-overlay"></div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i data-lucide="calendar"></i> Oct 15, 2025</span>
+                        <span><i data-lucide="clock"></i> 8 min read</span>
+                    </div>
+                    <h3>Production-Grade MLOps: From Jupyter to Kubernetes</h3>
+                    <p>A comprehensive guide to deploying ML models at scale using containerization, orchestration, and CI/CD pipelines.</p>
+                    <div class="blog-tags">
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">MLflow</span>
+                    </div>
+                    <a href="#" class="blog-link">
+                        Read More <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 2 -->
+            <article class="blog-card" data-reveal="fade-up" data-delay="200">
+                <div class="blog-image">
+                    <div class="blog-category">GenAI</div>
+                    <div class="blog-overlay"></div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i data-lucide="calendar"></i> Oct 10, 2025</span>
+                        <span><i data-lucide="clock"></i> 12 min read</span>
+                    </div>
+                    <h3>Building Production RAG Systems: Beyond the Basics</h3>
+                    <p>Deep dive into advanced RAG architectures with hybrid search, reranking, and vector database optimization.</p>
+                    <div class="blog-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Vector DB</span>
+                    </div>
+                    <a href="#" class="blog-link">
+                        Read More <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 3 -->
+            <article class="blog-card" data-reveal="fade-up" data-delay="300">
+                <div class="blog-image">
+                    <div class="blog-category">Cloud</div>
+                    <div class="blog-overlay"></div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i data-lucide="calendar"></i> Oct 5, 2025</span>
+                        <span><i data-lucide="clock"></i> 10 min read</span>
+                    </div>
+                    <h3>Multi-Cloud Strategy: Avoiding Vendor Lock-in</h3>
+                    <p>Architecting resilient AI systems across AWS, Azure, and OCI with Terraform and cloud-agnostic patterns.</p>
+                    <div class="blog-tags">
+                        <span class="tag">Multi-Cloud</span>
+                        <span class="tag">Terraform</span>
+                        <span class="tag">Architecture</span>
+                    </div>
+                    <a href="#" class="blog-link">
+                        Read More <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 4 -->
+            <article class="blog-card" data-reveal="fade-up" data-delay="400">
+                <div class="blog-image">
+                    <div class="blog-category">XAI</div>
+                    <div class="blog-overlay"></div>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i data-lucide="calendar"></i> Sep 28, 2025</span>
+                        <span><i data-lucide="clock"></i> 15 min read</span>
+                    </div>
+                    <h3>Explainable AI in Production: SHAP, LIME, and Beyond</h3>
+                    <p>Implementing model interpretability frameworks for regulatory compliance and stakeholder trust.</p>
+                    <div class="blog-tags">
+                        <span class="tag">SHAP</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">Compliance</span>
+                    </div>
+                    <a href="#" class="blog-link">
+                        Read More <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Interactive Timeline Section -->
+    <section class="timeline" id="timeline">
+        <div class="section-header" data-reveal="fade-up">
+            <h2 class="section-title" data-translate="timeline_title">Career <span class="highlight">Timeline</span></h2>
+            <p class="section-subtitle" data-translate="timeline_subtitle">Journey through expertise milestones and achievements</p>
+        </div>
+        
+        <div class="timeline-container">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-item" data-reveal="fade-left" data-delay="100">
+                <div class="timeline-marker">
+                    <div class="timeline-icon">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025</span>
+                    <h3>Oracle GenAI Professional Certification</h3>
+                    <p>Achieved OCI 2025 Certified GenAI Professional credential, mastering LLM deployment, RAG systems, and Vector DB optimization.</p>
+                    <div class="timeline-tech">
+                        <span>LLM</span>
+                        <span>RAG</span>
+                        <span>LangChain</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 2 -->
+            <div class="timeline-item" data-reveal="fade-right" data-delay="200">
+                <div class="timeline-marker">
+                    <div class="timeline-icon">
+                        <i data-lucide="rocket"></i>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025</span>
+                    <h3>Astronomer Airflow Certified</h3>
+                    <p>Completed DAG Authoring for Apache Airflow 3 and Fundamentals certifications, orchestrating production ETL pipelines.</p>
+                    <div class="timeline-tech">
+                        <span>Airflow</span>
+                        <span>Kafka</span>
+                        <span>ETL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 3 -->
+            <div class="timeline-item" data-reveal="fade-left" data-delay="300">
+                <div class="timeline-marker">
+                    <div class="timeline-icon">
+                        <i data-lucide="brain"></i>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025</span>
+                    <h3>Databricks AI Agent Specialist</h3>
+                    <p>Earned Academy Accreditation in AI Agent Fundamentals and Generative AI, building agentic AI workflows.</p>
+                    <div class="timeline-tech">
+                        <span>Databricks</span>
+                        <span>Agentic AI</span>
+                        <span>GenAI</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 4 -->
+            <div class="timeline-item" data-reveal="fade-right" data-delay="400">
+                <div class="timeline-marker">
+                    <div class="timeline-icon">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2024-2025</span>
+                    <h3>Top 9.82% LeetCode Global Ranking</h3>
+                    <p>Solved 1700+ algorithmic problems, achieving elite competitive programming status with optimized DSA solutions.</p>
+                    <div class="timeline-tech">
+                        <span>Algorithms</span>
+                        <span>DSA</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 5 -->
+            <div class="timeline-item" data-reveal="fade-left" data-delay="500">
+                <div class="timeline-marker">
+                    <div class="timeline-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                </div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2023-2024</span>
+                    <h3>Production ML Systems Deployment</h3>
+                    <p>Architected and deployed fraud detection, computer vision, and recommendation systems at production scale.</p>
+                    <div class="timeline-tech">
+                        <span>PyTorch</span>
+                        <span>XGBoost</span>
+                        <span>Kubernetes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Contributions Section -->
+    <section class="github-section" id="github">
+        <div class="section-header" data-reveal="fade-up">
+            <h2 class="section-title" data-translate="github_title">GitHub <span class="highlight">Activity</span></h2>
+            <p class="section-subtitle" data-translate="github_subtitle">Continuous contributions and open-source engagement</p>
+        </div>
+        
+        <div class="github-container">
+            <div class="github-stats" data-reveal="fade-up" data-delay="100">
+                <div class="github-stat-card">
+                    <i data-lucide="git-commit"></i>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-target="1247">0</h3>
+                        <p>Commits This Year</p>
+                    </div>
+                </div>
+                <div class="github-stat-card">
+                    <i data-lucide="git-pull-request"></i>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-target="89">0</h3>
+                        <p>Pull Requests</p>
+                    </div>
+                </div>
+                <div class="github-stat-card">
+                    <i data-lucide="star"></i>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-target="234">0</h3>
+                        <p>Total Stars</p>
+                    </div>
+                </div>
+                <div class="github-stat-card">
+                    <i data-lucide="git-branch"></i>
+                    <div class="stat-info">
+                        <h3 class="stat-number" data-target="67">0</h3>
+                        <p>Repositories</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GitHub Contributions Graph Placeholder -->
+            <div class="github-graph" data-reveal="fade-up" data-delay="200">
+                <div class="graph-header">
+                    <h3><i data-lucide="activity"></i> Contribution Activity</h3>
+                    <div class="graph-legend">
+                        <span><span class="legend-box level-0"></span>Less</span>
+                        <span><span class="legend-box level-1"></span></span>
+                        <span><span class="legend-box level-2"></span></span>
+                        <span><span class="legend-box level-3"></span></span>
+                        <span><span class="legend-box level-4"></span>More</span>
+                    </div>
+                </div>
+                <div class="contribution-grid" id="contributionGrid">
+                    <!-- Grid will be generated by JavaScript -->
+                </div>
+                <div class="contribution-footer">
+                    <a href="https://github.com/wtfashwin" target="_blank" class="github-profile-link">
+                        <i data-lucide="external-link"></i>
+                        View Full GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Dashboard Section -->
+    <section class="analytics" id="analytics">
+        <div class="section-header" data-reveal="fade-up">
+            <h2 class="section-title" data-translate="analytics_title">Portfolio <span class="highlight">Analytics</span></h2>
+            <p class="section-subtitle" data-translate="analytics_subtitle">Real-time insights and visitor metrics</p>
+        </div>
+        
+        <div class="analytics-grid">
+            <!-- Visitor Analytics -->
+            <div class="analytics-card" data-reveal="fade-up" data-delay="100">
+                <div class="analytics-header">
+                    <h3><i data-lucide="users"></i> Visitor Analytics</h3>
+                    <span class="analytics-badge live">Live</span>
+                </div>
+                <div class="analytics-chart">
+                    <canvas id="visitorChart"></canvas>
+                </div>
+                <div class="analytics-metrics">
+                    <div class="metric">
+                        <span class="metric-label">Today</span>
+                        <span class="metric-value" id="visitorsToday">127</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">This Week</span>
+                        <span class="metric-value" id="visitorsWeek">892</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Total</span>
+                        <span class="metric-value" id="visitorsTotal">12,847</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Page Performance -->
+            <div class="analytics-card" data-reveal="fade-up" data-delay="200">
+                <div class="analytics-header">
+                    <h3><i data-lucide="zap"></i> Performance Metrics</h3>
+                </div>
+                <div class="performance-grid">
+                    <div class="performance-metric">
+                        <div class="performance-icon">
+                            <i data-lucide="gauge"></i>
+                        </div>
+                        <div class="performance-info">
+                            <p class="performance-label">Load Time</p>
+                            <p class="performance-value"><span id="loadTime">0.8</span>s</p>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="performance-metric">
+                        <div class="performance-icon">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <div class="performance-info">
+                            <p class="performance-label">First Paint</p>
+                            <p class="performance-value"><span id="firstPaint">0.3</span>s</p>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="performance-metric">
+                        <div class="performance-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="performance-info">
+                            <p class="performance-label">Lighthouse Score</p>
+                            <p class="performance-value"><span id="lighthouse">98</span>/100</p>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Geographic Distribution -->
+            <div class="analytics-card" data-reveal="fade-up" data-delay="300">
+                <div class="analytics-header">
+                    <h3><i data-lucide="map-pin"></i> Geographic Distribution</h3>
+                </div>
+                <div class="geo-list">
+                    <div class="geo-item">
+                        <span class="geo-country">🇺🇸 United States</span>
+                        <div class="geo-bar">
+                            <div class="geo-fill" style="width: 42%;"></div>
+                        </div>
+                        <span class="geo-percent">42%</span>
+                    </div>
+                    <div class="geo-item">
+                        <span class="geo-country">🇮🇳 India</span>
+                        <div class="geo-bar">
+                            <div class="geo-fill" style="width: 28%;"></div>
+                        </div>
+                        <span class="geo-percent">28%</span>
+                    </div>
+                    <div class="geo-item">
+                        <span class="geo-country">🇬🇧 United Kingdom</span>
+                        <div class="geo-bar">
+                            <div class="geo-fill" style="width: 15%;"></div>
+                        </div>
+                        <span class="geo-percent">15%</span>
+                    </div>
+                    <div class="geo-item">
+                        <span class="geo-country">🇩🇪 Germany</span>
+                        <div class="geo-bar">
+                            <div class="geo-fill" style="width: 10%;"></div>
+                        </div>
+                        <span class="geo-percent">10%</span>
+                    </div>
+                    <div class="geo-item">
+                        <span class="geo-country">🇨🇦 Canada</span>
+                        <div class="geo-bar">
+                            <div class="geo-fill" style="width: 5%;"></div>
+                        </div>
+                        <span class="geo-percent">5%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Popular Sections -->
+            <div class="analytics-card" data-reveal="fade-up" data-delay="400">
+                <div class="analytics-header">
+                    <h3><i data-lucide="bar-chart-2"></i> Popular Sections</h3>
+                </div>
+                <div class="section-analytics">
+                    <div class="section-stat">
+                        <div class="section-stat-header">
+                            <span>Projects</span>
+                            <span class="section-percent">34%</span>
+                        </div>
+                        <div class="section-bar">
+                            <div class="section-fill" style="width: 34%;"></div>
+                        </div>
+                    </div>
+                    <div class="section-stat">
+                        <div class="section-stat-header">
+                            <span>Certifications</span>
+                            <span class="section-percent">28%</span>
+                        </div>
+                        <div class="section-bar">
+                            <div class="section-fill" style="width: 28%;"></div>
+                        </div>
+                    </div>
+                    <div class="section-stat">
+                        <div class="section-stat-header">
+                            <span>Technical Rigor</span>
+                            <span class="section-percent">22%</span>
+                        </div>
+                        <div class="section-bar">
+                            <div class="section-fill" style="width: 22%;"></div>
+                        </div>
+                    </div>
+                    <div class="section-stat">
+                        <div class="section-stat-header">
+                            <span>Blog</span>
+                            <span class="section-percent">16%</span>
+                        </div>
+                        <div class="section-bar">
+                            <div class="section-fill" style="width: 16%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="contact" id="contact">
         <div class="section-header" data-reveal="fade-up">
             <h2 class="section-title">Request <span class="highlight">Private Access</span></h2>

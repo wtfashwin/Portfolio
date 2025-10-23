@@ -192,23 +192,6 @@ Then visit `http://localhost:8000`
 - **LinkedIn**: [linkedin.com/in/wtfashwin](https://www.linkedin.com/in/wtfashwin/)
 - **LeetCode**: [leetcode.com/u/wtfashwin](https://leetcode.com/u/wtfashwin/)
 
-## 🏆 Achievements Showcased
-
-- ✅ OCI Data Science Professional Certification
-- ✅ Astronomer DAG Authoring Certification (Apache Airflow)
-- ✅ Databricks AI Agent Fundamentals Certification
-- ✅ LeetCode 100 Days Badge 2024
-- ✅ LeetCode 75 Badge
-- ✅ Top SQL 50 Badge
-
-## 🔮 Future Enhancements
-
-- [ ] Blog integration with technical articles
-- [ ] GitHub contributions graph
-- [ ] Interactive resume timeline
-- [ ] Dark/light theme toggle
-- [ ] Multi-language support
-- [ ] Analytics dashboard
 
 ## 📄 License
 
