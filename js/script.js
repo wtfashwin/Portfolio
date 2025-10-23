@@ -21,6 +21,11 @@ class ParticleSystem {
             antialias: true 
         });
         
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.targetX = 0;
+        this.targetY = 0;
+        
         this.init();
     }
     
@@ -29,37 +34,142 @@ class ParticleSystem {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         
-        // Create particles
+        // Create particles with more visual impact and depth
         const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1500;
+        const particlesCount = window.innerWidth < 768 ? 1000 : 2500;
         const posArray = new Float32Array(particlesCount * 3);
+        const colorArray = new Float32Array(particlesCount * 3);
+        const sizeArray = new Float32Array(particlesCount);
         
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 15;
+        for (let i = 0; i < particlesCount * 3; i += 3) {
+            // Position - create more depth by spreading particles
+            posArray[i] = (Math.random() - 0.5) * 30;      // X: wider spread
+            posArray[i + 1] = (Math.random() - 0.5) * 30;  // Y: taller spread
+            posArray[i + 2] = (Math.random() - 0.5) * 25;  // Z: more depth
+            
+            // Varying sizes for depth perception
+            sizeArray[i / 3] = Math.random() * 0.5 + 0.5;
+            
+            // Colors - mix of cyan, green, and purple
+            const colorChoice = Math.random();
+            if (colorChoice < 0.33) {
+                // Cyan
+                colorArray[i] = 0;
+                colorArray[i + 1] = 1;
+                colorArray[i + 2] = 1;
+            } else if (colorChoice < 0.66) {
+                // Electric Green
+                colorArray[i] = 0.22;
+                colorArray[i + 1] = 1;
+                colorArray[i + 2] = 0.08;
+            } else {
+                // Cyber Purple
+                colorArray[i] = 0.73;
+                colorArray[i + 1] = 0;
+                colorArray[i + 2] = 1;
+            }
         }
         
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+        particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizeArray, 1));
         
-        // Create material with neon glow
+        // Create material with vertex colors and size attenuation
         const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.015,
-            color: 0x00ffff,
+            size: window.innerWidth < 768 ? 0.03 : 0.04,
+            vertexColors: true,
             transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
+            opacity: 0.9,
+            blending: THREE.AdditiveBlending,
+            sizeAttenuation: true,
+            depthWrite: false
         });
         
         this.particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         this.scene.add(this.particleMesh);
         
-        // Position camera
-        this.camera.position.z = 3;
+        // Add connecting lines for network effect
+        this.createConnections();
+        
+        // Position camera for full page view
+        this.camera.position.z = 8;
+        
+        // Mouse interaction
+        window.addEventListener('mousemove', (e) => this.onMouseMove(e));
+        
+        // Scroll interaction for depth effect
+        window.addEventListener('scroll', () => this.onScroll());
         
         // Handle resize
         window.addEventListener('resize', () => this.onResize());
         
         // Start animation
         this.animate();
+    }
+    
+    createConnections() {
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        const colors = [];
+        
+        const particlePositions = this.particleMesh.geometry.attributes.position.array;
+        const maxDistance = 3; // Increased for more connections
+        
+        for (let i = 0; i < particlePositions.length; i += 3) {
+            for (let j = i + 3; j < particlePositions.length; j += 3) {
+                const dx = particlePositions[i] - particlePositions[j];
+                const dy = particlePositions[i + 1] - particlePositions[j + 1];
+                const dz = particlePositions[i + 2] - particlePositions[j + 2];
+                const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                
+                if (distance < maxDistance && Math.random() > 0.97) {
+                    positions.push(particlePositions[i], particlePositions[i + 1], particlePositions[i + 2]);
+                    positions.push(particlePositions[j], particlePositions[j + 1], particlePositions[j + 2]);
+                    
+                    // Vary colors for lines - cyan, green, purple
+                    const lineColor = Math.random();
+                    if (lineColor < 0.5) {
+                        colors.push(0, 1, 1, 0, 1, 1); // Cyan
+                    } else if (lineColor < 0.75) {
+                        colors.push(0.22, 1, 0.08, 0.22, 1, 0.08); // Green
+                    } else {
+                        colors.push(0.73, 0, 1, 0.73, 0, 1); // Purple
+                    }
+                }
+            }
+        }
+        
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        
+        const material = new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.25,
+            blending: THREE.AdditiveBlending
+        });
+        
+        this.linesMesh = new THREE.LineSegments(geometry, material);
+        this.scene.add(this.linesMesh);
+    }
+    
+    onMouseMove(event) {
+        this.mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+        this.mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    }
+    
+    onScroll() {
+        // Create parallax depth effect based on scroll position
+        const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        
+        if (this.particleMesh) {
+            // Move particles slightly with scroll for depth effect
+            this.particleMesh.position.y = scrollPercent * 2;
+        }
+        
+        if (this.linesMesh) {
+            this.linesMesh.position.y = scrollPercent * 2;
+        }
     }
     
     onResize() {
@@ -71,10 +181,36 @@ class ParticleSystem {
     animate() {
         requestAnimationFrame(() => this.animate());
         
-        // Rotate particles slowly
+        // Smooth mouse follow
+        this.targetX = this.mouseX * 0.5;
+        this.targetY = this.mouseY * 0.5;
+        
+        // Current time for wave effect
+        const time = Date.now() * 0.0001;
+        
+        // Rotate particles with mouse interaction and continuous motion
         if (this.particleMesh) {
-            this.particleMesh.rotation.y += 0.0005;
-            this.particleMesh.rotation.x += 0.0002;
+            this.particleMesh.rotation.y += 0.0008;
+            this.particleMesh.rotation.x += 0.0003;
+            
+            // Mouse influence
+            this.particleMesh.rotation.y += (this.targetX - this.particleMesh.rotation.y) * 0.05;
+            this.particleMesh.rotation.x += (this.targetY - this.particleMesh.rotation.x) * 0.05;
+            
+            // Add subtle wave motion to particles
+            const positions = this.particleMesh.geometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                const x = positions[i];
+                const z = positions[i + 2];
+                positions[i + 1] += Math.sin(time + x * 0.5 + z * 0.5) * 0.002;
+            }
+            this.particleMesh.geometry.attributes.position.needsUpdate = true;
+        }
+        
+        // Rotate lines mesh
+        if (this.linesMesh) {
+            this.linesMesh.rotation.y = this.particleMesh.rotation.y;
+            this.linesMesh.rotation.x = this.particleMesh.rotation.x;
         }
         
         this.renderer.render(this.scene, this.camera);
@@ -225,6 +361,7 @@ class SkillCubeController {
         this.controlBtns = $$('.control-btn');
         this.cubeFaces = $$('.cube-face');
         this.currentFace = 0;
+        this.isRotating = false;
         
         this.init();
     }
@@ -241,29 +378,83 @@ class SkillCubeController {
             btn.addEventListener('click', () => {
                 this.switchFace(index);
             });
+            
+            // Add ripple effect
+            btn.addEventListener('mousedown', (e) => this.createRipple(e, btn));
         });
         
         // Auto-rotate every 5 seconds
-        setInterval(() => {
-            this.currentFace = (this.currentFace + 1) % this.cubeFaces.length;
-            this.switchFace(this.currentFace);
-        }, 5000);
+        this.startAutoRotate();
+        
+        // Pause on hover
+        const cubeContainer = $('.skill-cube');
+        if (cubeContainer) {
+            cubeContainer.addEventListener('mouseenter', () => this.stopAutoRotate());
+            cubeContainer.addEventListener('mouseleave', () => this.startAutoRotate());
+        }
     }
     
     switchFace(index) {
+        if (this.isRotating || index === this.currentFace) return;
+        
+        this.isRotating = true;
+        
         // Remove active from all
         this.cubeFaces.forEach(face => face.classList.remove('active'));
         this.controlBtns.forEach(btn => btn.classList.remove('active'));
         
-        // Add active to selected
-        if (this.cubeFaces[index]) {
-            this.cubeFaces[index].classList.add('active');
-        }
-        if (this.controlBtns[index]) {
-            this.controlBtns[index].classList.add('active');
-        }
+        // Add active to selected with animation
+        setTimeout(() => {
+            if (this.cubeFaces[index]) {
+                this.cubeFaces[index].classList.add('active');
+            }
+            if (this.controlBtns[index]) {
+                this.controlBtns[index].classList.add('active');
+            }
+            
+            this.currentFace = index;
+            this.isRotating = false;
+        }, 300);
+    }
+    
+    createRipple(e, button) {
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
         
-        this.currentFace = index;
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            top: ${y}px;
+            left: ${x}px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-expand 0.6s ease-out;
+            pointer-events: none;
+        `;
+        
+        button.style.position = 'relative';
+        button.style.overflow = 'hidden';
+        button.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    }
+    
+    startAutoRotate() {
+        this.autoRotateInterval = setInterval(() => {
+            const nextIndex = (this.currentFace + 1) % this.cubeFaces.length;
+            this.switchFace(nextIndex);
+        }, 5000);
+    }
+    
+    stopAutoRotate() {
+        if (this.autoRotateInterval) {
+            clearInterval(this.autoRotateInterval);
+        }
     }
 }
 
@@ -759,6 +950,182 @@ class EnhancedScrollEffects {
     }
 }
 
+// ========== INSIGHTS PANEL MANAGER ==========
+class InsightsPanelManager {
+    constructor() {
+        this.insightsToggle = $('#insightsToggle');
+        this.insightsPanel = $('#insightsPanel');
+        this.insightsClose = $('#insightsClose');
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.insightsToggle || !this.insightsPanel) return;
+        
+        // Toggle panel
+        this.insightsToggle.addEventListener('click', () => {
+            this.insightsPanel.classList.add('active');
+            this.createOpenAnimation();
+        });
+        
+        // Close panel
+        if (this.insightsClose) {
+            this.insightsClose.addEventListener('click', () => {
+                this.insightsPanel.classList.remove('active');
+            });
+        }
+        
+        // Close on overlay click
+        document.addEventListener('click', (e) => {
+            if (this.insightsPanel.classList.contains('active') && 
+                !this.insightsPanel.contains(e.target) && 
+                !this.insightsToggle.contains(e.target)) {
+                this.insightsPanel.classList.remove('active');
+            }
+        });
+        
+        // ESC to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.insightsPanel.classList.contains('active')) {
+                this.insightsPanel.classList.remove('active');
+            }
+        });
+    }
+    
+    createOpenAnimation() {
+        const insights = $$('.insight-item');
+        insights.forEach((insight, index) => {
+            insight.style.opacity = '0';
+            insight.style.transform = 'translateX(50px)';
+            
+            setTimeout(() => {
+                insight.style.transition = 'all 0.4s ease-out';
+                insight.style.opacity = '1';
+                insight.style.transform = 'translateX(0)';
+            }, 100 + (index * 100));
+        });
+    }
+}
+
+// ========== UPDATES BAR MANAGER ==========
+class UpdatesBarManager {
+    constructor() {
+        this.updatesBar = $('#updatesBar');
+        this.updatesClose = $('#updatesClose');
+        this.updateText = $('#updateText');
+        
+        this.updates = [
+            'New: Oracle GenAI Professional Certification Added!',
+            'Achievement Unlocked: LeetCode Top 9.82% Ranking!',
+            'Recent: Astronomer Apache Airflow 3 Certification',
+            'Updated: 17 Professional Certifications Showcased'
+        ];
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.updatesBar) return;
+        
+        // Rotate updates
+        this.currentIndex = 0;
+        this.rotateUpdates();
+        
+        // Close button
+        if (this.updatesClose) {
+            this.updatesClose.addEventListener('click', () => {
+                this.updatesBar.classList.add('hidden');
+                localStorage.setItem('updatesBarClosed', 'true');
+            });
+        }
+        
+        // Check if previously closed
+        if (localStorage.getItem('updatesBarClosed') === 'true') {
+            this.updatesBar.style.display = 'none';
+        }
+    }
+    
+    rotateUpdates() {
+        setInterval(() => {
+            if (this.updateText) {
+                this.updateText.style.opacity = '0';
+                
+                setTimeout(() => {
+                    this.currentIndex = (this.currentIndex + 1) % this.updates.length;
+                    this.updateText.textContent = this.updates[this.currentIndex];
+                    this.updateText.style.opacity = '1';
+                }, 300);
+            }
+        }, 8000);
+    }
+}
+
+// ========== VISITOR TRACKING ==========
+class VisitorTracker {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        // Track visits
+        let visits = parseInt(localStorage.getItem('visitCount') || '0');
+        visits++;
+        localStorage.setItem('visitCount', visits.toString());
+        
+        // Store last visit
+        const lastVisit = localStorage.getItem('lastVisit');
+        const now = new Date().toISOString();
+        localStorage.setItem('lastVisit', now);
+        
+        // Display personalized message
+        if (visits > 1 && lastVisit) {
+            this.showReturningVisitorMessage(visits, lastVisit);
+        }
+    }
+    
+    showReturningVisitorMessage(visits, lastVisit) {
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1.5rem 3rem;
+            background: var(--gradient-surface);
+            border: 2px solid var(--color-electric-green);
+            border-radius: 12px;
+            color: var(--color-text-primary);
+            font-size: 1.4rem;
+            font-weight: 600;
+            z-index: 10000;
+            animation: slideDown 0.5s ease-out, slideUp 0.5s ease-out 4.5s;
+            box-shadow: 0 10px 40px rgba(57, 255, 20, 0.3);
+            text-align: center;
+        `;
+        
+        const daysSince = Math.floor((new Date() - new Date(lastVisit)) / (1000 * 60 * 60 * 24));
+        const message = daysSince === 0 
+            ? `Welcome back! Visit #${visits}` 
+            : `Welcome back! ${daysSince} day${daysSince > 1 ? 's' : ''} since your last visit.`;
+        
+        toast.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <i data-lucide="user-check" style="color: var(--color-electric-green);"></i>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        setTimeout(() => toast.remove(), 5000);
+    }
+}
+
 // ========== ADD DYNAMIC CSS ANIMATIONS ==========
 const addDynamicStyles = () => {
     const style = document.createElement('style');
@@ -766,6 +1133,13 @@ const addDynamicStyles = () => {
         @keyframes ripple {
             to {
                 transform: translate(-50%, -50%) scale(20);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes ripple-expand {
+            to {
+                transform: scale(4);
                 opacity: 0;
             }
         }
@@ -795,6 +1169,28 @@ const addDynamicStyles = () => {
             }
             to {
                 transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translate(-50%, -100px);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+            to {
+                transform: translate(-50%, -100px);
                 opacity: 0;
             }
         }
@@ -839,6 +1235,9 @@ document.addEventListener('DOMContentLoaded', () => {
     new CertificationManager();
     new CertStatCounters();
     new EnhancedScrollEffects();
+    new InsightsPanelManager();
+    new UpdatesBarManager();
+    new VisitorTracker();
     
     // Initialize Lucide icons
     if (typeof lucide !== 'undefined') {

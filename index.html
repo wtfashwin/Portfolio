@@ -54,6 +54,61 @@
         <span class="log-indicator">●</span>
         <span class="log-text">System Synced: Visitor #<span id="visitorCount">0</span></span>
     </div>
+    
+    <!-- Recent Updates Bar -->
+    <div class="updates-bar" id="updatesBar">
+        <div class="updates-content">
+            <span class="update-icon">🎯</span>
+            <span class="update-text" id="updateText">New: Oracle GenAI Professional Certification Added!</span>
+        </div>
+        <button class="updates-close" id="updatesClose">
+            <i data-lucide="x"></i>
+        </button>
+    </div>
+    
+    <!-- Insights Capsule -->
+    <button class="insights-toggle" id="insightsToggle" title="View Insights">
+        <i data-lucide="lightbulb"></i>
+        <span class="insights-badge">3</span>
+    </button>
+    
+    <div class="insights-panel" id="insightsPanel">
+        <div class="insights-header">
+            <h3>
+                <i data-lucide="brain"></i>
+                Engineering Insights
+            </h3>
+            <button class="insights-close" id="insightsClose">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+        <div class="insights-content">
+            <div class="insight-item">
+                <div class="insight-icon">
+                    <i data-lucide="zap"></i>
+                </div>
+                <p>"Containerization isn't just deployment—it's a contract between dev and ops for predictable behavior at scale."</p>
+                <span class="insight-meta">MLOps Best Practice</span>
+            </div>
+            <div class="insight-item">
+                <div class="insight-icon">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <p>"RAG systems fail when retrieval accuracy < 85%. Always benchmark your embeddings before production."</p>
+                <span class="insight-meta">GenAI Architecture</span>
+            </div>
+            <div class="insight-item">
+                <div class="insight-icon">
+                    <i data-lucide="shield"></i>
+                </div>
+                <p>"Explainability isn't optional—SHAP values turn black boxes into trusted production systems."</p>
+                <span class="insight-meta">Responsible AI</span>
+            </div>
+        </div>
+        <div class="insights-footer">
+            <span>Last updated: Oct 2025</span>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
