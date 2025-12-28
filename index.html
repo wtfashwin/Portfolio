@@ -140,7 +140,7 @@
             
             <div class="hero-stats" data-reveal="fade-up" data-delay="600">
                 <div class="stat-item">
-                    <div class="stat-value" data-target="1700">0</div>
+                    <div class="stat-value" data-target="1700+">0</div>
                     <div class="stat-label">LeetCode Problems</div>
                 </div>
                 <div class="stat-divider"></div>
@@ -273,81 +273,149 @@
         </div>
         
         <div class="projects-grid">
-            <!-- ETL Pipeline Automation -->
+            <!-- Production RAG Infrastructure -->
             <div class="project-card" data-reveal="tilt" data-delay="100">
                 <div class="project-image">
-                    <div class="project-badge">MLOps</div>
+                    <div class="project-badge">AI Infrastructure</div>
                     <div class="project-overlay"></div>
                 </div>
                 <div class="project-content">
-                    <h3>ETL Pipeline Automation</h3>
+                    <h3>Production RAG Infrastructure</h3>
                     <div class="project-metrics">
-                        <span class="metric"><i data-lucide="trending-up"></i> 94.9% Data Freshness</span>
-                        <span class="metric"><i data-lucide="cloud"></i> Multi-Cloud</span>
+                        <span class="metric"><i data-lucide="shield"></i> Namespace Isolation</span>
+                        <span class="metric"><i data-lucide="database"></i> 1GB+ Ingestion</span>
                     </div>
-                    <p>Orchestrated via Apache Airflow (Certified), Kafka/Snowflake integration, leveraging AWS Glue + Azure Data Factory for resilient data pipelines.</p>
+                    <p>Matter-level namespace isolation with SHA-256 deduplication. Handles 1GB+ streaming ingestion with deterministic query routing and zero-downtime deployment.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">Airflow</span>
-                        <span class="tech-tag">Kafka</span>
-                        <span class="tech-tag">Snowflake</span>
-                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Pinecone</span>
+                        <span class="tech-tag">pgvector</span>
+                        <span class="tech-tag">Docker</span>
                     </div>
-                    <button class="project-btn" data-project="etl">
+                    <button class="project-btn" data-project="rag">
                         <i data-lucide="external-link"></i>
                         View Details
                     </button>
                 </div>
             </div>
-            
-            <!-- SHAR System -->
-            <div class="project-card" data-reveal="tilt" data-delay="200">
-                <div class="project-image">
-                    <div class="project-badge">Computer Vision</div>
-                    <div class="project-overlay"></div>
-                </div>
-                <div class="project-content">
-                    <h3>SHAR: Activity Recognition</h3>
-                    <div class="project-metrics">
-                        <span class="metric"><i data-lucide="zap"></i> Real-Time Inference</span>
-                        <span class="metric"><i data-lucide="eye"></i> ViT-LSTM</span>
-                    </div>
-                    <p>Suspicious Human Activity Recognition system using Vision Transformer + LSTM architecture in PyTorch. Optimized for real-time CV inference at edge.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">ViT</span>
-                        <span class="tech-tag">LSTM</span>
-                        <span class="tech-tag">CV</span>
-                    </div>
-                    <button class="project-btn" data-project="shar">
-                        <i data-lucide="external-link"></i>
-                        View Details
-                    </button>
-                </div>
-            </div>
-            
+
             <!-- Fraud Detection -->
-            <div class="project-card" data-reveal="tilt" data-delay="300">
+            <div class="project-card" data-reveal="tilt" data-delay="200">
                 <div class="project-image">
                     <div class="project-badge">Explainable AI</div>
                     <div class="project-overlay"></div>
                 </div>
                 <div class="project-content">
-                    <h3>Fraud Detection (XAI)</h3>
+                    <h3>Fraud Detection with XAI</h3>
                     <div class="project-metrics">
-                        <span class="metric"><i data-lucide="shield"></i> 0.98 AUC</span>
-                        <span class="metric"><i data-lucide="bar-chart"></i> 0.90 Transparency</span>
+                        <span class="metric"><i data-lucide="shield"></i> 94.2% Precision</span>
+                        <span class="metric"><i data-lucide="bar-chart"></i> SHAP Explainability</span>
                     </div>
-                    <p>XGBoost + SHAP explainability framework achieving production-grade performance. Deployed as containerized Flask API with Power BI dashboard integration.</p>
+                    <p>XGBoost on imbalanced transaction data with SHAP explanations. Flask API serving predictions with per-transaction feature attribution and Power BI monitoring.</p>
                     <div class="project-tech">
                         <span class="tech-tag">XGBoost</span>
                         <span class="tech-tag">SHAP</span>
                         <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Power BI</span>
                     </div>
                     <button class="project-btn" data-project="fraud">
                         <i data-lucide="external-link"></i>
                         View Details
                     </button>
+                    <a href="https://github.com/wtfashwin/fraud-detection" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; color: var(--color-neon-blue); text-decoration: none; font-size: 1.3rem;">
+                        <i data-lucide="github"></i>
+                        <span>View Code</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- FinAgent -->
+            <div class="project-card" data-reveal="tilt" data-delay="300">
+                <div class="project-image">
+                    <div class="project-badge">Agentic AI</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>FinAgent — Multi-Agent Financial Engine</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="bot"></i> 3-Agent System</span>
+                        <span class="metric"><i data-lucide="zap"></i> Production</span>
+                    </div>
+                    <p>LangGraph-orchestrated multi-agent system (Insight, Risk, Fraud) for financial decision support. FastAPI backend with Streamlit interface processing transactional data.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                    <button class="project-btn" data-project="finagent">
+                        <i data-lucide="external-link"></i>
+                        View Details
+                    </button>
+                    <a href="https://financial-multi-agent-financial.streamlit.app" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; color: var(--color-electric-green); text-decoration: none; font-size: 1.3rem;">
+                        <i data-lucide="external-link"></i>
+                        <span>Live Demo</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Amazon Sales Analytics -->
+            <div class="project-card" data-reveal="tilt" data-delay="400">
+                <div class="project-image">
+                    <div class="project-badge">Data Engineering</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Amazon Sales Analytics Pipeline</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="trending-up"></i> End-to-End</span>
+                        <span class="metric"><i data-lucide="activity"></i> Prophet Forecasting</span>
+                    </div>
+                    <p>Complete analytics pipeline from ingestion to forecasting. Prophet-based demand prediction with Power BI dashboards and Azure-based orchestration.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">Azure</span>
+                    </div>
+                    <button class="project-btn" data-project="amazon">
+                        <i data-lucide="external-link"></i>
+                        View Details
+                    </button>
+                    <a href="https://github.com/wtfashwin/Amazon-Analysis" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; color: var(--color-neon-blue); text-decoration: none; font-size: 1.3rem;">
+                        <i data-lucide="github"></i>
+                        <span>View Code</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- VotePack -->
+            <div class="project-card" data-reveal="tilt" data-delay="500">
+                <div class="project-image">
+                    <div class="project-badge">Full-Stack Product</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>VotePack — Group Travel Platform</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="users"></i> Full-Stack SaaS</span>
+                        <span class="metric"><i data-lucide="credit-card"></i> Stripe Payments</span>
+                    </div>
+                    <p>Group travel platform with voting, itinerary planning, expense tracking, and AI activity suggestions. Stripe payments and JWT authentication.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Stripe</span>
+                    </div>
+                    <button class="project-btn" data-project="votepack">
+                        <i data-lucide="external-link"></i>
+                        View Details
+                    </button>
+                    <a href="https://github.com/wtfashwin/SthiraTech-The-VotePack-Platform" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; color: var(--color-neon-blue); text-decoration: none; font-size: 1.3rem;">
+                        <i data-lucide="github"></i>
+                        <span>View Code</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -515,38 +583,39 @@
                 </div>
             </div>
 
-            <!-- Kubernetes -->
+            <!-- Oracle AI Vector Search -->
             <div class="cert-card-elite" data-reveal="fade-up" data-delay="300">
                 <div class="cert-header">
-                    <div class="cert-logo-container kodekloud">
-                        <span class="cert-logo-text">K8s</span>
+                    <div class="cert-logo-container oracle">
+                        <span class="cert-logo-text">OCI</span>
                         <div class="cert-glow"></div>
                     </div>
-                    <div class="cert-badge completed">Completed</div>
+                    <div class="cert-badge active">Active</div>
                 </div>
                 <div class="cert-body">
-                    <h3 class="cert-title">Kubernetes for Absolute Beginners</h3>
+                    <h3 class="cert-title">Oracle AI Vector Search Certified Professional</h3>
                     <p class="cert-provider">
                         <i data-lucide="building-2"></i>
-                        KodeKloud
+                        Oracle Cloud Infrastructure
                     </p>
                     <div class="cert-meta">
                         <div class="cert-date">
                             <i data-lucide="calendar"></i>
-                            <span>Issued Oct 2025</span>
+                            <span>Issued Oct 2025 • Expires Oct 2027</span>
                         </div>
                         <div class="cert-id">
                             <i data-lucide="shield-check"></i>
-                            <span>ID: fe7d88e3</span>
+                            <span>ID: 102977056DB23AIOCP</span>
                         </div>
                     </div>
                     <div class="cert-skills">
-                        <span class="skill-pill">Kubernetes</span>
-                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">Vector Search</span>
+                        <span class="skill-pill">RAG</span>
+                        <span class="skill-pill">Oracle DB 23ai</span>
                     </div>
                 </div>
                 <div class="cert-footer">
-                    <button class="cert-action" data-credential="kubernetes">
+                    <button class="cert-action" data-credential="oracle-vector-search">
                         <i data-lucide="external-link"></i>
                         <span>View Credential</span>
                     </button>
@@ -593,77 +662,154 @@
                 </div>
             </div>
 
-            <!-- RAG Crash Course -->
+            <!-- Oracle Data Science Professional -->
             <div class="cert-card-elite" data-reveal="fade-up" data-delay="400">
                 <div class="cert-header">
-                    <div class="cert-logo-container kodekloud">
-                        <span class="cert-logo-text">RAG</span>
+                    <div class="cert-logo-container oracle">
+                        <span class="cert-logo-text">OCI</span>
                         <div class="cert-glow"></div>
                     </div>
-                    <div class="cert-badge completed">Completed</div>
+                    <div class="cert-badge active">Active</div>
                 </div>
                 <div class="cert-body">
-                    <h3 class="cert-title">RAG Crash Course</h3>
+                    <h3 class="cert-title">OCI 2025 Certified Data Science Professional</h3>
                     <p class="cert-provider">
                         <i data-lucide="building-2"></i>
-                        KodeKloud
+                        Oracle Cloud Infrastructure
                     </p>
                     <div class="cert-meta">
                         <div class="cert-date">
                             <i data-lucide="calendar"></i>
-                            <span>Issued Oct 2025</span>
+                            <span>Issued Oct 2025 • Expires Oct 2027</span>
                         </div>
                         <div class="cert-id">
                             <i data-lucide="shield-check"></i>
-                            <span>ID: 89a6ef67</span>
+                            <span>ID: 102964238OCI25DSOCP</span>
                         </div>
                     </div>
                     <div class="cert-skills">
-                        <span class="skill-pill">RAG</span>
-                        <span class="skill-pill">Agentic AI</span>
-                        <span class="skill-pill">NLP</span>
+                        <span class="skill-pill">ML Lifecycle</span>
+                        <span class="skill-pill">MLOps</span>
+                        <span class="skill-pill">ADS SDK</span>
                     </div>
                 </div>
                 <div class="cert-footer">
-                    <button class="cert-action" data-credential="rag-crash">
+                    <button class="cert-action" data-credential="oracle-ds">
                         <i data-lucide="external-link"></i>
                         <span>View Credential</span>
                     </button>
                 </div>
             </div>
 
-            <!-- AWS Solutions -->
+            <!-- Oracle Architect Associate -->
             <div class="cert-card-elite" data-reveal="fade-up" data-delay="450">
                 <div class="cert-header">
-                    <div class="cert-logo-container aws">
-                        <span class="cert-logo-text">AWS</span>
+                    <div class="cert-logo-container oracle">
+                        <span class="cert-logo-text">OCI</span>
                         <div class="cert-glow"></div>
                     </div>
-                    <div class="cert-badge completed">Completed</div>
+                    <div class="cert-badge active">Active</div>
                 </div>
                 <div class="cert-body">
-                    <h3 class="cert-title">Solutions Architecture Job Simulation</h3>
+                    <h3 class="cert-title">OCI 2025 Certified Architect Associate</h3>
                     <p class="cert-provider">
                         <i data-lucide="building-2"></i>
-                        AWS via Forage
+                        Oracle Cloud Infrastructure
                     </p>
                     <div class="cert-meta">
                         <div class="cert-date">
                             <i data-lucide="calendar"></i>
-                            <span>Issued Jul 2025</span>
+                            <span>Issued Oct 2025 • Expires Oct 2027</span>
                         </div>
                         <div class="cert-id">
                             <i data-lucide="shield-check"></i>
-                            <span>ID: 4Jcq8oj4</span>
+                            <span>ID: 103043421OCI25CAA</span>
                         </div>
                     </div>
                     <div class="cert-skills">
-                        <span class="skill-pill">AWS</span>
-                        <span class="skill-pill">Architecture</span>
+                        <span class="skill-pill">Cloud Architecture</span>
+                        <span class="skill-pill">Networking</span>
                     </div>
                 </div>
                 <div class="cert-footer">
-                    <button class="cert-action" data-credential="aws-solutions">
+                    <button class="cert-action" data-credential="oracle-architect">
+                        <i data-lucide="external-link"></i>
+                        <span>View Credential</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Oracle Developer Professional -->
+            <div class="cert-card-elite" data-reveal="fade-up" data-delay="500">
+                <div class="cert-header">
+                    <div class="cert-logo-container oracle">
+                        <span class="cert-logo-text">OCI</span>
+                        <div class="cert-glow"></div>
+                    </div>
+                    <div class="cert-badge active">Active</div>
+                </div>
+                <div class="cert-body">
+                    <h3 class="cert-title">OCI 2025 Certified Developer Professional</h3>
+                    <p class="cert-provider">
+                        <i data-lucide="building-2"></i>
+                        Oracle Cloud Infrastructure
+                    </p>
+                    <div class="cert-meta">
+                        <div class="cert-date">
+                            <i data-lucide="calendar"></i>
+                            <span>Issued Oct 2025 • Expires Oct 2027</span>
+                        </div>
+                        <div class="cert-id">
+                            <i data-lucide="shield-check"></i>
+                            <span>ID: 103043421OCID25CP</span>
+                        </div>
+                    </div>
+                    <div class="cert-skills">
+                        <span class="skill-pill">Microservices</span>
+                        <span class="skill-pill">Kubernetes</span>
+                    </div>
+                </div>
+                <div class="cert-footer">
+                    <button class="cert-action" data-credential="oracle-developer">
+                        <i data-lucide="external-link"></i>
+                        <span>View Credential</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Calyptus AI Fluent Tech Professional -->
+            <div class="cert-card-elite" data-reveal="fade-up" data-delay="550">
+                <div class="cert-header">
+                    <div class="cert-logo-container" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <span class="cert-logo-text">AI</span>
+                        <div class="cert-glow"></div>
+                    </div>
+                    <div class="cert-badge verified">Top 5%</div>
+                </div>
+                <div class="cert-body">
+                    <h3 class="cert-title">AI Fluent Tech Professional</h3>
+                    <p class="cert-provider">
+                        <i data-lucide="building-2"></i>
+                        Calyptus
+                    </p>
+                    <div class="cert-meta">
+                        <div class="cert-date">
+                            <i data-lucide="calendar"></i>
+                            <span>Issued Nov 2025 • Expires Nov 2035</span>
+                        </div>
+                        <div class="cert-id">
+                            <i data-lucide="shield-check"></i>
+                            <span>ID: 14</span>
+                        </div>
+                    </div>
+                    <div class="cert-skills">
+                        <span class="skill-pill">Agentic AI</span>
+                        <span class="skill-pill">Explainable AI</span>
+                        <span class="skill-pill">GenAI</span>
+                    </div>
+                </div>
+                <div class="cert-footer">
+                    <button class="cert-action" data-credential="calyptus-ai">
                         <i data-lucide="external-link"></i>
                         <span>View Credential</span>
                     </button>
@@ -671,7 +817,7 @@
             </div>
 
             <!-- HackerRank SQL -->
-            <div class="cert-card-elite" data-reveal="fade-up" data-delay="500">
+            <div class="cert-card-elite" data-reveal="fade-up" data-delay="600">
                 <div class="cert-header">
                     <div class="cert-logo-container hackerrank">
                         <span class="cert-logo-text">HR</span>
@@ -710,14 +856,14 @@
         </div>
 
         <!-- Certification Statistics -->
-        <div class="cert-stats" data-reveal="fade-up" data-delay="600">
+        <div class="cert-stats" data-reveal="fade-up" data-delay="700">
             <div class="cert-stat-item">
                 <div class="cert-stat-icon">
                     <i data-lucide="award"></i>
                 </div>
                 <div class="cert-stat-content">
-                    <h4 class="cert-stat-number" data-count="17">0</h4>
-                    <p class="cert-stat-label">Total Certifications</p>
+                    <h4 class="cert-stat-number" data-count="13">0</h4>
+                    <p class="cert-stat-label">Professional Certifications</p>
                 </div>
             </div>
             <div class="cert-stat-item">
@@ -725,7 +871,7 @@
                     <i data-lucide="shield-check"></i>
                 </div>
                 <div class="cert-stat-content">
-                    <h4 class="cert-stat-number" data-count="6">0</h4>
+                    <h4 class="cert-stat-number" data-count="11">0</h4>
                     <p class="cert-stat-label">Active Credentials</p>
                 </div>
             </div>
@@ -734,7 +880,7 @@
                     <i data-lucide="trending-up"></i>
                 </div>
                 <div class="cert-stat-content">
-                    <h4 class="cert-stat-number" data-count="10">0</h4>
+                    <h4 class="cert-stat-number" data-count="12">0</h4>
                     <p class="cert-stat-label">2025 Certifications</p>
                 </div>
             </div>
@@ -1223,13 +1369,22 @@
             <div class="contact-form-wrapper">
                 <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <input type="email" placeholder="Enter your email" required class="form-input">
+                        <input type="text" id="nameInput" placeholder="Your name (optional)" class="form-input">
+                        <div class="input-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="emailInput" placeholder="Your email (required)" required class="form-input">
+                        <div class="input-line"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="messageInput" placeholder="Why do you need access? (optional)" rows="3" class="form-input" style="resize: vertical; min-height: 80px;"></textarea>
                         <div class="input-line"></div>
                     </div>
                     <button type="submit" class="btn btn-glow">
                         <span>Request Private Portfolio Link</span>
                         <i data-lucide="send"></i>
                     </button>
+                    <div id="formError" style="display: none; color: #ff4444; margin-top: 1rem; font-size: 1.4rem;"></div>
                 </form>
                 <div class="form-success" id="formSuccess">
                     <i data-lucide="check-circle"></i>

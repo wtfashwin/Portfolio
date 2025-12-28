@@ -598,48 +598,69 @@ class ProjectModal {
     
     getProjectData(type) {
         const projects = {
-            etl: {
-                title: 'ETL Pipeline Automation',
-                metrics: ['94.9% Data Freshness', 'Multi-Cloud Orchestration', 'Real-Time Processing'],
-                description: 'Engineered a production-grade ETL pipeline using Apache Airflow (DAG Authoring Certified) for workflow orchestration, integrated with Apache Kafka for real-time data streaming and Snowflake as the cloud data warehouse. Deployed across AWS Glue and Azure Data Factory to achieve multi-cloud resilience and fault tolerance. The pipeline handles 2TB+ daily data volume with sub-second latency SLAs.',
-                tech: ['Apache Airflow', 'Apache Kafka', 'Snowflake', 'AWS Glue', 'Azure Data Factory', 'Python', 'Docker', 'Kubernetes'],
+            rag: {
+                title: 'Production RAG Infrastructure',
+                metrics: ['1GB+ Document Ingestion', 'Sub-200ms Query Latency', 'Zero Downtime'],
+                description: 'Built namespace-isolated RAG system where each matter maintains independent vector stores with SHA-256-based deduplication. Implemented streaming ingestion pipeline supporting 1GB+ documents with chunking strategies optimized for legal and financial content. Architected admin panel for namespace lifecycle management—creation, monitoring, deletion—without disrupting existing n8n automation workflows. System enforces strict query isolation and deterministic routing to prevent cross-matter data leakage.',
+                tech: ['FastAPI', 'Pinecone', 'pgvector', 'Docker', 'Python 3.11', 'n8n'],
                 achievements: [
-                    'Achieved 94.9% data freshness with automated quality validation',
-                    'Reduced deployment time by 60% through containerization and CI/CD automation',
-                    'Implemented fault-tolerant architecture with automatic failover across cloud providers',
-                    'Built comprehensive monitoring with Prometheus + Grafana for real-time observability',
-                    'Optimized cost by 35% through intelligent data partitioning and compression'
-                ]
-            },
-            shar: {
-                title: 'SHAR: Suspicious Human Activity Recognition',
-                metrics: ['Real-Time Inference', 'ViT-LSTM Architecture', 'Edge Deployment'],
-                description: 'Developed a cutting-edge computer vision system for suspicious activity detection using Vision Transformer (ViT) combined with LSTM for temporal sequence modeling. Built in PyTorch with custom data augmentation pipelines and optimized for edge deployment with TensorRT quantization. Achieved 89% accuracy on custom surveillance dataset with <100ms inference latency on NVIDIA Jetson hardware.',
-                tech: ['PyTorch', 'Vision Transformer (ViT)', 'LSTM', 'TensorRT', 'OpenCV', 'CUDA', 'Docker', 'MLflow'],
-                achievements: [
-                    'Architected hybrid ViT-LSTM model achieving 89% accuracy on complex activity patterns',
-                    'Optimized inference pipeline to <100ms latency using TensorRT INT8 quantization',
-                    'Deployed on edge devices (NVIDIA Jetson) with 4x throughput improvement',
-                    'Implemented robust data augmentation reducing overfitting by 23%',
-                    'Built MLOps pipeline with MLflow for experiment tracking and model versioning'
+                    'Designed matter-level isolation preventing cross-namespace queries in multi-tenant environment',
+                    'Implemented SHA-256 content fingerprinting eliminating duplicate ingestion across 10K+ documents',
+                    'Built streaming ingestion handling 1GB+ files without memory overflow or timeout failures',
+                    'Deployed admin panel for namespace lifecycle management integrated with existing n8n workflows'
                 ]
             },
             fraud: {
-                title: 'Fraud Detection with Explainable AI (XAI)',
-                metrics: ['0.98 AUC Score', '0.90 Transparency Index', 'Production Deployed'],
-                description: 'Built an enterprise-grade fraud detection system using XGBoost with integrated SHAP (SHapley Additive exPlanations) for model interpretability. The system processes 500K+ transactions daily with real-time scoring via containerized Flask API. Includes Power BI dashboard for stakeholder transparency and regulatory compliance. Deployed on Kubernetes with horizontal auto-scaling and comprehensive monitoring.',
-                tech: ['XGBoost', 'SHAP', 'Flask', 'Docker', 'Kubernetes', 'Power BI', 'PostgreSQL', 'Redis', 'Prometheus'],
+                title: 'Fraud Detection System with Explainable AI',
+                metrics: ['94.2% Precision', 'Real-time SHAP Explanations', 'Production API'],
+                description: 'Engineered fraud detection pipeline on highly imbalanced transactional data using XGBoost with custom class weighting and threshold optimization. Integrated SHAP for per-prediction explainability, generating feature attribution scores required for compliance and manual review workflows. Built Flask API exposing prediction endpoints with explanation payloads. Designed Power BI dashboard tracking model performance drift, false positive rates, and high-risk transaction patterns for operational monitoring.',
+                tech: ['XGBoost', 'SHAP', 'Flask', 'Power BI', 'Docker', 'pandas', 'imbalanced-learn'],
                 achievements: [
-                    'Achieved 0.98 AUC with 0.90 transparency score using SHAP explanations',
-                    'Reduced false positives by 42% through ensemble feature engineering',
-                    'Deployed containerized API handling 500K+ daily predictions with 99.9% uptime',
-                    'Built interactive Power BI dashboards for regulatory compliance reporting',
-                    'Implemented A/B testing framework for continuous model improvement'
+                    'Achieved 94.2% precision on minority class using SMOTE + stratified validation on 284K transactions',
+                    'Implemented SHAP TreeExplainer generating per-transaction feature importance in <50ms',
+                    'Built Flask API with /predict and /explain endpoints serving real-time fraud scoring',
+                    'Designed Power BI dashboard tracking precision/recall drift and flagging model degradation signals'
+                ]
+            },
+            finagent: {
+                title: 'FinAgent — Multi-Agent Financial Insight Engine',
+                metrics: ['3-Agent Orchestration', 'FastAPI + Streamlit', 'Live Production System'],
+                description: 'Architected multi-agent system using LangGraph for coordinated financial analysis across three specialized agents: Insight (pattern detection), Risk (exposure quantification), Fraud (anomaly flagging). Each agent operates on shared transactional state with event-driven communication. Built FastAPI backend handling agent orchestration, state management, and result aggregation. Deployed Streamlit frontend providing structured outputs—not conversational chat—for decision support workflows. System designed for interpretability and audit trails, not general-purpose dialogue.',
+                tech: ['LangGraph', 'FastAPI', 'PyTorch', 'MLflow', 'Streamlit', 'Docker', 'AWS'],
+                achievements: [
+                    'Designed 3-agent DAG with conditional routing based on transaction attributes and risk scores',
+                    'Built FastAPI orchestration layer managing agent state, inter-agent communication, and result merging',
+                    'Deployed production Streamlit interface presenting structured insights rather than chat-based UX',
+                    'Implemented MLflow tracking for agent performance metrics and decision path reproducibility'
+                ]
+            },
+            amazon: {
+                title: 'Amazon Sales Analytics Pipeline',
+                metrics: ['End-to-End Pipeline', 'Prophet Forecasting', 'Azure Orchestration'],
+                description: 'Built end-to-end sales analytics pipeline handling data ingestion, SQL-based aggregation, Power BI visualization, and Prophet-based demand forecasting. Designed reproducible local development using Azurite emulating Azure Blob Storage, ensuring consistency across environments. Implemented SQL analytics layer generating product performance metrics, regional breakdowns, and time-based aggregations feeding downstream BI dashboards. Integrated Prophet for demand forecasting with seasonality decomposition and trend analysis, supporting inventory planning workflows.',
+                tech: ['Python (pandas, Prophet)', 'SQL', 'Power BI', 'Azure Blob Storage', 'Azurite', 'Azure Data Factory'],
+                achievements: [
+                    'Designed ingestion pipeline supporting CSV/JSON sources with schema validation and deduplication',
+                    'Built SQL analytics layer generating 15+ KPIs for product performance and regional sales trends',
+                    'Created Power BI dashboards with drill-through capabilities for category and SKU-level analysis',
+                    'Implemented Prophet forecasting with MAPE <12% on seasonal product demand across 6-month horizon'
+                ]
+            },
+            votepack: {
+                title: 'VotePack — Group Travel Platform',
+                metrics: ['Full-Stack Application', 'Stripe Integration', 'AI Recommendations'],
+                description: 'Developed complete group travel platform handling voting workflows, collaborative itinerary planning, expense tracking, and settlement. Built React TypeScript frontend with responsive UI supporting multi-user interactions. Designed FastAPI backend managing user authentication (JWT), group state, voting logic, and expense calculations. Integrated Stripe for payment processing and Gemini API for AI-based activity suggestions using location context and group preferences. Used PostgreSQL with pgvector extension for semantic search on activity recommendations.',
+                tech: ['React (TypeScript)', 'FastAPI (Python)', 'PostgreSQL + pgvector', 'Stripe API', 'Gemini API', 'JWT', 'Docker'],
+                achievements: [
+                    'Built voting system supporting weighted preferences and real-time consensus tracking across group members',
+                    'Designed expense tracking with automated split calculations, settlement suggestions, and Stripe payment flows',
+                    'Implemented AI activity recommendation using Gemini with pgvector semantic search on location embeddings',
+                    'Deployed full authentication system with JWT tokens, refresh logic, and role-based access control'
                 ]
             }
         };
-        
-        return projects[type] || projects.etl;
+
+        return projects[type] || projects.rag;
     }
 }
 
@@ -648,37 +669,66 @@ class ContactFormHandler {
     constructor() {
         this.form = $('#contactForm');
         this.formSuccess = $('#formSuccess');
-        
+        this.formError = $('#formError');
+        this.SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxToERf852xVhirn0LhJ54T5FqKLcmd_o9o520demk8t059aRBVtlpl4LAG8S2bb_0l/exec';
+
         this.init();
     }
-    
+
     init() {
         if (!this.form) return;
-        
+
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleSubmit();
         });
     }
-    
-    handleSubmit() {
-        // Simulate form submission
-        this.form.style.display = 'none';
-        this.formSuccess.classList.add('show');
-        
-        // Add particle burst animation
-        this.createParticleBurst();
-        
-        // Reset after 5 seconds
-        setTimeout(() => {
-            this.form.style.display = 'flex';
-            this.formSuccess.classList.remove('show');
-            this.form.reset();
-        }, 5000);
+
+    async handleSubmit() {
+        const nameInput = $('#nameInput');
+        const emailInput = $('#emailInput');
+        const messageInput = $('#messageInput');
+        const submitBtn = this.form.querySelector('button[type="submit"]');
+
+        const formData = {
+            name: nameInput ? nameInput.value.trim() : '',
+            email: emailInput ? emailInput.value.trim() : '',
+            message: messageInput ? messageInput.value.trim() : ''
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.querySelector('span').textContent = 'Sending...';
+        this.formError.style.display = 'none';
+
+        try {
+            const response = await fetch(this.SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            this.form.style.display = 'none';
+            this.formSuccess.classList.add('show');
+            this.createParticleBurst();
+
+            setTimeout(() => {
+                this.form.style.display = 'flex';
+                this.formSuccess.classList.remove('show');
+                this.form.reset();
+                submitBtn.disabled = false;
+                submitBtn.querySelector('span').textContent = 'Request Private Portfolio Link';
+            }, 5000);
+
+        } catch (error) {
+            this.formError.textContent = 'Submission failed. Please try again.';
+            this.formError.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.querySelector('span').textContent = 'Request Private Portfolio Link';
+        }
     }
-    
+
     createParticleBurst() {
-        // Visual feedback with CSS animation
         const burst = document.createElement('div');
         burst.className = 'particle-burst-animation';
         burst.style.cssText = `
@@ -694,9 +744,8 @@ class ContactFormHandler {
             pointer-events: none;
             z-index: 9999;
         `;
-        
+
         document.body.appendChild(burst);
-        
         setTimeout(() => burst.remove(), 800);
     }
 }
