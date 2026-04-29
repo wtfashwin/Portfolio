@@ -38,7 +38,7 @@
 
         <nav class="navbar">
             <a href="#home" class="active">Home</a>
-            <a href="#rigor">Technical Rigor</a>
+            <a href="#rolefit">Role Fit</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#publication">Publication</a>
@@ -206,11 +206,11 @@
                         <h3>GenAI</h3>
                     </div>
                     <div class="face-content">
-                        <div class="skill-tag"><i data-lucide="workflow"></i> LangGraph</div>
-                        <div class="skill-tag"><i data-lucide="link"></i> LangChain · LlamaIndex</div>
-                        <div class="skill-tag"><i data-lucide="bot"></i> Agentic AI</div>
-                        <div class="skill-tag"><i data-lucide="sparkles"></i> RAG · Hybrid Retrieval</div>
+                        <div class="skill-tag"><i data-lucide="workflow"></i> LangGraph · LangChain</div>
+                        <div class="skill-tag"><i data-lucide="link"></i> LlamaIndex · OpenAI SDK</div>
+                        <div class="skill-tag"><i data-lucide="bot"></i> Agentic AI · RAG · Hybrid</div>
                         <div class="skill-tag"><i data-lucide="message-square"></i> Claude · OpenAI · Bedrock</div>
+                        <div class="skill-tag"><i data-lucide="search"></i> Azure AI Search · Doc Intelligence</div>
                     </div>
                 </div>
 
@@ -221,10 +221,11 @@
                         <h3>Cloud & K8s</h3>
                     </div>
                     <div class="face-content">
-                        <div class="skill-tag"><i data-lucide="box"></i> Kubernetes (AKS/EKS/GKE)</div>
-                        <div class="skill-tag"><i data-lucide="ship"></i> Helm · Docker</div>
-                        <div class="skill-tag"><i data-lucide="layers"></i> Terraform Multi-Cloud</div>
+                        <div class="skill-tag"><i data-lucide="box"></i> Kubernetes (AKS · EKS · GKE)</div>
+                        <div class="skill-tag"><i data-lucide="ship"></i> Helm · Docker · Compose</div>
+                        <div class="skill-tag"><i data-lucide="layers"></i> Terraform · Multi-Cloud</div>
                         <div class="skill-tag"><i data-lucide="git-merge"></i> Azure DevOps · Cloud Build</div>
+                        <div class="skill-tag"><i data-lucide="cloud-cog"></i> Azure · AWS · GCP · OCI</div>
                         <div class="skill-tag"><i data-lucide="database"></i> Pinecone · pgvector · Oracle 23ai</div>
                     </div>
                 </div>
@@ -266,6 +267,188 @@
         </div>
     </section>
 
+
+    <!-- Role Fit Matrix Section -->
+    <section class="projects" id="rolefit">
+        <div class="section-header" data-reveal="fade-up">
+            <h2 class="section-title">Role Fit <span class="highlight">Matrix</span></h2>
+            <p class="section-subtitle">JD pillars mapped to production evidence — what every line of the role looks like in real shipped systems</p>
+        </div>
+
+        <div class="projects-grid" id="roleFitGrid">
+            <div class="project-card" data-reveal="tilt" data-delay="100" data-pillar="api">
+                <div class="project-image">
+                    <div class="project-badge">API Development</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Python + FastAPI APIs</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="server"></i> 460+ Endpoints in Prod</span>
+                        <span class="metric"><i data-lucide="git-branch"></i> 44 Routers</span>
+                    </div>
+                    <p>Independently designed, shipped, and maintain 44 routers and 400+ async REST endpoints at Sylox; 40+ in the AI Privacy Verifier; 20+ in the matter-isolated RAG. FastAPI + Pydantic v2 + async SQLAlchemy 2.0 across every project, with Flask comfort as a fallback.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Pydantic v2</span>
+                        <span class="tech-tag">SQLAlchemy 2 (async)</span>
+                        <span class="tech-tag">Flask</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="150" data-pillar="async">
+                <div class="project-image">
+                    <div class="project-badge">Async &amp; Concurrency</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Concurrent &amp; Scalable Systems</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="zap"></i> &lt;500ms p95 @ 80c</span>
+                        <span class="metric"><i data-lucide="activity"></i> 1,200 RPS · p99 &lt;180ms</span>
+                    </div>
+                    <p>asyncpg + uvloop sustaining sub-500ms p95 at 80-concurrency autoscale on a multi-tenant 11-schema Postgres. Celery + Redis + RQ workers with circuit breakers, per-tenant rate budgets, and partitioned tables for bursty load.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">asyncio · uvloop</span>
+                        <span class="tech-tag">asyncpg</span>
+                        <span class="tech-tag">Celery · RQ</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="200" data-pillar="genai">
+                <div class="project-image">
+                    <div class="project-badge">Generative AI</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>LangChain · LlamaIndex · OpenAI SDK</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="workflow"></i> 7-Stage LangGraph</span>
+                        <span class="metric"><i data-lucide="layers"></i> 7-Vendor LLM Layer</span>
+                    </div>
+                    <p>LangGraph 7-stage classification pipeline at Sylox with a Claude verifier; LangChain + LlamaIndex RAG over policy documents; provider-agnostic LLM abstraction across 7 vendors (OpenAI, Anthropic, Gemini, Mistral, Cohere, AWS Bedrock, and one cloud-native provider) so a vendor switch is a config flag.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">LlamaIndex</span>
+                        <span class="tech-tag">OpenAI Python SDK</span>
+                        <span class="tech-tag">Anthropic SDK</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="250" data-pillar="containers">
+                <div class="project-image">
+                    <div class="project-badge">Containers &amp; Orchestration</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Docker · Kubernetes · Helm · Compose</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="ship"></i> &lt;180MB Distroless Images</span>
+                        <span class="metric"><i data-lucide="box"></i> AKS · EKS · GKE</span>
+                    </div>
+                    <p>Multi-stage Dockerfiles (distroless runtime, non-root UID, &lt;180MB images); Helm chart with <code>values-{dev,stage,prod}.yaml</code>, HPAs, PodDisruptionBudgets, NetworkPolicies, pre-rendered ServiceMonitors. Docker Compose for local parity with <code>make demo</code> bootstrapping the full stack in &lt;90s.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Helm</span>
+                        <span class="tech-tag">Docker · Compose</span>
+                        <span class="tech-tag">HPA · PDB · NetworkPolicy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="300" data-pillar="testing">
+                <div class="project-image">
+                    <div class="project-badge">Testing</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Unit · Integration · Performance Tests</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="check-circle"></i> 2,195 Tests · 80% Coverage</span>
+                        <span class="metric"><i data-lucide="shield-check"></i> mypy --strict</span>
+                    </div>
+                    <p>Strict TDD with red-tests-first commits — pytest + pytest-asyncio, testcontainers (real Postgres + Redis, no mocks), Hypothesis property tests at 500+ examples, Playwright + Vitest E2E, schemathesis contract tests, k6 + Locust performance harnesses; gated by <code>diff-cover ≥ 80%</code> on every PR.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">pytest · pytest-asyncio</span>
+                        <span class="tech-tag">testcontainers</span>
+                        <span class="tech-tag">Hypothesis</span>
+                        <span class="tech-tag">k6 · Locust</span>
+                        <span class="tech-tag">schemathesis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="350" data-pillar="cicd">
+                <div class="project-image">
+                    <div class="project-badge">DevOps · CI/CD</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Multi-Stage CI/CD Pipelines</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="git-merge"></i> 45min → 9min PR-to-Deploy</span>
+                        <span class="metric"><i data-lucide="shield"></i> 30-Gate Quality System</span>
+                    </div>
+                    <p>Owned multi-stage pipelines (build → test → security-scan → publish → cluster deploy via Helm) with environment approvals, blue/green rollout, and automatic rollback on failed health gates. Cut PR-to-deploy from ~45min → ~9min via dependency caching, test sharding, and BuildKit cache mounts. Same patterns shipped on Azure DevOps and GCP Cloud Build.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Azure DevOps</span>
+                        <span class="tech-tag">GCP Cloud Build</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Helm Deploys</span>
+                        <span class="tech-tag">Trivy · CodeQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="400" data-pillar="security">
+                <div class="project-image">
+                    <div class="project-badge">Security &amp; Identity</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>OAuth · Okta · Auth0 · RBAC in AKS</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="lock"></i> Zero Cross-Tenant Leakage</span>
+                        <span class="metric"><i data-lucide="key"></i> Workload Identity · No Long-Lived Secrets</span>
+                    </div>
+                    <p>OAuth2 + OIDC with Auth0 (pluggable to Okta or Azure AD via the same provider interface), JWT (python-jose), Argon2id hashing, refresh-token rotation, per-endpoint RBAC via <code>require_permission()</code>. AKS workload identity, NetworkPolicies default-deny, Pod Security Standards: restricted, Key Vault CSI mount. SCIM 2.0 provisioning at Sylox.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">OAuth2 · OIDC</span>
+                        <span class="tech-tag">Okta · Auth0</span>
+                        <span class="tech-tag">RBAC in AKS</span>
+                        <span class="tech-tag">SCIM 2.0</span>
+                        <span class="tech-tag">Argon2id · JWT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-reveal="tilt" data-delay="450" data-pillar="scripting">
+                <div class="project-image">
+                    <div class="project-badge">Scripting &amp; Automation</div>
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <h3>Bash · Shell · PowerShell</h3>
+                    <div class="project-metrics">
+                        <span class="metric"><i data-lucide="terminal"></i> &lt;90s Stack Bootstrap</span>
+                        <span class="metric"><i data-lucide="play-circle"></i> One-Command Demo</span>
+                    </div>
+                    <p>Bash + PowerShell automation for stack bootstrap, evidence-pack export, and on-call diagnostics; <code>make demo</code> and <code>make preflight</code> orchestrate end-to-end environment up + canary→PDF pipeline assertion in under 90 seconds.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">PowerShell</span>
+                        <span class="tech-tag">Make</span>
+                        <span class="tech-tag">Shell</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Professional Experience Section -->
     <section class="timeline" id="experience">

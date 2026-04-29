@@ -1407,24 +1407,20 @@ body.light-theme .theme-icon-light {
     color: var(--color-neon-blue);
 }
 
-/* === BLOG SECTION === */
-.blog {
-    display: none; /* Hidden - not in navbar */
-}
+/* === BLOG / PUBLICATION SECTION === */
+/* Legacy #blog kept hidden via inline style; new .blog sections (Publication, etc.) render normally */
 
 /* === TIMELINE SECTION === */
-.timeline {
-    display: none; /* Hidden - not in navbar */
-}
+/* Used for Experience and Achievements timelines */
 
 /* === GITHUB SECTION === */
 .github-section {
-    display: none; /* Hidden - not in navbar */
+    display: none; /* Placeholder data — hidden until backed by real metrics */
 }
 
 /* === ANALYTICS SECTION === */
 .analytics {
-    display: none; /* Hidden - not in navbar */
+    display: none; /* Placeholder data — hidden until backed by real metrics */
 }
 
 .blog-grid {

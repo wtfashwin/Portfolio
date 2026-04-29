@@ -598,16 +598,71 @@ class ProjectModal {
     
     getProjectData(type) {
         const projects = {
-            rag: {
-                title: 'Production RAG Infrastructure',
-                metrics: ['1GB+ Document Ingestion', 'Sub-200ms Query Latency', 'Zero Downtime'],
-                description: 'Built namespace-isolated RAG system where each matter maintains independent vector stores with SHA-256-based deduplication. Implemented streaming ingestion pipeline supporting 1GB+ documents with chunking strategies optimized for legal and financial content. Architected admin panel for namespace lifecycle management—creation, monitoring, deletion—without disrupting existing n8n automation workflows. System enforces strict query isolation and deterministic routing to prevent cross-matter data leakage.',
-                tech: ['FastAPI', 'Pinecone', 'pgvector', 'Docker', 'Python 3.11', 'n8n'],
+            'privacy-verifier': {
+                title: 'AI Privacy Verifier — Continuous AI Vendor Governance',
+                metrics: ['1,200 RPS · p99 < 180ms', '7 LLM Providers · 1 Interface', '~38% LLM Cost Reduction', 'Helm on AKS'],
+                description: 'A 9-service event-driven backend that continuously probes AI provider APIs and produces RFC 3161 trusted-timestamped evidence packets. Components include a canary-trap injector (synthetic prompt fingerprinting), a membership inference probe (statistical attacks to detect leaked training data), model fingerprinting (detect unannounced model swaps), policy surveillance (parse TOS/DPA PDFs into diffs), and an evidence packager that bundles raw traces, JCS-canonicalized SHA-256 manifests, and RFC 3161 timestamps into auditor-consumable PDFs.',
+                tech: ['FastAPI', 'Pydantic v2', 'Async SQLAlchemy 2', 'LangChain', 'LlamaIndex', 'OpenAI Python SDK', 'Anthropic SDK', 'PostgreSQL', 'Redis', 'Celery', 'Kubernetes (AKS)', 'Helm', 'Auth0 · OIDC', 'RFC 3161'],
                 achievements: [
-                    'Designed matter-level isolation preventing cross-namespace queries in multi-tenant environment',
-                    'Implemented SHA-256 content fingerprinting eliminating duplicate ingestion across 10K+ documents',
-                    'Built streaming ingestion handling 1GB+ files without memory overflow or timeout failures',
-                    'Deployed admin panel for namespace lifecycle management integrated with existing n8n workflows'
+                    '40+ async REST endpoints sustaining >1,200 RPS at p99 <180ms with asyncpg pooling and per-tenant rate budgets',
+                    'Provider-agnostic LLM layer (LLMProvider Protocol + registry) wrapping 7 vendors — vendor switch is a config flag',
+                    '~38% LLM spend reduction via prompt caching, semantic dedup, and tiered model routing (Haiku → Sonnet → Opus)',
+                    'Deterministic LLM evals with golden datasets, hallucination/grounding/jailbreak metrics, and replayable provider recordings',
+                    'Multi-stage Dockerfiles (distroless, non-root, <180 MB) and Helm chart with values-{dev,stage,prod}.yaml, HPAs, NetworkPolicies',
+                    'CI/CD: ruff, mypy --strict, pytest, diff-cover, Alembic round-trip, Trivy, CodeQL — cut PR-to-deploy 45min → 9min',
+                    'OAuth2 + OIDC (Auth0, pluggable to Okta / Azure AD), Argon2id, refresh-token rotation, per-endpoint RBAC, AKS workload identity'
+                ]
+            },
+            'matter-rag': {
+                title: 'Matter-Isolated RAG — Pinecone × AWS × n8n',
+                metrics: ['Zero Cross-Matter Leakage', '+28% Retrieval Relevance', '−30% Embedding Cost', '<2s Query p95'],
+                description: 'Multi-tenant retrieval over 5,000+ legal-matter documents. The architectural decision was to push isolation into the vector DB — namespace = "matter-" + matter_id, enforced before retrieval, not after. Async ingestion across direct upload, n8n webhooks, S3 async (>100 MB), and ZIP batch (up to 1 GB) all converge into one normalized pipeline. Postgres acts as the control plane (matter_id, namespace, file hash, audit trail), guaranteeing referential integrity for safe deletion and full traceability of every answer back to its source.',
+                tech: ['FastAPI', 'Pinecone', 'Claude (Anthropic)', 'Voyage voyage-law-2 (1024-dim)', 'PostgreSQL (RDS)', 'Redis · RQ', 'S3', 'NGINX', 'EC2', 'n8n', 'Streamlit (admin)'],
+                achievements: [
+                    'Per-matter Pinecone namespaces eliminate cross-matter leakage at the vector-DB level — not as a post-retrieval filter',
+                    'SHA-256 content-level dedup cut redundant embeddings 35% and embedding cost 30%; 50-per-request batching for throughput',
+                    'Hybrid semantic + BM25 retrieval with cross-encoder reranking lifted relevance 28%; query latency <2s p95',
+                    'Async server-side processing via Redis + RQ — large files never block the request cycle, no partial-ingestion states',
+                    'Boundary-aware chunking (800–1200 chars, 150–200 overlap, paragraph + clause + email-reply boundaries)',
+                    'n8n integration with zero workflow disruption — Drive folder names map to matter_id at the API boundary'
+                ]
+            },
+            'cerevra': {
+                title: 'Cerevra (ContextOS) — Zero-Data-Loss Deterministic RAG Engine',
+                metrics: ['WAL · 1.2–2.1s Crash Recovery', '2,195 Tests · 80% Coverage', 'BM25 p50 < 50ms', '500+ qps · 150 docs/sec ingest'],
+                description: 'A production-grade RAG engine that treats retrieval like a database — write-ahead logging with fsync after every mutation, deterministic crash recovery via WAL replay, hardware-grade tenant isolation, no vector store dependency. Differentiates from LangChain / LlamaIndex / Weaviate / Milvus by combining database-grade durability with operational maturity (Prometheus, OpenTelemetry, GDPR audit trails) and built-in citations anchored to source-document offsets.',
+                tech: ['Python 3.11+', 'FastAPI', 'Pydantic', 'rank-bm25', 'msgpack', 'Docker', 'Kubernetes manifests', 'Prometheus', 'OpenTelemetry', 'Python SDK', 'TypeScript SDK'],
+                achievements: [
+                    'Database-grade durability — WAL with fsync, deterministic crash recovery (1.2–2.1s) verified by file-truncation tests',
+                    'Hardware-grade tenant isolation — per-namespace storage, indexing, WAL, config; cross-tenant leakage architecturally impossible',
+                    'BM25-first retrieval (no GPU dependency) with optional hybrid semantic reranking; 4-dimension Context Quality Scoring',
+                    '2,195 tests · 80% diff-coverage (90%+ on core modules) including chaos, Hypothesis property tests, and distributed-resilience suites',
+                    'Deployable everywhere — Docker images at ghcr.io/wtfashwin/cerevra, K8s manifests, Railway, local dev mode',
+                    'Async Python SDK + TypeScript SDK shipped as first-class clients; v0.1.0 released April 2026 across 219 commits'
+                ]
+            },
+            'sentinel': {
+                title: 'Sentinel — Agentic Code-Review & Security-Triage Platform',
+                metrics: ['LangGraph Multi-Agent', 'Tool-Level RBAC', 'Helm-Deployed Workers', 'GitHub Webhooks'],
+                description: 'A LangGraph-orchestrated multi-agent system: a router dispatches to specialized Claude and Codex agents (diff analysis, secret scan, dependency audit, playbook retrieval), each with tool-level RBAC. Async FastAPI webhooks consume GitHub PR events; long reviews run on Kubernetes worker pods deployed via a custom Helm chart, with Docker Compose for local parity. Hybrid retrieval (pgvector + BM25) over internal playbooks and CVE advisories, full audit trail of every tool invocation.',
+                tech: ['LangGraph', 'Claude (Anthropic)', 'Codex', 'FastAPI', 'pgvector + BM25', 'Kubernetes', 'Helm', 'Docker Compose', 'OIDC (Okta · Auth0)'],
+                achievements: [
+                    'Router agent dispatches to specialized Claude / Codex agents (diff, secret-scan, dep-audit, playbook) with tool-level RBAC',
+                    'Async FastAPI webhook consumer for GitHub PR events — long reviews offloaded to K8s worker pods',
+                    'Custom Helm chart with values-{dev,stage,prod}.yaml; Docker Compose mirrors the production topology locally',
+                    'Hybrid retrieval (pgvector + BM25) over internal playbooks and CVE advisories for grounded triage',
+                    'OIDC SSO via Okta / Auth0; full audit trail of every tool invocation for forensic review'
+                ]
+            },
+            rag: {
+                title: 'Matter-Isolated RAG — Pinecone × AWS × n8n',
+                metrics: ['Zero Cross-Matter Leakage', '+28% Retrieval Relevance', '<2s Query p95'],
+                description: 'See Matter-Isolated RAG above — multi-tenant retrieval over 5,000+ legal-matter documents with namespace-level isolation enforced at the vector DB.',
+                tech: ['FastAPI', 'Pinecone', 'Claude', 'Voyage law-2', 'AWS', 'n8n'],
+                achievements: [
+                    'Per-matter Pinecone namespaces eliminate cross-tenant leakage at the vector-DB level',
+                    'SHA-256 dedup cut redundant embeddings 35% and embedding cost 30%',
+                    'Hybrid + reranking lifted relevance 28%; query latency <2s p95'
                 ]
             },
             fraud: {
