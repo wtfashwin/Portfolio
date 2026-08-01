@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+
+# local backups / source assets (not part of the deployed site)
+index_local_backup.html
+index_artifact_backup.html
+replica.mov
+replica-portfolio.html
