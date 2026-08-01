@@ -202,13 +202,13 @@ export const skills = {
 export const scenes = {
   hero: {
     kicker: '01 · The Pull of Results',
-    h: 'Everything I build revolves around one thing, real impact',
-    sub: 'Production GenAI engineer, RAG, agentic LangGraph pipelines and async FastAPI at scale. I ship systems that survive real load, not slideware.',
+    h: 'I build AI systems that survive production',
+    sub: '1,678 commits across five production codebases in one year. RAG, agentic LangGraph pipelines and async FastAPI at scale. Not slideware.',
   },
   capabilities: {
     kicker: '02 · A Universe of Capabilities',
     h: 'A universe of capabilities, already in production',
-    sub: 'Not one tool, but a living system: multi-tenant SaaS, agentic pipelines and hybrid vector search, all orbiting one goal, AI that holds up under real load.',
+    sub: 'Not one tool but a living system: multi-tenant SaaS, agentic pipelines and hybrid vector search, all orbiting one goal. AI that holds up under real load.',
   },
   core: {
     kicker: '03 · Velocity',

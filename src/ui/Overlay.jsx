@@ -197,7 +197,15 @@ export default function Overlay() {
       (entries) => entries.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
       { threshold: 0.15 }
     )
-    els.forEach((el) => { el.classList.add('reveal'); io.observe(el) })
+    // Stagger siblings within each scene so reveals read as a rhythm, not a wall.
+    const perParent = new Map()
+    els.forEach((el) => {
+      const n = perParent.get(el.parentElement) ?? 0
+      perParent.set(el.parentElement, n + 1)
+      el.style.setProperty('--stagger', n)
+      el.classList.add('reveal')
+      io.observe(el)
+    })
     return () => io.disconnect()
   }, [])
   return (
