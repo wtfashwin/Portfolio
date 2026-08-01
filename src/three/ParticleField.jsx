@@ -137,6 +137,8 @@ export default function ParticleField() {
     if (spin === 'spinZ') { spinZ.current = t * 0.03; points.rotation.z = spinZ.current }
     else if (spin === 'spinY') { spinY.current = t * 0.08; points.rotation.y = spinY.current }
     else if (spin === 'breathe') { points.rotation.y = t * 0.04; points.rotation.x = rotX.current + Math.sin(t * 0.1) * 0.1 }
+    // wheel-at-full-speed: symmetric shell spun so fast it reads as still
+    else if (spin === 'hyperspin') { points.rotation.y = t * 2.4; points.rotation.x = rotX.current }
     else { points.rotation.z *= 0.98; points.rotation.y *= 0.98 }
   })
 

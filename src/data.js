@@ -19,7 +19,7 @@ export const identity = {
     medium: 'https://medium.com/@ashwinupadhyay',
     paper: 'https://www.tijer.org/paper/TIJER2505180',
   },
-  bio: 'AI/ML Engineer with 2+ years building production GenAI on async FastAPI, LangGraph and Kubernetes. I ship systems that survive real load — not prototypes.',
+  bio: 'AI/ML Engineer building production GenAI on async FastAPI, LangGraph and Kubernetes. I ship systems that survive real load — not prototypes.',
 }
 
 // Section anchors used by nav + scroll. `at` = scroll offset 0..1 (8 scenes).
@@ -32,16 +32,24 @@ export const NAV = [
 
 // Per-scene brand word shown in the nav as you scroll (replica idiom).
 export const BRAND_WORDS = [
-  'ASHWIN', 'CAPABILITIES', 'THE CORE', 'IRIS',
+  'ASHWIN', 'CAPABILITIES', 'VELOCITY', 'IRIS',
   'WORK', 'PRINCIPLES', 'PROOF', 'CONNECT',
 ]
 
-// ── Scene 3 — IRIS flagship metrics ─────────────────────────────────────────
+// ── Scene 3 — IRIS flagship metrics (verified via contributor graph & repo) ─
 export const irisStats = [
-  { v: '44', u: 'routers', l: '400+ async REST endpoints across 11 Postgres schemas, multi-tenant DPSM SaaS.' },
-  { v: '<500', u: 'ms p95', l: 'Sustained at 80-concurrency autoscale — on 1M+ classified records.' },
-  { v: '+18', u: '% accuracy', l: '7-stage LangGraph PII pipeline: regex + Presidio + spaCy NER + Claude verify.' },
-  { v: '12', u: 'connectors', l: 'PostgreSQL, MySQL, Oracle, MS SQL, Snowflake, Databricks, BigQuery, Spanner, SAP HANA, S3, Drive.' },
+  { v: '1,087', u: 'commits', l: '#1 contributor of 10 — 27% of all commits, 4× the next engineer, Feb–Jul 2026.' },
+  { v: '42', u: 'of last 100 PRs', l: 'Feature ownership: access governance, risk assessment, purpose tracking (22/22 slices), Shadow-IT discovery.' },
+  { v: '3', u: 'languages at scale', l: 'Python, TypeScript and PLpgSQL across backend, frontend and database layers of an 87 MB codebase.' },
+  { v: '3', u: 'CI pipelines', l: 'ci, nightly-integration and blue/green prod deploys on GCP Cloud Build — plus pre-commit, ruff, coverage gates.' },
+]
+
+// ── Velocity — agent-leverage proof (all verified) ──────────────────────────
+export const velocity = [
+  { v: '1,678', l: 'commits across five production codebases in 2026 — under one work identity.' },
+  { v: '8', l: 'OSS PRs merged into external projects totaling ~120,000 combined stars.' },
+  { v: '189/189', l: 'sole-author commits on a production system shipped in three weeks.' },
+  { v: '14-stage', l: 'gated, agent-dispatched pipeline (PSYLOC) I designed — features ship under its governance.' },
 ]
 
 // ── Scene 4 — Experience pipeline (funnel) ──────────────────────────────────
@@ -54,41 +62,40 @@ export const experience = [
     flagship: 'IRIS · AI-Powered Data Security Posture Management',
     blurb: 'IRIS discovers and classifies PII across GDPR, HIPAA & DPDP workflows.',
     points: [
-      'Shipped 44 FastAPI routers + 400+ async endpoints across 11 Postgres schemas — p95 < 500 ms at 80-concurrency autoscale.',
-      'Designed a 7-stage LangGraph PII pipeline (30+ India-specific regex, Presidio, spaCy NER, Claude verify, analyst override) — +18% accuracy across 1M records.',
-      'Built 12 cloud-source connectors and a universal access bridge writing 53K+ permissions into one governance surface.',
-      'Owned CI/CD on GCP Cloud Build — 30-gate verification, 80–90% diff coverage, 161 idempotent Alembic migrations, blue/green with auto-rollback.',
-      'Hardened with OAuth2/OIDC SSO, SCIM 2.0, per-endpoint RBAC, JWT + bcrypt, org-scoped queries and CI-enforced cross-tenant isolation.',
+      '#1 contributor of 10 engineers — 1,087 of ~4,000 commits (27%), 4× the next contributor, Feb–Jul 2026.',
+      'Led feature areas end-to-end: access governance, risk assessment, PII-classification pattern ranking, purpose tracking (22/22 slices), Shadow-IT discovery.',
+      'Owned CI/CD on GCP Cloud Build — nightly integration, blue/green prod deploys, Alembic dual-head merge resolution, Python 3.11→3.13 migration.',
+      'Hardened multi-tenant SaaS: OAuth2/OIDC SSO, SCIM 2.0, per-endpoint RBAC, org-scoped queries.',
     ],
     tags: ['FastAPI', 'LangGraph', 'pgvector', 'GCP', 'Alembic', 'SCIM 2.0'],
   },
   {
-    role: 'Builder',
+    role: 'Sole Author',
     org: 'AI Privacy Verifier',
-    when: '2026',
-    where: 'Independent',
+    when: 'Apr — May 2026',
+    where: 'SyloxLabs',
     flagship: 'Canary-trap auditing of AI-vendor privacy claims',
     blurb: 'Cryptographic evidence chains that prove unauthorized model training.',
     points: [
-      'Provider-agnostic FastAPI across 7 LLM vendors with canary-trap injection, model fingerprinting and timestamped evidence packets.',
-      'Sustained 40+ endpoints at 1,200+ RPS, p99 < 180 ms, while cutting LLM spend ~38%.',
-      'RFC 3161 TSA + Sigstore/Rekor tamper-evident evidence chain; ~94% test coverage.',
-      'Deployed on AKS with Helm + workload identity — cut PR-to-deploy from 45 to 9 minutes.',
+      'Sole author — 189 of 189 commits, 31 of 31 PRs — production system built in three weeks.',
+      'Provider-agnostic FastAPI across 7 LLM vendors: canary-trap injection, model fingerprinting, timestamped evidence packets.',
+      'RFC 3161 TSA + Sigstore/Rekor tamper-evident evidence chain; Open Policy Agent (Rego) policies; Celery Beat scheduling.',
+      'Deployed on AKS with Helm + workload identity; CI-gated with pre-commit and automated review.',
     ],
     tags: ['7-vendor LLM', 'RFC 3161', 'Rekor', 'Celery', 'AKS'],
   },
   {
     role: 'Creator',
     org: 'Cerevra',
-    when: 'Jun 2025 — Present',
-    where: 'github.com/wtfashwin/cerevra',
+    when: '2026',
+    where: 'Private build — demo on request',
     flagship: 'Zero-Data-Loss RAG Engine',
     blurb: 'Deterministic, WAL-durable, namespace-isolated RAG — no vectors required.',
     points: [
-      'WAL-backed crash recovery with per-mutation fsync and deterministic replay; chaos-tested truncation recovery with zero data loss.',
+      'WAL-backed crash recovery with per-mutation fsync and deterministic replay; chaos-tested truncation recovery.',
       'BM25-first retrieval with context scoring + refusal gating — cuts hallucination without GPU dependence.',
-      'BM25 p99 < 50 ms at 500+ qps; synthesis p99 < 200 ms at 250 qps; 10K-doc indexing under 5 s.',
-      'Maintained 2,195 tests at 80% diff coverage with chaos / property / resilience suites + Prometheus, OTel & GDPR audit.',
+      '219 commits, v0.1.0 release, 5 CI workflows, full OSS packaging: SDK, Docker, security policy, contributor docs.',
+      '2,195 tests at 80% diff coverage with chaos / property / resilience suites + Prometheus, OTel & GDPR audit.',
     ],
     tags: ['RAG', 'WAL', 'BM25', 'Chaos-tested', '2,195 tests'],
   },
@@ -140,12 +147,12 @@ export const achievements = [
 // Real PRs/issues into notable AI, security, data & infra projects.
 export const openSource = [
   {
-    repo: 'langfuse/langfuse-python',
-    num: '#1664',
-    title: 'fix(deps): support wrapt 2.x',
-    note: 'Unblocked the LLM-observability SDK on wrapt 2.x — closes #1561.',
-    domain: 'LLM Observability',
-    url: 'https://github.com/langfuse/langfuse-python/pull/1664',
+    repo: 'VictoriaMetrics/VictoriaMetrics',
+    num: '#10974',
+    title: 'promql: stop integrate() extrapolating past series end',
+    note: 'Correctness fix inside the query engine of a 17k-star TSDB — 15 commits, 5 review rounds.',
+    domain: 'Observability / TSDB',
+    url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/pull/10974',
   },
   {
     repo: 'dlt-hub/dlt',
@@ -156,20 +163,20 @@ export const openSource = [
     url: 'https://github.com/dlt-hub/dlt/pull/3947',
   },
   {
-    repo: 'VictoriaMetrics/VictoriaMetrics',
-    num: '#10974',
-    title: 'promql: stop integrate() extrapolating past series end',
-    note: 'Correctness fix in the query engine of a major time-series database.',
-    domain: 'Observability / TSDB',
-    url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/pull/10974',
+    repo: 'unslothai/unsloth',
+    num: '#5551',
+    title: 'fix stuck IME flag when compositionend never fires',
+    note: '+415/−7 across 4 files — merged by the founder of the 68k-star fine-tuning toolkit.',
+    domain: 'LLM Fine-tuning',
+    url: 'https://github.com/unslothai/unsloth/pull/5551',
   },
   {
-    repo: 'unslothai/unsloth',
-    num: '#5651',
-    title: 'studio/chat: hide non-matching threads in chat search',
-    note: 'UX fix in the popular LLM fine-tuning toolkit — closes #5572.',
-    domain: 'LLM Fine-tuning',
-    url: 'https://github.com/unslothai/unsloth/pull/5651',
+    repo: 'PrefectHQ/prefect',
+    num: '#22035',
+    title: 'fix Azure blob result storage overwrite on rewrite',
+    note: 'Bug fix in a 23k-star orchestration platform — merged by a core maintainer.',
+    domain: 'Orchestration',
+    url: 'https://github.com/PrefectHQ/prefect/pull/22035',
   },
   {
     repo: 'TracecatHQ/tracecat',
@@ -204,9 +211,9 @@ export const scenes = {
     sub: 'Not one tool, but a living system: multi-tenant SaaS, agentic pipelines and hybrid vector search, all orbiting one goal — AI that holds up under real load.',
   },
   core: {
-    kicker: '03 — The Core',
-    h: 'Every system pulled toward one focused point: production',
-    sub: 'I learned to engineer the things around the code — the migrations, the CI, the gates — as carefully as the code itself.',
+    kicker: '03 — Velocity',
+    h: 'Spinning so fast it reads as still',
+    sub: 'A wheel at full speed looks static — that is what mastered tooling feels like. An agent-driven build loop I designed turns effort into output that just appears.',
   },
   iris: {
     kicker: '04 — Flagship',
@@ -221,12 +228,12 @@ export const scenes = {
   principles: {
     kicker: '06 — Principles',
     h: 'Hard-won principles, earned in red CI',
-    sub: 'Across 383 commits and two production codebases — what I learned to trust, and what I learned to distrust.',
+    sub: 'Across 1,600+ commits and five production codebases — what I learned to trust, and what I learned to distrust.',
   },
   proof: {
     kicker: '07 — Open Source & Proof',
     h: 'I ship into other people’s codebases too',
-    sub: 'Meaningful, merged contributions across Langfuse, dlt, VictoriaMetrics, Unsloth & Tracecat — plus certifications, rankings, and a test obsession.',
+    sub: 'Eight merged contributions across VictoriaMetrics, dlt, Unsloth, Prefect & Tracecat — repos totaling ~120,000 stars. Every one is one click from proof.',
   },
   contact: {
     kicker: '08 — Connect',

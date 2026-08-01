@@ -152,4 +152,4 @@ export function buildShapes(N) {
 export const SCENE_ROT_X = [0.0, -0.55, 0.0, 0.0, 0.0, 0.15, -0.5, 0.0]
 
 // Per-scene continuous-spin behaviour.
-export const SCENE_SPIN = ['damp', 'spinZ', 'breathe', 'spinZ', 'spinY', 'breathe', 'spinZ', 'damp']
+export const SCENE_SPIN = ['damp', 'spinZ', 'hyperspin', 'spinZ', 'spinY', 'breathe', 'spinZ', 'damp']

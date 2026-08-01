@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import {
   identity, scenes, skills, irisStats, experience,
-  principles, openSource, certs, achievements,
+  principles, openSource, certs, velocity,
 } from '../data.js'
 import { scrollStore } from '../scrollStore.js'
 
@@ -57,7 +58,7 @@ function Capabilities() {
   )
 }
 
-// ── 02 CORE (black hole) — statement + recognition band ─────────────────────
+// ── 02 VELOCITY (hyperspin sphere) — agent-leverage proof band ──────────────
 function Core() {
   const s = scenes.core
   return (
@@ -65,8 +66,8 @@ function Core() {
       <div className="scrim">
         <Head s={s} />
         <div className="proof-band">
-          {achievements.map((a) => (
-            <div className="band-stat" key={a.l}>
+          {velocity.map((a) => (
+            <div className="band-stat glass" key={a.l}>
               <div className="band-v">{a.v}</div>
               <div className="band-l">{a.l}</div>
             </div>
@@ -189,6 +190,16 @@ function Contact() {
 }
 
 export default function Overlay() {
+  // Scroll reveal: glass elements rise out of the particle field as they enter.
+  useEffect(() => {
+    const els = document.querySelectorAll('.float, .oss, .band-stat, .cert-strip')
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
+      { threshold: 0.15 }
+    )
+    els.forEach((el) => { el.classList.add('reveal'); io.observe(el) })
+    return () => io.disconnect()
+  }, [])
   return (
     <div className="overlay">
       <Hero />
