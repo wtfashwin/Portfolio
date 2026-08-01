@@ -23,7 +23,7 @@ function Hero() {
   return (
     <section className="scene center hero-ball">
       <div className="scene-head hero-head">
-        <div className="badge"><span className="badge-dot">✦</span> {identity.role} — {identity.location}</div>
+        <div className="badge"><span className="badge-dot">✦</span> {identity.role} · {identity.location}</div>
         <h1 className="h1 xl name">{identity.name}</h1>
         <p className="sub hero-sub">{s.sub}</p>
         <div className="cta-row center-row">
