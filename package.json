@@ -6,8 +6,12 @@
   "description": "Ashwin Upadhyay \u2014 AI systems and backend engineering portfolio.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node scripts/check-theme.mjs && node scripts/build.mjs",
+    "check:crawlers": "node scripts/check-crawlers.mjs",
+    "preview": "vite preview",
+    "check:theme": "node scripts/check-theme.mjs",
+    "refresh:work": "node scripts/refresh-work.mjs",
+    "check:refresh": "node --test scripts/refresh-work.test.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

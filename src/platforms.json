@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+  "scope": "Verified public profiles found through supplied profiles and linked public evidence. This is not an exhaustive internet search.",
+  "profiles": [
+    {
+      "platform": "GitHub",
+      "kind": "Code & open source",
+      "handle": "wtfashwin",
+      "url": "https://github.com/wtfashwin",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://github.com/wtfashwin"
+      ],
+      "refresh": {
+        "type": "github"
+      }
+    },
+    {
+      "platform": "LinkedIn",
+      "kind": "Professional profile",
+      "handle": "wtfashwin",
+      "url": "https://www.linkedin.com/in/wtfashwin/",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://www.linkedin.com/in/wtfashwin/"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "Kaggle",
+      "kind": "ML experiments",
+      "handle": "ashwinupadhyay",
+      "url": "https://www.kaggle.com/ashwinupadhyay",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://www.kaggle.com/ashwinupadhyay"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "Medium",
+      "kind": "Technical writing",
+      "handle": "ashwinupadhyay",
+      "url": "https://medium.com/@ashwinupadhyay",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://medium.com/feed/@ashwinupadhyay"
+      ],
+      "refresh": {
+        "type": "rss",
+        "url": "https://medium.com/feed/@ashwinupadhyay"
+      }
+    },
+    {
+      "platform": "CodePen",
+      "kind": "Frontend demos",
+      "handle": "wtfashwin-",
+      "url": "https://codepen.io/wtfashwin-",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://ashwinupadhyay.medium.com/stopwatch-project-using-frontend-technologies-6b1d091abec4"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "LeetCode",
+      "kind": "Problem solving",
+      "handle": "wtfashwin",
+      "url": "https://leetcode.com/u/wtfashwin/",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://leetcode.com/u/wtfashwin/"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "GeeksforGeeks",
+      "kind": "Problem solving",
+      "handle": "wtfashwin",
+      "url": "https://www.geeksforgeeks.org/user/wtfashwin/",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://github.com/wtfashwin"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "Codolio",
+      "kind": "Coding activity",
+      "handle": "wtfashwin",
+      "url": "https://codolio.com/profile/wtfashwin",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://leetcode.com/u/wtfashwin/"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "Credly",
+      "kind": "Verified credentials",
+      "handle": "ashwin-upadhyay.d80bc5d2",
+      "url": "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "TIJER",
+      "kind": "Research publication",
+      "handle": "TIJER2505180",
+      "url": "https://tijer.org/tijer/viewpaperforall.php?paper=TIJER2505180",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://tijer.org/tijer/viewpaperforall.php?paper=TIJER2505180"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "Twine",
+      "kind": "Freelance profile",
+      "handle": "AshwinUpadhyay",
+      "url": "https://www.twine.net/AshwinUpadhyay",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://www.twine.net/AshwinUpadhyay"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "Collective",
+      "kind": "Freelance profile",
+      "handle": "ashwin-upadhyay",
+      "url": "https://www.collective.work/profile/ashwin-upadhyay",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+      "evidenceUrls": [
+        "https://www.collective.work/profile/ashwin-upadhyay"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "PyPI",
+      "kind": "Package profile",
+      "handle": "wtfashwin",
+      "url": "https://pypi.org/user/wtfashwin/",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:24:47.736792+00:00",
+      "ownershipMethod": "user-confirmed",
+      "evidenceUrls": [
+        "https://pypi.org/user/wtfashwin/"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    },
+    {
+      "platform": "RemoteOK",
+      "kind": "Professional profile",
+      "handle": "wtfashwin",
+      "url": "https://remoteok.com/@wtfashwin",
+      "status": "verified",
+      "checkedAt": "2026-10-08T16:24:47.736792+00:00",
+      "ownershipMethod": "user-confirmed",
+      "evidenceUrls": [
+        "https://remoteok.com/@wtfashwin"
+      ],
+      "refresh": {
+        "type": "manual"
+      }
+    }
+  ],
+  "writing": [
+    {
+      "title": "Harnessing Future Insights: A Beginner\u2019s Guide to Predictive Analytics",
+      "url": "https://ashwinupadhyay.medium.com/harnessing-future-insights-a-beginners-guide-to-predictive-analytics-769254e74a8d",
+      "platform": "Medium",
+      "publishedAt": "2024-03-29T15:58:19+00:00"
+    },
+    {
+      "title": "Stopwatch project using Frontend technologies",
+      "url": "https://ashwinupadhyay.medium.com/stopwatch-project-using-frontend-technologies-6b1d091abec4",
+      "platform": "Medium",
+      "publishedAt": "2024-03-02T15:42:36+00:00"
+    },
+    {
+      "title": "Building a Password Generator with HTML, CSS, and JavaScript",
+      "url": "https://ashwinupadhyay.medium.com/building-a-password-generator-with-html-css-and-javascript-1549198fc5a3",
+      "platform": "Medium",
+      "publishedAt": "2024-03-02T15:17:02+00:00"
+    },
+    {
+      "title": "From Code to Insights: Navigating the Journey from Web Development to Data Science",
+      "url": "https://ashwinupadhyay.medium.com/from-code-to-insights-navigating-the-journey-from-web-development-to-data-science-452018749e8f",
+      "platform": "Medium",
+      "publishedAt": "2024-03-02T10:50:59+00:00"
+    },
+    {
+      "title": "SHAR: Scalable Human Activity Recognition",
+      "url": "https://tijer.org/TIJER/papers/TIJER2505180.pdf",
+      "platform": "TIJER",
+      "publishedAt": "2025-05",
+      "role": "Co-author"
+    }
+  ]
+}

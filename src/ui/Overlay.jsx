@@ -4,6 +4,7 @@ import {
   openSource, certs, achievements, achievementGroups,
 } from '../data.js'
 import KaggleEvidence from './KaggleEvidence.jsx'
+import OnlineProfiles, { LatestUpdates } from './OnlineProfiles.jsx'
 function scrollToSection(event, id) {
   const target = document.getElementById(id)
   if (!target) return
@@ -155,6 +156,7 @@ function Contact() {
           <a href={links.kaggle} target="_blank" rel="noreferrer">Kaggle</a>
           <a href={links.credly} target="_blank" rel="noreferrer">Credly</a>
           <a href={`mailto:${identity.email}`}>{identity.email}</a>
+          <a href="./portfolio.md">Text version</a>
         </div>
         <div className="foot">{identity.location}</div>
       </div>
@@ -177,8 +179,10 @@ export default function Overlay() {
     <main id="main" className="overlay" tabIndex={-1}>
       <Hero />
       <Work />
+      <LatestUpdates />
       <Capabilities />
       <Proof />
+      <OnlineProfiles />
       <Contact />
     </main>
     </>

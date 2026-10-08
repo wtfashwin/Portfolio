@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "refreshedAt": "2026-10-08T16:25:27.510Z",
+  "platforms": [
+    {
+      "platform": "GitHub",
+      "profileUrl": "https://github.com/wtfashwin",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": "2026-10-08T16:25:27.510Z",
+      "sourceUrls": [
+        "https://api.github.com/users/wtfashwin/repos?sort=pushed&direction=desc&per_page=50",
+        "https://api.github.com/search/issues?q=author%3Awtfashwin+is%3Apr+is%3Amerged&sort=updated&order=desc&per_page=12"
+      ],
+      "items": [
+        {
+          "type": "repository",
+          "title": "wtfashwin/Portfolio",
+          "url": "https://github.com/wtfashwin/Portfolio",
+          "occurredAt": "2026-10-08T15:43:27.000Z",
+          "dateKind": "repository-pushed",
+          "summary": "AI systems and backend engineering: secure APIs, retrieval systems, data privacy, merged open-source contributions, and verified achievements."
+        },
+        {
+          "type": "repository",
+          "title": "wtfashwin/wtfashwin",
+          "url": "https://github.com/wtfashwin/wtfashwin",
+          "occurredAt": "2026-10-08T15:25:15.000Z",
+          "dateKind": "repository-pushed",
+          "summary": "Ashwin Upadhyay — AI systems, backend platforms, open-source fixes, and verified achievements."
+        },
+        {
+          "type": "merged-pr",
+          "title": "Restore direct portfolio section links",
+          "url": "https://github.com/wtfashwin/Portfolio/pull/4",
+          "occurredAt": "2026-10-08T13:51:36.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "merged-pr",
+          "title": "Add verified Kaggle benchmarks and badge roadmap",
+          "url": "https://github.com/wtfashwin/Portfolio/pull/3",
+          "occurredAt": "2026-10-08T13:32:32.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "repository",
+          "title": "wtfashwin/ContextDock",
+          "url": "https://github.com/wtfashwin/ContextDock",
+          "occurredAt": "2026-09-08T10:37:26.000Z",
+          "dateKind": "repository-pushed",
+          "summary": "Native macOS thinking island: capture a thought, match project context, plan with Claude/Codex, learn from every choice. Swift + SwiftUI, local-first."
+        },
+        {
+          "type": "merged-pr",
+          "title": "security: harden sanitize_path regex against #641 traversal class + regression tests",
+          "url": "https://github.com/ParisNeo/lollms-webui/pull/690",
+          "occurredAt": "2026-08-13T09:10:26.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "merged-pr",
+          "title": "docs: fix unfilled placeholders in CONTRIBUTING.md",
+          "url": "https://github.com/ParisNeo/lollms-webui/pull/689",
+          "occurredAt": "2026-08-13T09:08:40.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "merged-pr",
+          "title": "security: disable code execution by default in shipped config",
+          "url": "https://github.com/ParisNeo/lollms-webui/pull/688",
+          "occurredAt": "2026-08-13T09:07:50.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "repository",
+          "title": "wtfashwin/JanSetu",
+          "url": "https://github.com/wtfashwin/JanSetu",
+          "occurredAt": "2026-07-26T19:21:23.000Z",
+          "dateKind": "repository-pushed",
+          "summary": "An open-source civic communication and public-response network for India."
+        },
+        {
+          "type": "merged-pr",
+          "title": "Publish JanSetu architecture baseline",
+          "url": "https://github.com/wtfashwin/JanSetu/pull/1",
+          "occurredAt": "2026-07-26T19:21:23.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "merged-pr",
+          "title": "fix(deps): support wrapt 2.x (closes #1561)",
+          "url": "https://github.com/langfuse/langfuse-python/pull/1664",
+          "occurredAt": "2026-06-15T11:35:48.000Z",
+          "dateKind": "merged"
+        },
+        {
+          "type": "merged-pr",
+          "title": "feat(elastic_security): add _source field filter to list_detection_signals",
+          "url": "https://github.com/TracecatHQ/tracecat/pull/2715",
+          "occurredAt": "2026-06-12T19:02:09.000Z",
+          "dateKind": "merged"
+        }
+      ],
+      "status": "updated"
+    },
+    {
+      "platform": "LinkedIn",
+      "profileUrl": "https://www.linkedin.com/in/wtfashwin/",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "Kaggle",
+      "profileUrl": "https://www.kaggle.com/ashwinupadhyay",
+      "handle": "ashwinupadhyay",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "Medium",
+      "profileUrl": "https://medium.com/@ashwinupadhyay",
+      "handle": "ashwinupadhyay",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": "2026-10-08T16:25:27.510Z",
+      "sourceUrls": [
+        "https://medium.com/feed/@ashwinupadhyay"
+      ],
+      "items": [
+        {
+          "type": "article",
+          "title": "Harnessing Future Insights: A Beginner’s Guide to Predictive Analytics",
+          "url": "https://ashwinupadhyay.medium.com/harnessing-future-insights-a-beginners-guide-to-predictive-analytics-769254e74a8d",
+          "occurredAt": "2024-03-29T15:58:19.000Z",
+          "dateKind": "published"
+        },
+        {
+          "type": "article",
+          "title": "Stopwatch project using Frontend technologies",
+          "url": "https://ashwinupadhyay.medium.com/stopwatch-project-using-frontend-technologies-6b1d091abec4",
+          "occurredAt": "2024-03-02T15:42:36.000Z",
+          "dateKind": "published"
+        },
+        {
+          "type": "article",
+          "title": "Building a Password Generator with HTML, CSS, and JavaScript",
+          "url": "https://ashwinupadhyay.medium.com/building-a-password-generator-with-html-css-and-javascript-1549198fc5a3",
+          "occurredAt": "2024-03-02T15:17:02.000Z",
+          "dateKind": "published"
+        },
+        {
+          "type": "article",
+          "title": "From Code to Insights: Navigating the Journey from Web Development to Data Science",
+          "url": "https://ashwinupadhyay.medium.com/from-code-to-insights-navigating-the-journey-from-web-development-to-data-science-452018749e8f",
+          "occurredAt": "2024-03-02T10:50:59.000Z",
+          "dateKind": "published"
+        }
+      ],
+      "status": "updated"
+    },
+    {
+      "platform": "CodePen",
+      "profileUrl": "https://codepen.io/wtfashwin-",
+      "handle": "wtfashwin-",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "LeetCode",
+      "profileUrl": "https://leetcode.com/u/wtfashwin/",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "GeeksforGeeks",
+      "profileUrl": "https://www.geeksforgeeks.org/user/wtfashwin/",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "Codolio",
+      "profileUrl": "https://codolio.com/profile/wtfashwin",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "Credly",
+      "profileUrl": "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly",
+      "handle": "ashwin-upadhyay.d80bc5d2",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "TIJER",
+      "profileUrl": "https://tijer.org/tijer/viewpaperforall.php?paper=TIJER2505180",
+      "handle": "TIJER2505180",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "Twine",
+      "profileUrl": "https://www.twine.net/AshwinUpadhyay",
+      "handle": "AshwinUpadhyay",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "Collective",
+      "profileUrl": "https://www.collective.work/profile/ashwin-upadhyay",
+      "handle": "ashwin-upadhyay",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "PyPI",
+      "profileUrl": "https://pypi.org/user/wtfashwin/",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    },
+    {
+      "platform": "RemoteOK",
+      "profileUrl": "https://remoteok.com/@wtfashwin",
+      "handle": "wtfashwin",
+      "checkedAt": "2026-10-08T16:25:27.510Z",
+      "fetchedAt": null,
+      "sourceUrls": [],
+      "items": [],
+      "status": "manual"
+    }
+  ]
+}
