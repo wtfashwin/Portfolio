@@ -31,30 +31,11 @@ export const identity = {
 
 // Section anchors used by nav + scroll. `at` = scroll offset 0..1 (8 scenes).
 export const NAV = [
-  {
-    "label": "Work",
-    "id": "work",
-    "at": 0.5714285714285714
-  },
-  {
-    "label": "Contributions",
-    "id": "proof",
-    "at": 0.8571428571428571
-  },
-  {
-    "label": "Credentials",
-    "id": "credentials",
-    "at": 0.8571428571428571
-  },
-  {
-    "label": "Kaggle",
-    "id": "kaggle-heading"
-  },
-  {
-    "label": "Contact",
-    "id": "contact",
-    "at": 1
-  }
+  { label: 'Home', id: 'hero' },
+  { label: 'Work', id: 'work' },
+  { label: 'Open source', id: 'proof' },
+  { label: 'Achievements', id: 'credentials' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 // Per-scene brand word shown in the nav as you scroll (replica idiom).
