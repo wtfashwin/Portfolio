@@ -171,6 +171,7 @@ export default function Overlay() {
     try { id = decodeURIComponent(window.location.hash.slice(1)) }
     catch { return }
     if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'auto' })
+
   }, [])
 
   return (

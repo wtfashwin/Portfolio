@@ -348,6 +348,7 @@ export const scenes = {
     "kicker": "Capabilities",
     "h": "Tools I work with",
     "sub": "Python services, retrieval, application interfaces, and the data and access controls that connect them."
+
   },
   "core": {
     "kicker": "Engineering focus",
