@@ -444,3 +444,9 @@ body { background: #080b12; }
 .hero-role { color: #a7c8ff; font-size: 15px; margin-bottom: 18px; }
 .pill.primary { box-shadow: none; background: #ebf1fb; color: #0c111b; border-color: #ebf1fb; }
 .pill:hover { box-shadow: none; }
+#kaggle-heading { scroll-margin-top: 90px; }
+@media(max-width:400px) {
+ .nav-ico { display: none; }
+ .nav-links { gap: 10px; }
+ .nav-links a { font-size: 11px; }
+}
