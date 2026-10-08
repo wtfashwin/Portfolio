@@ -1,6 +1,6 @@
 # Kaggle badge roadmap
 
-Snapshot checked 2026-10-08T12:13:50.345Z. Only the portfolio's awarded-badge snapshot is displayed as earned.
+Snapshot checked 2026-10-08T12:41:08.457Z. Only the portfolio's awarded-badge snapshot is displayed as earned.
 
 Source: [Kaggle badge catalog](https://www.kaggle.com/progression/badges). The catalog contains 61 entries. Time, attendance, learning and historical eligibility cannot be manufactured. Single-digit competition ranks require leaderboard evidence; badges do not establish model quality.
 
@@ -21,7 +21,7 @@ Source: [Kaggle badge catalog](https://www.kaggle.com/progression/badges). The c
 | 10 Years on Kaggle | event-time-user-dependent | Active on Kaggle for more than 10 years. | Confirm the real registration date and wait for the actual milestone; preserve normal useful participation. |
 | 15 Years on Kaggle | event-time-user-dependent | Active on Kaggle for more than 15 years. | Confirm the real registration date and wait for the actual milestone; preserve normal useful participation. |
 | Competitor | actionable-now | Made a submission to a Kaggle competition that is eligible for points or medals. | Finish the Gemma benchmark, then submit a verified qualifying medal/points competition solution when ready. |
-| Getting Started Competitor | actionable-now | Made a submission to a Getting Started competition. | Build one honest Titanic or equivalent beginner benchmark with a leakage-safe split and submit its own predictions. |
+| Getting Started Competitor | observed-earned | Made a submission to a Getting Started competition. | Preserve the authenticated awarded-card evidence; no repeated action is needed. |
 | Research Competitor | event-time-user-dependent | Made a submission to a Research competition. | Choose one suitable Research task only when it fits the portfolio and free compute budget; validate before submission. |
 | Community Competitor | event-time-user-dependent | Made a submission to a Community competition. | Choose one suitable Community task only when it fits the portfolio and free compute budget; validate before submission. |
 | Simulation Competitor | event-time-user-dependent | Made a submission to a Simulation competition. | Choose one suitable Simulation task only when it fits the portfolio and free compute budget; validate before submission. |
@@ -43,7 +43,7 @@ Source: [Kaggle badge catalog](https://www.kaggle.com/progression/badges). The c
 | Linked Dataset Creator | actionable-now | Created a dataset from a link to a remote URL, Github repository, or Google Cloud Storage bucket. | Use a documented remote connector when the source is canonical and independently useful; retain hashes and source attribution. |
 | API Dataset Creator | actionable-now | Created a dataset using the Kaggle API. | Create that dataset through the API when API creation is its natural workflow; verify processing and files. |
 | Dataset Documenter | actionable-now | Created a dataset with a perfect usability rating of 10. | Add file/column descriptions, provenance, license, units, limitations, examples and relevant metadata; resolve the displayed usability checklist. |
-| Dataset Tagger | actionable-now | Added tags to a dataset. | Add only tags that accurately describe the released evaluation data. |
+| Dataset Tagger | observed-earned | Added tags to a dataset. | Preserve the authenticated awarded-card evidence; no repeated action is needed. |
 | Model Creator | actionable-now | Created a model. | Release an evaluated Airline model with feature schema, preprocessing, training provenance, native-load example and honest CV/holdout/public metrics. |
 | Model Variation Creator | actionable-now | Created a model with multiple variations. | Publish meaningful variants, such as different trained algorithms or a measured compressed model, with differences and tradeoffs documented. |
 | Model Pipeline Creator | actionable-now | Created a model from notebook output. | Create its Model Hub release from that notebook output and record the exact notebook/version-to-model lineage. |
@@ -67,5 +67,3 @@ Source: [Kaggle badge catalog](https://www.kaggle.com/progression/badges). The c
 | 30 Day Login Streak | event-time-user-dependent | Logged in to Kaggle 30 days in a row. | Log in naturally to learn or review work and check whether Kaggle recognized the day. Do not automate visits to manufacture presence. |
 | 100 Day Login Streak | event-time-user-dependent | Logged in to Kaggle 100 days in a row. | Log in naturally to learn or review work and check whether Kaggle recognized the day. Do not automate visits to manufacture presence. |
 | Year Long Login Streak | event-time-user-dependent | Logged in to Kaggle 365 days in a row. | Log in naturally to learn or review work and check whether Kaggle recognized the day. Do not automate visits to manufacture presence. |
-
-Creation-origin badges may require distinct supported workflows; duplicate artifacts are not a useful way to obtain them. Courses and event badges require actual completion. Streaks require real elapsed days and appropriate activity. Usability badges require a displayed rating of 10. Historical events and early-access badges have no confirmed new unlock path.
