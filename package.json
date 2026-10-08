@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Ashwin Upadhyay — AI/ML Engineer. 3D scroll-driven portfolio built with react-three-fiber.",
+  "description": "Ashwin Upadhyay \u2014 AI systems and backend engineering portfolio.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

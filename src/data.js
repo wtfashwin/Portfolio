@@ -1,33 +1,41 @@
+import kaggleEvidence from './kaggle-evidence.json'
+
+const verifiedKaggleBadges = kaggleEvidence.badges.filter((badge) => badge.status === 'awarded').map((badge) => badge.name)
+
 // ─────────────────────────────────────────────────────────────────────────────
-//  ALL CONTENT, sourced from ASHWIN_Upadhyay_Resume, ashwin_strong_points.md,
-//  WHAT_I_LEARNED_BUILDING_IRIS.md and linkedin.com/in/upadhyayashwin
+//  Content checked 2026-10-08 against the supplied resume, public GitHub PRs,
+//  and live LeetCode, Kaggle, and Credly profiles.
 //  Edit values here; the 3D + UI read from this single file.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const identity = {
-  name: 'ASHWIN UPADHYAY',
-  brand: 'ASHWIN',
-  role: 'AI / ML Engineer',
-  location: 'Pune, India',
-  phone: '+91 8329396282',
-  email: 'ashwinupadhyay09@gmail.com',
-  links: {
-    github: 'https://github.com/wtfashwin',
-    linkedin: 'https://www.linkedin.com/in/upadhyayashwin/',
-    leetcode: 'https://leetcode.com/u/wtfashwin/',
-    kaggle: 'https://www.kaggle.com/wtfashwin',
-    medium: 'https://medium.com/@ashwinupadhyay',
-    paper: 'https://www.tijer.org/paper/TIJER2505180',
+  "name": "Ashwin Upadhyay",
+  "brand": "ASHWIN",
+  "role": "AI Systems & Backend Engineer",
+  "location": "Pune, India",
+  "phone": "+91 8329396282",
+  "email": "ashwinupadhyay09@gmail.com",
+  "links": {
+    "github": "https://github.com/wtfashwin",
+    "linkedin": "https://www.linkedin.com/in/wtfashwin/",
+    "leetcode": "https://leetcode.com/u/wtfashwin/",
+    "kaggle": "https://www.kaggle.com/ashwinupadhyay",
+    "credly": "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly",
+    "achievements": "https://github.com/wtfashwin/wtfashwin/blob/main/ACHIEVEMENTS.md",
+    "oss": "https://github.com/wtfashwin/wtfashwin/blob/main/OPEN_SOURCE.md",
+    "medium": "https://medium.com/@ashwinupadhyay",
+    "paper": "https://www.tijer.org/paper/TIJER2505180"
   },
-  bio: 'AI/ML Engineer building production GenAI on async FastAPI, LangGraph and Kubernetes. I ship systems that survive real load, not prototypes.',
+  "bio": "I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows."
 }
 
 // Section anchors used by nav + scroll. `at` = scroll offset 0..1 (8 scenes).
 export const NAV = [
-  { label: 'Capabilities', at: 1 / 7 },
-  { label: 'IRIS', at: 3 / 7 },
-  { label: 'Work', at: 4 / 7 },
-  { label: 'Contact', at: 1 },
+  { label: 'Home', id: 'hero' },
+  { label: 'Work', id: 'work' },
+  { label: 'Open source', id: 'proof' },
+  { label: 'Achievements', id: 'credentials' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 // Per-scene brand word shown in the nav as you scroll (replica idiom).
@@ -38,206 +46,380 @@ export const BRAND_WORDS = [
 
 // ── Scene 3, IRIS flagship metrics (verified via contributor graph & repo) ─
 export const irisStats = [
-  { v: '1,087', u: 'commits', l: '#1 contributor of 10, 27% of all commits, 4× the next engineer, Feb–Jul 2026.' },
-  { v: '42', u: 'of last 100 PRs', l: 'Feature ownership: access governance, risk assessment, purpose tracking (22/22 slices), Shadow-IT discovery.' },
-  { v: '3', u: 'languages at scale', l: 'Python, TypeScript and PLpgSQL across backend, frontend and database layers of an 87 MB codebase.' },
-  { v: '3', u: 'CI pipelines', l: 'ci, nightly-integration and blue/green prod deploys on GCP Cloud Build, plus pre-commit, ruff, coverage gates.' },
+  {
+    "v": "Classification",
+    "u": "Sensitive data",
+    "l": "Regex, Presidio NER, checksum validation, context signals, and human review."
+  },
+  {
+    "v": "APIs & data",
+    "u": "Application delivery",
+    "l": "FastAPI, React/TypeScript, PostgreSQL data modeling, and Alembic migrations."
+  },
+  {
+    "v": "Access controls",
+    "u": "Integrations",
+    "l": "Microsoft 365 and Google Workspace integrations with encrypted credentials and tenant-aware authorization."
+  },
+  {
+    "v": "System design",
+    "u": "Proposed architecture",
+    "l": "Customer-hosted scanning, resumable jobs, source lineage, and evidence storage. Professional work summaries; employer code is private."
+  }
 ]
 
 // ── Velocity, agent-leverage proof (all verified) ──────────────────────────
 export const velocity = [
-  { v: '1,678', l: 'commits across five production codebases in 2026, under one work identity.' },
-  { v: '8', l: 'OSS PRs merged into external projects totaling ~120,000 combined stars.' },
-  { v: '189/189', l: 'sole-author commits on a production system shipped in three weeks.' },
-  { v: '14-stage', l: 'gated, agent-dispatched pipeline (PSYLOC) I designed, features ship under its governance.' },
+  {
+    "v": "Retrieval",
+    "l": "Ingestion, embeddings, hybrid search, reranking, and grounded answers."
+  },
+  {
+    "v": "Backend",
+    "l": "Python APIs, PostgreSQL data models, asynchronous jobs, and migrations."
+  },
+  {
+    "v": "Authorization",
+    "l": "Scoped access, encrypted credentials, read-only validation, and audit trails."
+  },
+  {
+    "v": "Verification",
+    "l": "Regression tests, integration checks, request tracing, and CI gates."
+  }
 ]
 
 // ── Scene 4, Experience pipeline (funnel) ──────────────────────────────────
 export const experience = [
   {
-    role: 'AI Engineer',
-    org: 'Sylox',
-    when: 'Sep 2025 to Present',
-    where: 'India',
-    flagship: 'IRIS · AI-Powered Data Security Posture Management',
-    blurb: 'IRIS discovers and classifies PII across GDPR, HIPAA & DPDP workflows.',
-    points: [
-      '#1 contributor of 10 engineers, 1,087 of ~4,000 commits (27%), 4× the next contributor, Feb–Jul 2026.',
-      'Led feature areas end-to-end: access governance, risk assessment, PII-classification pattern ranking, purpose tracking (22/22 slices), Shadow-IT discovery.',
-      'Owned CI/CD on GCP Cloud Build, nightly integration, blue/green prod deploys, Alembic dual-head merge resolution, Python 3.11→3.13 migration.',
-      'Hardened multi-tenant SaaS: OAuth2/OIDC SSO, SCIM 2.0, per-endpoint RBAC, org-scoped queries.',
+    "role": "Founding AI Engineer",
+    "org": "Sylox",
+    "when": "Feb 2026 to Present",
+    "where": "India",
+    "flagship": "Data privacy and AI backend platforms",
+    "blurb": "Professional experience",
+    "points": [
+      "Owned IRIS feature delivery across FastAPI, React/TypeScript, and PostgreSQL, from requirements through review and release.",
+      "Rebuilt sensitive-data classification and repaired tests, migrations, and authentication failures.",
+      "Built secure integrations and provider-agnostic AI verification services; proposed customer-hosted scanning architecture."
     ],
-    tags: ['FastAPI', 'LangGraph', 'pgvector', 'GCP', 'Alembic', 'SCIM 2.0'],
+    "tags": [
+      "FastAPI",
+      "PostgreSQL",
+      "React",
+      "Data privacy"
+    ]
   },
   {
-    role: 'Sole Author',
-    org: 'AI Privacy Verifier',
-    when: 'Apr to May 2026',
-    where: 'SyloxLabs',
-    flagship: 'Canary-trap auditing of AI-vendor privacy claims',
-    blurb: 'Cryptographic evidence chains that prove unauthorized model training.',
-    points: [
-      'Sole author, 189 of 189 commits, 31 of 31 PRs, production system built in three weeks.',
-      'Provider-agnostic FastAPI across 7 LLM vendors: canary-trap injection, model fingerprinting, timestamped evidence packets.',
-      'RFC 3161 TSA + Sigstore/Rekor tamper-evident evidence chain; Open Policy Agent (Rego) policies; Celery Beat scheduling.',
-      'Deployed on AKS with Helm + workload identity; CI-gated with pre-commit and automated review.',
+    "role": "AI Engineer · Contract",
+    "org": "LOPhils Inc.",
+    "when": "Oct to Nov 2025",
+    "where": "Contract",
+    "flagship": "Legal-document RAG assistant",
+    "blurb": "Professional experience",
+    "points": [
+      "Built ingestion, embeddings, metadata isolation, hybrid retrieval, reranking, and grounded answers.",
+      "Developed asynchronous ingestion, search, and chat APIs with retries, caching, and retrieval checks."
     ],
-    tags: ['7-vendor LLM', 'RFC 3161', 'Rekor', 'Celery', 'AKS'],
+    "tags": [
+      "FastAPI",
+      "LangChain",
+      "Pinecone",
+      "RAG"
+    ]
   },
   {
-    role: 'Creator',
-    org: 'Cerevra',
-    when: '2026',
-    where: 'Private build, demo on request',
-    flagship: 'Zero-Data-Loss RAG Engine',
-    blurb: 'Deterministic, WAL-durable, namespace-isolated RAG, no vectors required.',
-    points: [
-      'WAL-backed crash recovery with per-mutation fsync and deterministic replay; chaos-tested truncation recovery.',
-      'BM25-first retrieval with context scoring + refusal gating, cuts hallucination without GPU dependence.',
-      '219 commits, v0.1.0 release, 5 CI workflows, full OSS packaging: SDK, Docker, security policy, contributor docs.',
-      '2,195 tests at 80% diff coverage with chaos / property / resilience suites + Prometheus, OTel & GDPR audit.',
+    "role": "Creator",
+    "org": "Customer Support System",
+    "when": "Independent project",
+    "where": "Public source",
+    "flagship": "AI support workflows and retrieval",
+    "blurb": "Public project",
+    "points": [
+      "FastAPI AI service with retrieval and LangGraph tool workflows, alongside a TypeScript application.",
+      "Streaming responses, authorization forwarding, request correlation, and readiness checks.",
+      "Public implementation and review history available on GitHub."
     ],
-    tags: ['RAG', 'WAL', 'BM25', 'Chaos-tested', '2,195 tests'],
+    "tags": [
+      "LangGraph",
+      "FastAPI",
+      "TypeScript"
+    ],
+    "url": "https://github.com/wtfashwin/Customer-Support-System"
   },
   {
-    role: 'Lead Author',
-    org: 'SHAR',
-    when: 'Jan to May 2024',
-    where: 'Pune · TIJER 2025',
-    flagship: 'Suspicious Activity Recognition (Vision Transformer)',
-    blurb: 'Peer-reviewed real-time suspicious-activity detection system.',
-    points: [
-      'Fine-tuned a Vision Transformer on UCF-Crime & KTH, 92% accuracy, 92% F1 at 100 ms/frame.',
-      'Real-time WebSocket + email/SMS alerting with 95% manual-audit alert precision.',
-      'Usability survey of 50 users: 90% rated it "very easy to use", 85% satisfied with reliability.',
+    "role": "Creator",
+    "org": "Context Dock",
+    "when": "Independent project",
+    "where": "Public source",
+    "flagship": "Native macOS developer tool",
+    "blurb": "Public project",
+    "points": [
+      "Swift, SwiftUI, and AppKit interface for capturing task ideas and matching project context.",
+      "Local agent events, decision journaling, and atomic note writes.",
+      "Public source and setup instructions available on GitHub."
     ],
-    tags: ['ViT', 'PyTorch', 'WebSocket', 'Published'],
-  },
+    "tags": [
+      "Swift",
+      "SwiftUI",
+      "macOS"
+    ],
+    "url": "https://github.com/wtfashwin/ContextDock"
+  }
 ]
 
 // ── Scene 5, Engineering principles (DNA) ──────────────────────────────────
 // Distilled from WHAT_I_LEARNED_BUILDING_IRIS hard-won principles.
 export const principles = [
-  { k: 'Idempotency is engineered', v: '“IF NOT EXISTS” is the floor. Real idempotency reflects live DB state via the Inspector, CI on fresh Postgres is the only honest test.' },
-  { k: 'A red test is a question', v: 'Read production code before touching a test. I triaged 214 failures in one sweep, and caught a real $batch bug hiding in stale-test noise.' },
-  { k: 'Honesty over optimism', v: 'I shipped an audit that downgraded 26 of my own “available” connectors to “planned”. Naming the gap is the first half of closing it.' },
-  { k: 'Reason explicitly about concurrency', v: 'Lock the one shared step, fan out the rest. A race-free single-flight token refresh held under 50-thread load.' },
-  { k: 'Externalize every constant', v: 'Provider URLs, ensemble weights, rate quotas live in YAML, accuracy and connectors ship without a redeploy.' },
-  { k: 'Scale the org chart, not the hours', v: 'Built PSYLOC, a 14-stage, gated, agent-dispatched system that produces features under the same governance I designed.' },
+  {
+    "k": "Make failures visible",
+    "v": "A timeout, authorization denial, and empty result need different handling. Avoid false success."
+  },
+  {
+    "k": "Test the real boundary",
+    "v": "Check database migrations on a fresh database and verify results through the API."
+  },
+  {
+    "k": "Keep access explicit",
+    "v": "Bind operations to the user, tenant, source, and destination they are authorized to use."
+  },
+  {
+    "k": "Design for retries",
+    "v": "A repeated request should preserve correctness. Recovery is part of the design."
+  },
+  {
+    "k": "Measure before claiming",
+    "v": "Keep a prototype, a passing test, and a deployed result distinct. State what the evidence proves."
+  },
+  {
+    "k": "Own the whole change",
+    "v": "Connect requirements, data models, implementation, review, and verification."
+  }
 ]
 
 // ── Scene 6, Certifications + achievements (starfield constellation) ───────
 export const certs = [
-  { issuer: 'Oracle OCI', items: 'Generative AI Professional · AI Vector Search Pro · Data Science Pro · Architect Associate' },
-  { issuer: 'Databricks', items: 'Developer Pro · GenAI Fundamentals · AI Agent Fundamentals' },
-  { issuer: 'Astronomer', items: 'Apache Airflow 3, Fundamentals + DAG Authoring' },
-  { issuer: 'KodeKloud', items: 'Kubernetes · RAG Crash Course' },
-  { issuer: 'Calyptus', items: 'AI Fluent Tech Professional, Top 5% globally' },
-  { issuer: 'Securiti / Saviynt', items: 'AI Security & Governance · Identity Security for the AI Age' },
+  {
+    "issuer": "Astronomer",
+    "items": "Apache Airflow 3 Fundamentals",
+    "url": "https://www.credly.com/badges/ef9a1b33-9899-46b7-b25e-5a2acb979e69"
+  },
+  {
+    "issuer": "Astronomer",
+    "items": "DAG Authoring for Apache Airflow 3",
+    "url": "https://www.credly.com/badges/863162ef-ee67-4e23-b577-82a36d96ebfa"
+  }
 ]
 
 export const achievements = [
-  { v: 'Top 10%', l: 'LeetCode, 500+ problems, 500-day streak, Annual Badge 2025, 75 Hard' },
-  { v: '500 days', l: 'Kaggle streak · Annual Medal 2025' },
-  { v: '4× badges', l: 'GitHub, Pull Shark ×2, Pair Extraordinaire, YOLO, Quickdraw' },
-  { v: 'Published', l: 'Lead author, Vision Transformer paper (TIJER, 2025) + 2 Medium articles' },
+  {
+    "v": "923 problems",
+    "l": "LeetCode: 155 hard, contest rating 1,752, and 32 badges.",
+    "url": "https://leetcode.com/u/wtfashwin/"
+  },
+  {
+    "v": "ML experiments",
+    "l": `Kaggle: measured ML experiments, a public benchmark dataset, and ${verifiedKaggleBadges.length} confirmed badges.`,
+    "url": "https://www.kaggle.com/ashwinupadhyay"
+  },
+  {
+    "v": "2 verified credentials",
+    "l": "Astronomer: Airflow 3 Fundamentals and DAG Authoring, verified through Credly.",
+    "url": "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly"
+  }
 ]
 
 // ── Open-source contributions, meaningful, merged, across the ecosystem ─────
 // Real PRs/issues into notable AI, security, data & infra projects.
 export const openSource = [
   {
-    repo: 'VictoriaMetrics/VictoriaMetrics',
-    num: '#10974',
-    title: 'promql: stop integrate() extrapolating past series end',
-    note: 'Correctness fix inside the query engine of a 17k-star TSDB, 15 commits, 5 review rounds.',
-    domain: 'Observability / TSDB',
-    url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/pull/10974',
+    "repo": "PrefectHQ/prefect",
+    "num": "#22035",
+    "title": "Fix Azure blob result storage to overwrite on rewrite (#19411)",
+    "note": "Allow cached task results in Azure Blob Storage to be overwritten on reruns.",
+    "domain": "Reliable storage",
+    "url": "https://github.com/PrefectHQ/prefect/pull/22035"
   },
   {
-    repo: 'dlt-hub/dlt',
-    num: '#3947',
-    title: 'fix(mssql): ingest parquet row-groups individually to bound ADBC memory',
-    note: 'Found the OOM (#3915), then fixed it, parquet→MSSQL loads now memory-bounded.',
-    domain: 'Data Loading',
-    url: 'https://github.com/dlt-hub/dlt/pull/3947',
+    "repo": "dlt-hub/dlt",
+    "num": "#3947",
+    "title": "fix(mssql): ingest parquet row-groups individually to bound ADBC driver   memory",
+    "note": "Load Parquet row groups individually to limit SQL Server ingestion memory.",
+    "domain": "Bounded memory",
+    "url": "https://github.com/dlt-hub/dlt/pull/3947"
   },
   {
-    repo: 'unslothai/unsloth',
-    num: '#5551',
-    title: 'fix stuck IME flag when compositionend never fires',
-    note: '+415/−7 across 4 files, merged by the founder of the 68k-star fine-tuning toolkit.',
-    domain: 'LLM Fine-tuning',
-    url: 'https://github.com/unslothai/unsloth/pull/5551',
+    "repo": "VictoriaMetrics/VictoriaMetrics",
+    "num": "#10974",
+    "title": "app/vmselect/promql: stop integrate() from extrapolating past series end",
+    "note": "Stop integrate() from adding data beyond the end of a metric series.",
+    "domain": "Correct calculations",
+    "url": "https://github.com/VictoriaMetrics/VictoriaMetrics/pull/10974"
   },
   {
-    repo: 'PrefectHQ/prefect',
-    num: '#22035',
-    title: 'fix Azure blob result storage overwrite on rewrite',
-    note: 'Bug fix in a 23k-star orchestration platform, merged by a core maintainer.',
-    domain: 'Orchestration',
-    url: 'https://github.com/PrefectHQ/prefect/pull/22035',
+    "repo": "unslothai/unsloth",
+    "num": "#5551",
+    "title": "studio/chat: release stuck IME flag when compositionend never fires",
+    "note": "Release a stuck IME typing state so users can send their messages.",
+    "domain": "Input handling",
+    "url": "https://github.com/unslothai/unsloth/pull/5551"
   },
   {
-    repo: 'TracecatHQ/tracecat',
-    num: '#2715',
-    title: 'feat(elastic_security): _source field filter for list_detection_signals',
-    note: 'Added a real capability to a security-automation platform.',
-    domain: 'Security Automation',
-    url: 'https://github.com/TracecatHQ/tracecat/pull/2715',
+    "repo": "langfuse/langfuse-python",
+    "num": "#1664",
+    "title": "fix(deps): support wrapt 2.x (closes #1561)",
+    "note": "Support installation with wrapt 2.x.",
+    "domain": "Compatibility",
+    "url": "https://github.com/langfuse/langfuse-python/pull/1664"
   },
+  {
+    "repo": "TracecatHQ/tracecat",
+    "num": "#2715",
+    "title": "feat(elastic_security): add _source field filter to list_detection_signals",
+    "note": "Request only the Elastic alert fields a workflow needs.",
+    "domain": "Security workflows",
+    "url": "https://github.com/TracecatHQ/tracecat/pull/2715"
+  },
+  {
+    "repo": "ParisNeo/lollms-webui",
+    "num": "#690",
+    "title": "security: harden sanitize_path regex against #641 traversal class + regression tests",
+    "note": "Harden path sanitization with traversal regression tests.",
+    "domain": "Path safety",
+    "url": "https://github.com/ParisNeo/lollms-webui/pull/690"
+  }
 ]
 
 // ── Skills (used in Capabilities scene chips) ───────────────────────────────
 export const skills = {
-  'GenAI / LLM': ['LangGraph', 'LangChain', 'LlamaIndex', 'Claude Agent SDK', 'OpenAI SDK', 'Azure OpenAI', 'AWS Bedrock', 'Presidio', 'RAG'],
-  'ML / DL': ['Vision Transformer', 'CNN', 'RNN / LSTM', 'Transformers', 'PyTorch', 'TensorFlow', 'scikit-learn'],
-  'Backend': ['Python 3.12', 'FastAPI', 'Pydantic v2', 'Celery', 'SQLAlchemy 2.0', 'asyncpg', 'Alembic'],
-  'Cloud / DevOps': ['Kubernetes (AKS/EKS/GKE)', 'Docker', 'Helm', 'Terraform', 'Azure', 'AWS', 'GCP', 'Airflow 3'],
-  'Data': ['PostgreSQL', 'pgvector', 'Snowflake', 'BigQuery', 'Databricks', 'Cloud Spanner', 'MongoDB'],
-  'Security': ['OAuth 2.0', 'OIDC SSO', 'SCIM 2.0', 'JWT', 'RBAC', 'RFC 3161', 'Workload Identity'],
+  "AI applications": [
+    "RAG",
+    "LangGraph",
+    "LangChain",
+    "Embeddings",
+    "Reranking",
+    "Retrieval evaluation"
+  ],
+  "Backend": [
+    "Python",
+    "FastAPI",
+    "SQLAlchemy",
+    "Celery",
+    "Redis",
+    "REST APIs"
+  ],
+  "Data": [
+    "SQL",
+    "PostgreSQL",
+    "Alembic",
+    "Parquet",
+    "Data modeling"
+  ],
+  "Applications": [
+    "React",
+    "TypeScript",
+    "Swift",
+    "SwiftUI"
+  ],
+  "Delivery": [
+    "Docker",
+    "GitHub Actions",
+    "pytest",
+    "OpenTelemetry"
+  ],
+  "Security": [
+    "RBAC",
+    "OAuth / JWT",
+    "Tenant isolation",
+    "Credential encryption",
+    "Mutation auditing"
+  ]
 }
 
 // ── Scene copy (headlines mirror the reference flow, content is real) ────────
 export const scenes = {
-  hero: {
-    kicker: '01 · The Pull of Results',
-    h: 'I build AI systems that survive production',
-    sub: '1,678 commits across five production codebases in one year. RAG, agentic LangGraph pipelines and async FastAPI at scale. Not slideware.',
+  "hero": {
+    "kicker": "AI systems & backend engineering",
+    "h": "Ashwin Upadhyay",
+    "sub": "I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows. Founding AI Engineer at Sylox."
   },
-  capabilities: {
-    kicker: '02 · A Universe of Capabilities',
-    h: 'A universe of capabilities, already in production',
-    sub: 'Not one tool but a living system: multi-tenant SaaS, agentic pipelines and hybrid vector search, all orbiting one goal. AI that holds up under real load.',
+  "capabilities": {
+    "kicker": "Capabilities",
+    "h": "Tools I work with",
+    "sub": "Python services, retrieval, application interfaces, and the data and access controls that connect them."
+
   },
-  core: {
-    kicker: '03 · Velocity',
-    h: 'Spinning so fast it reads as still',
-    sub: 'A wheel at full speed looks static, that is what mastered tooling feels like. An agent-driven build loop I designed turns effort into output that just appears.',
+  "core": {
+    "kicker": "Engineering focus",
+    "h": "What I build",
+    "sub": "AI applications need more than a model. My work covers the services, data, controls, and checks around it."
   },
-  iris: {
-    kicker: '04 · Flagship',
-    h: 'IRIS: Data Security Posture Management, at scale',
-    sub: 'An AI-powered DPSM platform discovering and classifying PII across GDPR, HIPAA and DPDP, shipped, gated and observable.',
+  "iris": {
+    "kicker": "Professional work",
+    "h": "IRIS: sensitive-data discovery and classification",
+    "sub": "At Sylox, I work across application delivery, classification, secure integrations, and system design."
   },
-  work: {
-    kicker: '05 · The Work',
-    h: 'Four systems. Shipped under load.',
-    sub: 'From a peer-reviewed Vision Transformer to a zero-data-loss RAG engine and a 7-vendor privacy auditor.',
+  "work": {
+    "kicker": "Experience & projects",
+    "h": "Experience & projects",
+    "sub": "Professional experience alongside public projects. Project cards link directly to source code."
   },
-  principles: {
-    kicker: '06 · Principles',
-    h: 'Hard-won principles, earned in red CI',
-    sub: 'Across 1,600+ commits and five production codebases, what I learned to trust, and what I learned to distrust.',
+  "principles": {
+    "kicker": "Engineering approach",
+    "h": "Correctness, access, and recovery",
+    "sub": "The questions I bring to implementation and review."
   },
-  proof: {
-    kicker: '07 · Open Source & Proof',
-    h: 'I ship into other people’s codebases too',
-    sub: 'Eight merged contributions across VictoriaMetrics, dlt, Unsloth, Prefect & Tracecat, repos totaling ~120,000 stars. Every one is one click from proof.',
+  "proof": {
+    "kicker": "Open source & achievements",
+    "h": "Open-source contributions",
+    "sub": "11 merged PRs across seven projects. Selected fixes below cover memory use, calculation correctness, safer defaults, and compatibility."
   },
-  contact: {
-    kicker: '08 · Connect',
-    h: "Let's build something that survives production",
-    sub: 'Open to AI/ML Engineer, GenAI Engineer and Backend AI Platform roles. B.E. Information Technology · SPPU · 8.53 CGPA.',
-  },
+  "contact": {
+    "kicker": "Contact",
+    "h": "Get in touch",
+    "sub": "Open to AI systems and backend engineering roles. B.E. Information Technology, SPPU, 8.53 CGPA."
+  }
 }
+
+export const achievementGroups = [
+  {
+    "title": `Kaggle · ${verifiedKaggleBadges.length} confirmed badges`,
+    "items": verifiedKaggleBadges
+  },
+  {
+    "title": "LeetCode · 32 earned badges",
+    "items": [
+      "500 Days Badge — awarded 2026-02-05",
+      "365 Days Badge — awarded 2025-09-17",
+      "200 Days Badge 2026 — awarded 2026-08-09",
+      "100 Days Badge 2026 — awarded 2026-04-22",
+      "50 Days Badge 2026 — awarded 2026-02-21",
+      "Annual Badge 2025 — awarded 2025-11-08",
+      "200 Days Badge 2025 — awarded 2025-07-30",
+      "100 Days Badge 2025 — awarded 2025-04-19",
+      "50 Days Badge 2025 — awarded 2025-02-26",
+      "100 Days Badge 2024 — awarded 2024-12-13",
+      "50 Days Badge 2024 — awarded 2024-10-18",
+      "Jun Badge — awarded 2026-09-14",
+      "Aug Badge — awarded 2026-09-14",
+      "Jul Badge — awarded 2026-07-31",
+      "Feb Badge — awarded 2026-02-28",
+      "Nov Badge — awarded 2025-11-30",
+      "Oct Badge — awarded 2025-10-31",
+      "Sep Badge — awarded 2025-09-30",
+      "Aug Badge — awarded 2025-09-01",
+      "Jan Badge — awarded 2025-09-01",
+      "Dec Badge — awarded 2025-09-01",
+      "Jul Badge — awarded 2025-07-31",
+      "Feb Badge — awarded 2025-07-01",
+      "Mar Badge — awarded 2025-07-01",
+      "Jun Badge — awarded 2025-06-30",
+      "Apr Badge — awarded 2025-06-07",
+      "May Badge — awarded 2025-06-07",
+      "Nov Badge — awarded 2024-11-30",
+      "Oct Badge — awarded 2024-10-31",
+      "LeetCode 75 — awarded 2024-11-05",
+      "Introduction to Pandas — awarded 2024-10-06",
+      "Top SQL 50 — awarded 2024-09-29"
+    ]
+  }
+]

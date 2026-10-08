@@ -1,17 +1,23 @@
 import { useEffect } from 'react'
 import {
-  identity, scenes, skills, irisStats, experience,
-  principles, openSource, certs, velocity,
+  identity, scenes, skills, experience,
+  openSource, certs, achievements, achievementGroups,
 } from '../data.js'
-import { scrollStore } from '../scrollStore.js'
+import KaggleEvidence from './KaggleEvidence.jsx'
+function scrollToSection(event, id) {
+  const target = document.getElementById(id)
+  if (!target) return
+  event.preventDefault()
+  history.replaceState(null, '', `#${id}`)
+  target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+}
 
 const { links } = identity
 
 function Head({ s, sm }) {
   return (
     <div className="scene-head">
-      <div className="kicker">{s.kicker}</div>
-      <h1 className={`h1${sm ? ' sm' : ''}`}>{s.h}</h1>
+      <h2 className={`h1${sm ? ' sm' : ''}`}>{s.h}</h2>
       {s.sub && <p className="sub">{s.sub}</p>}
     </div>
   )
@@ -21,25 +27,25 @@ function Head({ s, sm }) {
 function Hero() {
   const s = scenes.hero
   return (
-    <section className="scene center hero-ball">
+    <section id="hero" className="scene center hero-ball">
       <div className="scene-head hero-head">
-        <div className="badge"><span className="badge-dot">✦</span> {identity.role} · {identity.location}</div>
+        <p className="hero-role">{identity.role} · {identity.location}</p>
         <h1 className="h1 xl name">{identity.name}</h1>
         <p className="sub hero-sub">{s.sub}</p>
         <div className="cta-row center-row">
-          <a className="pill primary" href="#work" onClick={(e) => { e.preventDefault(); scrollStore.scrollTo(4 / 7) }}>
+          <a className="pill primary" href="#work" onClick={(e) => scrollToSection(e, 'work')}>
             Explore my work <span className="ci">↗</span>
           </a>
           <a className="pill" href={links.github} target="_blank" rel="noreferrer">GitHub</a>
           <a className="pill" href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
-      <div className="scroll-hint"><span>scroll</span><i /></div>
+
     </section>
   )
 }
 
-// ── 01 CAPABILITIES (galaxy) — skill groups flank the disc ──────────────────
+// Skill groups follow the heading, above the particle backdrop.
 function Capabilities() {
   const s = scenes.capabilities
   const groups = Object.entries(skills)
@@ -50,53 +56,14 @@ function Capabilities() {
     </div>
   )
   return (
-    <section className="scene">
+    <section id="capabilities" className="scene">
       <Head s={s} sm />
-      <div className="flank left">{groups.slice(0, 3).map(card)}</div>
-      <div className="flank right">{groups.slice(3).map(card)}</div>
+      <div className="content-grid skills-grid">{groups.map(card)}</div>
     </section>
   )
 }
 
-// ── 02 VELOCITY (hyperspin sphere) — agent-leverage proof band ──────────────
-function Core() {
-  const s = scenes.core
-  return (
-    <section className="scene center statement">
-      <div className="scrim">
-        <Head s={s} />
-        <div className="proof-band">
-          {velocity.map((a) => (
-            <div className="band-stat glass" key={a.l}>
-              <div className="band-v">{a.v}</div>
-              <div className="band-l">{a.l}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// ── 03 IRIS (energy sphere) — flagship metrics flank the orb ────────────────
-function Iris() {
-  const s = scenes.iris
-  const card = (c) => (
-    <div className="float glass stat" key={c.u}>
-      <div className="stat-v">{c.v}<span className="stat-u">{c.u}</span></div>
-      <div className="stat-l">{c.l}</div>
-    </div>
-  )
-  return (
-    <section className="scene">
-      <Head s={s} sm />
-      <div className="flank left">{irisStats.slice(0, 2).map(card)}</div>
-      <div className="flank right">{irisStats.slice(2).map(card)}</div>
-    </section>
-  )
-}
-
-// ── 04 WORK (funnel) — four role cards flank the vortex ─────────────────────
+// Selected work, presented in a readable grid.
 function Work() {
   const s = scenes.work
   const card = (x) => (
@@ -108,31 +75,13 @@ function Work() {
       <div className="exp-flag">{x.flagship}</div>
       <ul className="exp-points">{x.points.slice(0, 3).map((p, i) => <li key={i}>{p}</li>)}</ul>
       <div className="tags">{x.tags.map((t) => <span key={t}>{t}</span>)}</div>
+      {x.url && <a className="project-source" href={x.url} target="_blank" rel="noreferrer">View source code</a>}
     </article>
   )
   return (
-    <section className="scene">
+    <section id="work" className="scene">
       <Head s={s} sm />
-      <div className="flank left">{experience.slice(0, 2).map(card)}</div>
-      <div className="flank right">{experience.slice(2).map(card)}</div>
-    </section>
-  )
-}
-
-// ── 05 PRINCIPLES (DNA) — engineering principles flank the helix ────────────
-function Principles() {
-  const s = scenes.principles
-  const card = (p) => (
-    <div className="float glass prin" key={p.k}>
-      <div className="prin-k">{p.k}</div>
-      <div className="prin-v">{p.v}</div>
-    </div>
-  )
-  return (
-    <section className="scene">
-      <Head s={s} sm />
-      <div className="flank left">{principles.slice(0, 3).map(card)}</div>
-      <div className="flank right">{principles.slice(3).map(card)}</div>
+      <div className="content-grid work-grid">{experience.map(card)}</div>
     </section>
   )
 }
@@ -141,23 +90,49 @@ function Principles() {
 function Proof() {
   const s = scenes.proof
   return (
-    <section className="scene center">
+    <section id="proof" className="scene center">
       <div className="scrim widest">
         <Head s={s} sm />
         <div className="oss-list">
           {openSource.map((o) => (
             <a className="oss glass" key={o.num} href={o.url} target="_blank" rel="noreferrer">
               <div className="oss-top"><span className="oss-repo">{o.repo}</span><span className="oss-num">{o.num}</span></div>
-              <div className="oss-title">{o.title}</div>
               <div className="oss-note">{o.note}</div>
-              <div className="oss-domain">{o.domain}</div>
+              <span className="oss-domain">Merged PR ↗</span>
             </a>
           ))}
         </div>
-        <div className="cert-strip">
-          <span className="cert-strip-label">Certified</span>
-          {certs.map((c) => <span className="cert-pill" key={c.issuer}>{c.issuer}</span>)}
+        <a className="achievement-record" href={links.oss} target="_blank" rel="noreferrer">View all 11 merged PRs ↗</a>
+        <div id="credentials" className="credentials">
+          <h3>Achievements & credentials</h3>
+          <div className="achievement-grid">
+            {achievements.map((a) => (
+              <a className="achievement-card glass" key={a.v} href={a.url} target="_blank" rel="noreferrer">
+                <strong>{a.v}</strong><span>{a.l}</span><span className="achievement-source">View profile ↗</span>
+              </a>
+            ))}
+          </div>
+          <details className="badge-details credential-details">
+            <summary>Browse verified certifications</summary>
+            <div className="credential-list">
+            {certs.map((c) => (
+              <a className="credential-link" key={c.url} href={c.url} target="_blank" rel="noreferrer">
+                <strong>{c.issuer}</strong><span>{c.items} ↗</span>
+              </a>
+            ))}
+            </div>
+          </details>
+          <details className="badge-details">
+            <summary>Browse all Kaggle and LeetCode badges</summary>
+            <div className="badge-groups">
+              {achievementGroups.map((group) => (
+                <div key={group.title}><h4>{group.title}</h4><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></div>
+              ))}
+            </div>
+          </details>
+          <a className="achievement-record" href={links.achievements} target="_blank" rel="noreferrer">View full achievement record ↗</a>
         </div>
+        <KaggleEvidence />
       </div>
     </section>
   )
@@ -167,7 +142,7 @@ function Proof() {
 function Contact() {
   const s = scenes.contact
   return (
-    <section className="scene center">
+    <section id="contact" className="scene center">
       <div className="scrim">
         <Head s={s} />
         <div className="cta-row center-row">
@@ -178,46 +153,35 @@ function Contact() {
           <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <a href={links.leetcode} target="_blank" rel="noreferrer">LeetCode</a>
           <a href={links.kaggle} target="_blank" rel="noreferrer">Kaggle</a>
-          <a href={links.medium} target="_blank" rel="noreferrer">Medium</a>
-          <a href={links.paper} target="_blank" rel="noreferrer">TIJER Paper</a>
+          <a href={links.credly} target="_blank" rel="noreferrer">Credly</a>
           <a href={`mailto:${identity.email}`}>{identity.email}</a>
-          <a href={`tel:${identity.phone.replace(/\s/g, '')}`}>{identity.phone}</a>
         </div>
-        <div className="foot">{identity.location} · B.E. Information Technology · SPPU · 8.53 CGPA · Built with react-three-fiber + three.js</div>
+        <div className="foot">{identity.location}</div>
       </div>
     </section>
   )
 }
 
 export default function Overlay() {
-  // Scroll reveal: glass elements rise out of the particle field as they enter.
+  // The section target exists only after React renders the portfolio.
   useEffect(() => {
-    const els = document.querySelectorAll('.float, .oss, .band-stat, .cert-strip')
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.target.classList.toggle('in', e.isIntersecting)),
-      { threshold: 0.15 }
-    )
-    // Stagger siblings within each scene so reveals read as a rhythm, not a wall.
-    const perParent = new Map()
-    els.forEach((el) => {
-      const n = perParent.get(el.parentElement) ?? 0
-      perParent.set(el.parentElement, n + 1)
-      el.style.setProperty('--stagger', n)
-      el.classList.add('reveal')
-      io.observe(el)
-    })
-    return () => io.disconnect()
+    let id
+    try { id = decodeURIComponent(window.location.hash.slice(1)) }
+    catch { return }
+    if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'auto' })
+
   }, [])
+
   return (
-    <div className="overlay">
+    <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <main id="main" className="overlay" tabIndex={-1}>
       <Hero />
-      <Capabilities />
-      <Core />
-      <Iris />
       <Work />
-      <Principles />
+      <Capabilities />
       <Proof />
       <Contact />
-    </div>
+    </main>
+    </>
   )
 }
