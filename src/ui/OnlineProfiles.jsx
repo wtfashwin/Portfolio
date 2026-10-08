@@ -1,6 +1,7 @@
 import directory from '../platforms.json'
 import feed from '../work-feed.json'
 import { latestPublicUpdates, writingEntries, updateDateLabel } from '../workSelectors.js'
+import PlatformLogo from './PlatformLogo.jsx'
 
 const dateLabel = (value) => value?.slice(0, 10) || ''
 export default function OnlineProfiles() {
@@ -29,7 +30,7 @@ export default function OnlineProfiles() {
         <ul className="profile-list">
           {directory.profiles.map((profile) => (
             <li key={profile.platform}>
-              <a href={profile.url} target="_blank" rel="noreferrer">{profile.platform}</a>
+              <a className="profile-name" href={profile.url} target="_blank" rel="noreferrer"><PlatformLogo platform={profile.platform} />{profile.platform}</a>
               <span>{profile.kind}</span><span className="profile-handle">{profile.handle}</span>
             </li>
           ))}

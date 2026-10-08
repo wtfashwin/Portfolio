@@ -13,6 +13,17 @@ export async function checkCrawlerBuild(directory) {
       .map((name) => readFile(resolve(directory, name), 'utf8')),
   )
   const portfolio = JSON.parse(json)
+  const site = new URL(portfolio.url)
+  const profilesSection = html.match(/<section\b[^>]*id="profiles"[^>]*>[\s\S]*?<\/section>/)?.[0] || ''
+  assert.equal((profilesSection.match(/<img\b/g) || []).length, portfolio.directory.profiles.length, 'Every public platform must display its logo.')
+  const logoSources = [...html.matchAll(/<img\b[^>]*src="([^"]*platform-logos\/[^\"]+)"/g)].map((match) => match[1])
+  for (const source of new Set(logoSources)) {
+    const url = new URL(source, site)
+    assert.equal(url.origin, site.origin, 'Platform logos must ship with the portfolio.')
+    assert.ok(url.pathname.startsWith(site.pathname), 'Logo paths must work under the GitHub Pages project URL.')
+    const asset = await readFile(resolve(directory, decodeURIComponent(url.pathname.slice(site.pathname.length))))
+    assert.ok(asset.length, 'Platform logo assets must be included in the build.')
+  }
   // React inserts hydration comments between adjacent text nodes. They do not
   // change the text that a non-JavaScript reader receives.
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0]?.replace(/<!--[\s\S]*?-->/g, '')

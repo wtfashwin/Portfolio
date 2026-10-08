@@ -5,13 +5,7 @@ import {
 } from '../data.js'
 import KaggleEvidence from './KaggleEvidence.jsx'
 import OnlineProfiles, { LatestUpdates } from './OnlineProfiles.jsx'
-function scrollToSection(event, id) {
-  const target = document.getElementById(id)
-  if (!target) return
-  event.preventDefault()
-  history.replaceState(null, '', `#${id}`)
-  target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
-}
+import PlatformLogo from './PlatformLogo.jsx'
 
 const { links } = identity
 
@@ -34,11 +28,8 @@ function Hero() {
         <h1 className="h1 xl name">{identity.name}</h1>
         <p className="sub hero-sub">{s.sub}</p>
         <div className="cta-row center-row">
-          <a className="pill primary" href="#work" onClick={(e) => scrollToSection(e, 'work')}>
-            Explore my work <span className="ci">↗</span>
-          </a>
-          <a className="pill" href={links.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a className="pill" href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a className="pill" href={links.github} target="_blank" rel="noreferrer"><PlatformLogo platform="GitHub" />GitHub</a>
+          <a className="pill" href={links.linkedin} target="_blank" rel="noreferrer"><PlatformLogo platform="LinkedIn" />LinkedIn</a>
         </div>
       </div>
 
@@ -109,6 +100,7 @@ function Proof() {
           <div className="achievement-grid">
             {achievements.map((a) => (
               <a className="achievement-card glass" key={a.v} href={a.url} target="_blank" rel="noreferrer">
+                <PlatformLogo platform={a.url === links.leetcode ? 'LeetCode' : a.url === links.kaggle ? 'Kaggle' : 'Credly'} />
                 <strong>{a.v}</strong><span>{a.l}</span><span className="achievement-source">View profile ↗</span>
               </a>
             ))}
@@ -150,11 +142,11 @@ function Contact() {
           <a className="pill" href={`mailto:${identity.email}`}>Start a conversation <span className="ci">→</span></a>
         </div>
         <div className="links-row">
-          <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href={links.leetcode} target="_blank" rel="noreferrer">LeetCode</a>
-          <a href={links.kaggle} target="_blank" rel="noreferrer">Kaggle</a>
-          <a href={links.credly} target="_blank" rel="noreferrer">Credly</a>
+          <a href={links.github} target="_blank" rel="noreferrer"><PlatformLogo platform="GitHub" />GitHub</a>
+          <a href={links.linkedin} target="_blank" rel="noreferrer"><PlatformLogo platform="LinkedIn" />LinkedIn</a>
+          <a href={links.leetcode} target="_blank" rel="noreferrer"><PlatformLogo platform="LeetCode" />LeetCode</a>
+          <a href={links.kaggle} target="_blank" rel="noreferrer"><PlatformLogo platform="Kaggle" />Kaggle</a>
+          <a href={links.credly} target="_blank" rel="noreferrer"><PlatformLogo platform="Credly" />Credly</a>
           <a href={`mailto:${identity.email}`}>{identity.email}</a>
           <a href="./portfolio.md">Text version</a>
         </div>
