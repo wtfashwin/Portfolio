@@ -42,6 +42,8 @@ html, body {
 }
 ::selection { background: var(--b); color: #fff; }
 a { color: inherit; }
+.project-source { display: inline-block; margin-top: 14px; color: var(--b2); font-size: var(--ui0); }
+.credentials { background: rgba(5, 5, 5, 0.9); padding: 24px; border-radius: 18px; }
 
 /* Fixed full-viewport canvas behind natively-scrolling content. */
 .r3f-canvas {
@@ -245,7 +247,9 @@ a { color: inherit; }
   .scene { padding-top: 120px; padding-bottom: 100px; }
 }
 @media (max-width: 860px) {
-  .nav-links, .nav-sep { display: none; }
+  .nav-sep, .nav-brand, .nav-ico, .nav-cta { display: none; }
+  .nav-links { gap: 16px; }
+  .nav { padding: 12px 16px; }
   .nav-brand { min-width: 70px; }
   .hero { flex-direction: column; justify-content: center; align-items: flex-start; gap: 24px; }
   .hero-l, .hero-r { align-self: stretch; max-width: none; margin-top: 0; }
@@ -256,4 +260,41 @@ a { color: inherit; }
 @media (max-width: 520px) {
   .scene { padding: 100px 18px 80px; }
   .proof-band { grid-template-columns: 1fr; }
+}
+
+/* Evidence stays readable and directly reachable without animation. */
+.scene, .credentials { scroll-margin-top: 90px; }
+.credentials { width: 100%; margin-top: 40px; text-align: left; }
+.credentials h3 { font-size: 22px; font-weight: 500; margin-bottom: 18px; }
+.achievement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.achievement-card { display: flex; flex-direction: column; gap: 10px; padding: 20px; text-decoration: none; }
+.achievement-card strong { font-size: 20px; font-weight: 500; }
+.achievement-card span, .credential-link span { font-size: 14px; line-height: 1.6; color: var(--wm); }
+.achievement-card .achievement-source { color: #9dbcff; margin-top: auto; }
+.credential-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.credential-link { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.16); }
+.credential-link strong { font-size: 16px; font-weight: 500; }
+.badge-details { margin-top: 24px; padding: 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; }
+.badge-details summary { cursor: pointer; font-size: 15px; }
+.badge-groups { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; margin-top: 24px; }
+.badge-groups h4 { margin-bottom: 12px; font-weight: 500; }
+.badge-groups ul { padding-left: 20px; }
+.badge-groups li { font-size: 14px; line-height: 1.7; color: var(--wm); margin-bottom: 6px; }
+.achievement-record { display: inline-block; margin-top: 20px; font-size: 14px; color: #9dbcff; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #9dbcff; outline-offset: 5px; }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 11000; padding: 12px 18px; background: #f0f2f5; color: #020308; transform: translateY(-160%); }
+.skip-link:focus { transform: none; }
+@media (max-width: 860px) {
+  .nav-links a { opacity: .85; font-size: 13px; }
+  .nav-links a[href="#capabilities"], .nav-links a[href="#iris"] { display: none; }
+}
+@media (max-width: 520px) {
+  .achievement-grid, .credential-list, .badge-groups { grid-template-columns: 1fr; }
+  .nav-links { gap: 12px; }
+  .nav { padding: 12px; }
+  .nav-links a { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; filter: none; }
 }
