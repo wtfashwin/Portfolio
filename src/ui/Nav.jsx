@@ -31,7 +31,7 @@ export default function Nav() {
         <div className="nav-sep" />
         <div className="nav-links">
           {NAV.map((n) => (
-            <a key={n.label} onClick={() => scrollStore.scrollTo(n.at)}>{n.label}</a>
+            <a key={n.label} href={`#${n.id}`}>{n.label}</a>
           ))}
         </div>
         <a className="nav-cta" href={`mailto:${identity.email}`}>

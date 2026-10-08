@@ -15,7 +15,7 @@ export const identity = {
     github: 'https://github.com/wtfashwin',
     linkedin: 'https://www.linkedin.com/in/upadhyayashwin/',
     leetcode: 'https://leetcode.com/u/wtfashwin/',
-    kaggle: 'https://www.kaggle.com/wtfashwin',
+    kaggle: 'https://www.kaggle.com/ashwinupadhyay',
     medium: 'https://medium.com/@ashwinupadhyay',
     paper: 'https://www.tijer.org/paper/TIJER2505180',
   },
@@ -24,10 +24,11 @@ export const identity = {
 
 // Section anchors used by nav + scroll. `at` = scroll offset 0..1 (8 scenes).
 export const NAV = [
-  { label: 'Capabilities', at: 1 / 7 },
-  { label: 'IRIS', at: 3 / 7 },
-  { label: 'Work', at: 4 / 7 },
-  { label: 'Contact', at: 1 },
+  { label: 'Capabilities', id: 'capabilities' },
+  { label: 'IRIS', id: 'iris' },
+  { label: 'Work', id: 'work' },
+  { label: 'Kaggle', id: 'kaggle-heading' },
+  { label: 'Contact', id: 'contact' },
 ]
 
 // Per-scene brand word shown in the nav as you scroll (replica idiom).

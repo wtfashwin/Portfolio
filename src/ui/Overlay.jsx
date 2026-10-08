@@ -3,7 +3,7 @@ import {
   identity, scenes, skills, irisStats, experience,
   principles, openSource, certs, velocity,
 } from '../data.js'
-import { scrollStore } from '../scrollStore.js'
+import KaggleEvidence from './KaggleEvidence.jsx'
 
 const { links } = identity
 
@@ -27,7 +27,7 @@ function Hero() {
         <h1 className="h1 xl name">{identity.name}</h1>
         <p className="sub hero-sub">{s.sub}</p>
         <div className="cta-row center-row">
-          <a className="pill primary" href="#work" onClick={(e) => { e.preventDefault(); scrollStore.scrollTo(4 / 7) }}>
+          <a className="pill primary" href="#work">
             Explore my work <span className="ci">↗</span>
           </a>
           <a className="pill" href={links.github} target="_blank" rel="noreferrer">GitHub</a>
@@ -50,7 +50,7 @@ function Capabilities() {
     </div>
   )
   return (
-    <section className="scene">
+    <section className="scene" id="capabilities">
       <Head s={s} sm />
       <div className="flank left">{groups.slice(0, 3).map(card)}</div>
       <div className="flank right">{groups.slice(3).map(card)}</div>
@@ -88,7 +88,7 @@ function Iris() {
     </div>
   )
   return (
-    <section className="scene">
+    <section className="scene" id="iris">
       <Head s={s} sm />
       <div className="flank left">{irisStats.slice(0, 2).map(card)}</div>
       <div className="flank right">{irisStats.slice(2).map(card)}</div>
@@ -111,7 +111,7 @@ function Work() {
     </article>
   )
   return (
-    <section className="scene">
+    <section className="scene" id="work">
       <Head s={s} sm />
       <div className="flank left">{experience.slice(0, 2).map(card)}</div>
       <div className="flank right">{experience.slice(2).map(card)}</div>
@@ -158,6 +158,7 @@ function Proof() {
           <span className="cert-strip-label">Certified</span>
           {certs.map((c) => <span className="cert-pill" key={c.issuer}>{c.issuer}</span>)}
         </div>
+        <KaggleEvidence />
       </div>
     </section>
   )
@@ -167,7 +168,7 @@ function Proof() {
 function Contact() {
   const s = scenes.contact
   return (
-    <section className="scene center">
+    <section className="scene center" id="contact">
       <div className="scrim">
         <Head s={s} />
         <div className="cta-row center-row">
