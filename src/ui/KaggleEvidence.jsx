@@ -35,11 +35,12 @@ export default function KaggleEvidence({ snapshot = evidence }) {
           </article>
         ))}
       </div>
-      <div className="kaggle-badges">
+      <details className="badge-details"><summary>{badges.length} earned Kaggle badges</summary><div className="kaggle-badges">
         <span className="cert-strip-label">Verified badges</span>
         {badges.length ? badges.map((badge) => <a className="cert-pill" key={badge.name} href={badge.evidenceUrl || 'https://www.kaggle.com/progression/badges'} target="_blank" rel="noreferrer" title={`Awarded ${badge.awardedAt || 'date unavailable'}; checked ${checkedDate(badge.checkedAt)}`}>{badge.name}</a>) : <span className="kaggle-scope">Awarded badges are not verified in this snapshot.</span>}
         <a href="https://www.kaggle.com/progression/badges" target="_blank" rel="noreferrer">All badge criteria ↗</a>
       </div>
+      </details>
       <p className="kaggle-note">Validation and Kaggle public scores use different samples. Badges are separate from medals and rankings. Snapshot updated {checkedDate(snapshot.generatedAt)}.</p>
     </aside>
   )

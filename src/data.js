@@ -9,7 +9,7 @@ const verifiedKaggleBadges = kaggleEvidence.badges.filter((badge) => badge.statu
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const identity = {
-  "name": "ASHWIN UPADHYAY",
+  "name": "Ashwin Upadhyay",
   "brand": "ASHWIN",
   "role": "AI Systems & Backend Engineer",
   "location": "Pune, India",
@@ -363,7 +363,7 @@ export const scenes = {
   },
   "capabilities": {
     "kicker": "Capabilities",
-    "h": "From model output to a working application",
+    "h": "Tools I work with",
     "sub": "Python services, retrieval, application interfaces, and the data and access controls that connect them."
   },
   "core": {
@@ -378,7 +378,7 @@ export const scenes = {
   },
   "work": {
     "kicker": "Experience & projects",
-    "h": "Work you can understand and inspect",
+    "h": "Experience & projects",
     "sub": "Professional experience alongside public projects. Project cards link directly to source code."
   },
   "principles": {
@@ -388,12 +388,12 @@ export const scenes = {
   },
   "proof": {
     "kicker": "Open source & achievements",
-    "h": "Fixes accepted by upstream maintainers",
+    "h": "Open-source contributions",
     "sub": "11 merged PRs across seven projects. Selected fixes below cover memory use, calculation correctness, safer defaults, and compatibility."
   },
   "contact": {
     "kicker": "Contact",
-    "h": "Let’s build reliable AI systems",
+    "h": "Get in touch",
     "sub": "Open to AI systems and backend engineering roles. B.E. Information Technology, SPPU, 8.53 CGPA."
   }
 }

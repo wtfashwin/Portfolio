@@ -321,3 +321,126 @@ a:focus-visible, summary:focus-visible { outline: 2px solid #9dbcff; outline-off
 .kaggle-badges a { font-size: var(--ui1); }
 .kaggle-badges .cert-pill { background: rgba(7, 13, 24, 0.92); color: #b4cdff; }
 .kaggle-note { margin-top: 14px; }
+
+/* Content follows the headings; the particle field remains the backdrop. */
+:root { --wm: #c7cedb; --wd: #a9b8cf; }
+.scene:not(.hero-ball) { min-height: auto; padding-top: 110px; padding-bottom: 110px; }
+.scene-head { max-width: 780px; width: 100%; margin: 0 auto; }
+.scene-head .h1.sm { font-size: clamp(30px, 3.2vw, 46px); font-weight: 400; letter-spacing: -1.2px; line-height: 1.16; }
+.sub { font-weight: 400; color: #c7cedb; line-height: 1.65; }
+.kicker { font-size: 12px; letter-spacing: 3px; color: #a9b8cf; }
+.content-grid { width: 100%; max-width: 1140px; display: grid; gap: 22px; margin-top: 42px; align-items: stretch; }
+.skills-grid, .principles-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stats-grid, .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.glass { background: linear-gradient(145deg, rgba(12,18,30,.93), rgba(5,9,17,.88)); border-color: rgba(158,183,222,.22); backdrop-filter: blur(18px); }
+.content-grid .float { padding: 26px; }
+.float-label { color: #a9b8cf; font-size: 12px; letter-spacing: 2px; }
+.chip { color: #d0ddf1; font-size: 12px; line-height: 1.4; background: rgba(65,110,190,.09); }
+.float.stat .stat-v { font-size: clamp(26px, 2.6vw, 36px); font-weight: 500; line-height: 1.25; overflow-wrap: anywhere; }
+.stat-u { display: block; margin: 8px 0 0; font-size: 12px; line-height: 1.5; letter-spacing: 1px; }
+.stat-l, .prin-v { color: #c7cedb; font-weight: 400; font-size: 15px; line-height: 1.7; }
+.float.exp { display: flex; flex-direction: column; padding: 28px; }
+.float.exp .exp-head { flex-wrap: wrap; row-gap: 8px; }
+.exp-role { font-size: 19px; line-height: 1.4; }
+.exp-org { font-weight: 400; }
+.exp-when { color: #b3bfd2; font-size: 11px; }
+.exp-flag { font-size: 12px; color: #a8c8ff; letter-spacing: .8px; line-height: 1.65; margin-top: 18px; }
+.float.exp .exp-points { margin-top: 16px; gap: 12px; }
+.float.exp .exp-points li { font-size: 15px; line-height: 1.65; font-weight: 400; color: #c7cedb; }
+.tags { margin-top: 20px; gap: 7px; }
+.tags span { font-size: 10px; color: #bdd1f0; line-height: 1.5; }
+.project-source { margin-top: 20px; font-size: 14px; color: #a8c8ff; }
+.prin-k { line-height: 1.4; }
+.oss-list { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; margin-top: 42px; }
+.oss { padding: 24px; }
+.oss-top { align-items: flex-start; }
+.oss-repo { overflow-wrap: anywhere; font-size: 13px; }
+.oss-num { flex-shrink: 0; }
+.oss-title { font-size: 16px; line-height: 1.5; font-weight: 500; margin-top: 14px; }
+.oss-note { color: #c7cedb; font-size: 14px; font-weight: 400; line-height: 1.65; }
+.oss-domain { color: #b0b9e6; font-size: 10px; }
+.credentials { padding-top: 40px; border-top: 1px solid rgba(158,183,222,.2); margin-top: 48px; }
+.credentials h3 { font-size: 26px; }
+.achievement-card { padding: 24px; }
+.badge-details { background: rgba(5,9,17,.88); }
+.badge-details summary { line-height: 1.5; padding: 3px 0; color: #e4eaf3; }
+.credential-list { margin-top: 12px; }
+.credential-link { padding: 18px 0; }
+.credential-link span { color: #c7cedb; }
+.kaggle-evidence { background: rgba(5,9,17,.82); padding: 28px; border: 1px solid rgba(158,183,222,.22); border-radius: 18px; }
+.kaggle-metrics dd { overflow-wrap: anywhere; }
+.links-row { gap: 16px 26px; }
+.links-row a { color: #c7cedb; }
+@media (max-width: 1000px) {
+  .skills-grid, .principles-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 680px) {
+  .scene:not(.hero-ball) { padding: 80px 20px; }
+  .content-grid, .oss-list { grid-template-columns: 1fr; gap: 18px; margin-top: 30px; }
+  .content-grid .float, .float.exp, .oss { padding: 22px; }
+  .kaggle-evidence { padding: 20px; }
+  .scene-head .h1.sm { font-size: 30px; }
+  .sub { font-size: 15px; }
+}
+
+/* Static, readable portfolio layout. */
+body { background: #080b12; }
+:root { --wm: #b5bdcb; --wd: #8e9aae; }
+.scene { min-height: 0; padding: 64px 24px; max-width: 1160px; margin: auto; align-items: stretch; }
+.scene.center { text-align: left; }
+.scene-head { max-width: 720px; text-align: left; width: 100%; margin-bottom: 28px; }
+.scene-head::before, .scrim::before, .glass::before { display: none; }
+.hero-ball { padding-top: 160px; padding-bottom: 64px; }
+.hero-head { max-width: 780px !important; }
+.h1, .h1.sm { font-size: clamp(28px, 3vw, 38px); font-weight: 500; letter-spacing: -1px; text-shadow: none; }
+.h1.xl { font-size: clamp(40px, 5vw, 64px); letter-spacing: -2px; font-weight: 600 !important; }
+.sub { margin: 16px 0 0; font-size: 16px; line-height: 1.65; font-weight: 400; text-shadow: none; }
+.kicker { letter-spacing: 1.5px; font-size: 11px; margin-bottom: 12px; color: #91a5c3; }
+.center-row { justify-content: flex-start; }
+.scrim, .scrim.widest { max-width: none; align-items: stretch; }
+.content-grid { width: 100%; margin-top: 0; }
+.glass { background: #101620; box-shadow: none; backdrop-filter: none; border-radius: 12px; border-color: #263142; }
+.float:hover { transform: none; box-shadow: none; }
+.exp-role { font-size: 18px; }
+.exp-org { font-weight: 500; }
+.exp-when { font-family: var(--body); font-size: 12px; letter-spacing: 0; color: #9ba9bd; }
+.exp-flag { font-family: var(--body); font-size: 13px; text-transform: none; letter-spacing: 0; }
+.float.exp .exp-points li { font-size: 15px; font-weight: 400; }
+.oss-list { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.oss { padding: 20px; text-decoration: none; }
+.oss-repo { font-family: var(--body); font-size: 16px; color: #e5ebf4; }
+.oss-num { color: #9ba9bd; }
+.oss-note { font-size: 15px; line-height: 1.6; margin: 10px 0; font-weight: 400; }
+.oss-domain { font-family: var(--body); color: #8eb8ff; font-size: 13px; letter-spacing: 0; text-transform: none; }
+.achievement-record { display: inline-flex; align-self: flex-start; padding: 10px 14px; border: 1px solid #354259; border-radius: 8px; font-size: 14px; text-decoration: none; color: #a7c8ff; margin: 20px 0 0; }
+.credentials { margin-top: 64px; padding: 0; background: none; }
+.credentials h3 { font-family: var(--display); font-size: 28px; font-weight: 500; margin-bottom: 24px; }
+.achievement-card strong { font-size: 23px; }
+.achievement-card { box-shadow: none; }
+.badge-details { border-color: #263142; border-radius: 10px; background: #101620; }
+.badge-details summary { font-size: 15px; padding: 16px; cursor: pointer; }
+.nav { background: #0c111b; border-color: #263142; }
+.nav-brand { letter-spacing: 1px; min-width: auto; }
+.nav-links a { opacity: 1; color: #b5bdcb; }
+.links-row { justify-content: flex-start; }
+.foot { color: #8e9aae; text-align: left; }
+#capabilities { padding-top: 32px; border-bottom: 1px solid #202b3b; }
+#contact { border-top: 1px solid #202b3b; }
+@media(max-width: 760px) {
+ .scene { padding: 40px 20px; } .hero-ball { padding-top: 130px; }
+ .oss-list, .work-grid, .skills-grid, .achievement-grid, .kaggle-grid { grid-template-columns: 1fr; }
+ .scene-head { max-width: 100%; } .credentials { margin-top: 40px; }
+ .exp-head { flex-direction: column; align-items: flex-start !important; }
+ .nav-brand, .nav-sep, .nav-cta { display: none; }
+ .nav { gap: 10px; padding: 12px; } .nav-links { gap: 12px; } .nav-links a { font-size: 12px; }
+}
+.scene:not(.hero-ball) { padding: 56px 24px; }
+.scene-head { margin: 0 0 28px; }
+.scene-head .h1.sm { font-size: clamp(28px, 3vw, 38px); font-weight: 500; }
+.oss-list { margin-top: 0; }
+.kaggle-evidence { margin-top: 56px; background: none; padding: 0; border: 0; border-radius: 0; }
+@media(max-width:760px) { .scene:not(.hero-ball) { padding: 40px 20px; } .scene-head .h1.sm { font-size: 28px; } .kaggle-evidence { padding: 0; } }
+
+.hero-role { color: #a7c8ff; font-size: 15px; margin-bottom: 18px; }
+.pill.primary { box-shadow: none; background: #ebf1fb; color: #0c111b; border-color: #ebf1fb; }
+.pill:hover { box-shadow: none; }
