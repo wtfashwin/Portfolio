@@ -43,19 +43,20 @@ This improves access to the content; it does not guarantee indexing, inclusion i
 
 Crawler permissions belong in `https://wtfashwin.github.io/robots.txt`, at the origin root. A file at `/Portfolio/robots.txt` would not control this project site's crawling. [Google's robots.txt guidance](https://developers.google.com/search/docs/crawling-indexing/robots/create-robots-txt) explains that scope. Review the root publisher before changing those permissions. [OpenAI documents OAI-SearchBot and GPTBot separately](https://developers.openai.com/api/docs/bots): search visibility and training crawling are separate choices.
 
-## Refresh recent public work
+## Review public activity locally
 
 ```bash
 npm run refresh:work
 npm run check:refresh
-npm run build
 ```
 
-`scripts/refresh-work.mjs` exports `pullLatestWork({ profiles, previous, fetchImpl, now, timeoutMs, limit })`. The CLI reads verified profiles from `src/platforms.json` and writes `src/work-feed.json`. It fetches recent public updates to owned repositories, excluding upstream forks, and merged PRs through GitHub's public API, plus article titles, links, and dates through the verified Medium RSS feed. It uses no credentials and does not retrieve private work or full article bodies.
+The portfolio displays manually selected content only. Account activity is not proof of personal authorship or meaningful project work.
+
+`scripts/refresh-work.mjs` exports `pullLatestWork({ profiles, previous, fetchImpl, now, timeoutMs, limit })`. The CLI reads verified profiles from `src/platforms.json` and saves candidates to the ignored `.cache/work-feed.json`. The website, build, and public exports never read this cache. It fetches recent public repository activity and merged PRs through GitHub's public API, plus article titles, links, and dates through the verified Medium RSS feed. It uses no credentials and does not retrieve private work or full article bodies.
 
 The cache records each platform's check attempt separately from its last successful fetch. HTTP blocks, rate limits, malformed responses, timeouts, and incomplete GitHub search results preserve the last successful records and their original fetch time. A repository push date does not prove that Ashwin authored every commit; PR dates are explicitly marked as merged dates or last-update dates according to the available evidence.
 
-Other platforms remain manual. This function does not refresh Kaggle or LeetCode badge counts, change the verified writing baseline, schedule recurring jobs, commit, or publish. Review the cache before publishing; the limited feeds are recent observations, not a complete contribution inventory. [GitHub documents its public repository endpoints](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user) and [search limitations](https://docs.github.com/en/rest/search/search#search-issues-and-pull-requests). [Medium documents its profile RSS feeds](https://help.medium.com/hc/en-us/articles/214874118-Using-RSS-feeds-of-profiles-publications-and-topics).
+Other platforms remain manual. This function does not refresh badge counts, change the writing baseline, schedule jobs, commit, or publish. Any selected item must be reviewed and added to the curated content separately. [GitHub documents its public repository endpoints](https://docs.github.com/en/rest/repos/repos#list-repositories-for-a-user) and [search limitations](https://docs.github.com/en/rest/search/search#search-issues-and-pull-requests). [Medium documents its profile RSS feeds](https://help.medium.com/hc/en-us/articles/214874118-Using-RSS-feeds-of-profiles-publications-and-topics).
 
 ## Theme verification
 

@@ -1,7 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { pullLatestWork } from './refresh-work.mjs'
-import { latestPublicUpdates, writingEntries, updateDateLabel } from '../src/workSelectors.js'
 
 const checkedAt = '2026-10-08T17:00:00.000Z'
 const github = {
@@ -144,26 +143,4 @@ test('a malformed RSS article preserves the last successful feed', async () => {
   assert.equal(result.platforms[0].status, 'unavailable')
   assert.equal(result.platforms[0].fetchedAt, prior.platforms[0].fetchedAt)
   assert.deepEqual(result.platforms[0].items, prior.platforms[0].items)
-})
-
-test('missing publication dates retain verified baseline dates without inventing new dates', () => {
-  const url = 'https://ashwinupadhyay.medium.com/saved'
-  const result = writingEntries({ writing: [{ title: 'Saved article', url, platform: 'Medium', publishedAt: '2024-03-02' }] },
-    { platforms: [{ platform: 'Medium', items: [{ type: 'article', title: 'Saved article', url, occurredAt: null },
-      { type: 'article', title: 'New undated article', url: `${url}-new`, occurredAt: null }] }] })
-  assert.equal(result[0].publishedAt, '2024-03-02')
-  assert.equal(result[1].publishedAt, null)
-})
-
-test('PR dates distinguish acceptance from last updates and omit portfolio housekeeping', () => {
-  assert.equal(updateDateLabel({ type: 'merged-pr', dateKind: 'last-updated' }), 'Merged PR · last updated')
-  assert.equal(updateDateLabel({ type: 'merged-pr', dateKind: 'merged' }), 'Merged PR')
-  const result = latestPublicUpdates({ platforms: [{ platform: 'GitHub', items: [
-    { url: 'https://github.com/wtfashwin/Portfolio/pull/4' },
-    { url: 'https://github.com/wtfashwin/wtfashwin/pull/1' },
-    { url: 'https://github.com/wtfashwin/Portfolio' },
-    { url: 'https://github.com/PrefectHQ/prefect/pull/22035' },
-    { url: 'https://github.com/wtfashwin/ContextDock' },
-  ] }] })
-  assert.deepEqual(result.map((item) => item.url), ['https://github.com/PrefectHQ/prefect/pull/22035', 'https://github.com/wtfashwin/ContextDock'])
 })

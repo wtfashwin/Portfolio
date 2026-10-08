@@ -9,9 +9,11 @@ const files = {
 export default function PlatformLogo({ platform }) {
   const file = files[platform]
   if (!file) return null
+  const source = `./platform-logos/${file}`
+  const monochrome = file.endsWith('.svg') || file === 'twine.png'
   return (
-    <span className="platform-logo" aria-hidden="true">
-      <img src={`./platform-logos/${file}`} alt="" width="20" height="20" />
+    <span className={`platform-logo${monochrome ? ' platform-logo-monochrome' : ''}`} style={monochrome ? { maskImage: `url("${source}")`, WebkitMaskImage: `url("${source}")` } : undefined} data-logo-src={source} aria-hidden="true">
+      {!monochrome && <img src={source} alt="" width="26" height="26" />}
     </span>
   )
 }

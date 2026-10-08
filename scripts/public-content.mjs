@@ -39,7 +39,7 @@ export function toStructuredData(portfolio) {
 }
 
 export function toMarkdown(portfolio) {
-  const { profile, sections, experience, skills, openSource, achievements, certifications, badgeGroups, kaggle, directory, workFeed, writing, publicUpdates } = portfolio
+  const { profile, sections, experience, skills, openSource, achievements, certifications, badgeGroups, kaggle, directory, writing } = portfolio
   const lines = [
     `# ${profile.name}`,
     '',
@@ -94,14 +94,6 @@ export function toMarkdown(portfolio) {
   }
   lines.push('', '### Writing & research', '')
   for (const item of writing) lines.push(`- [${item.title}](${item.url}): ${item.platform}; ${item.role || 'Author'}; published ${item.publishedAt || 'date unavailable'}.`)
-  const github = workFeed.platforms.find((entry) => entry.platform === 'GitHub')
-  if (publicUpdates.length) {
-    lines.push('', '### Recent public work', '', `Refresh status: ${github.status}. Last successful fetch: ${github.fetchedAt || 'none'}. Latest attempt: ${github.checkedAt}.`, '')
-    for (const item of publicUpdates) {
-      lines.push(`- [${item.title}](${item.url}): ${item.type}; ${item.dateKind}: ${item.occurredAt || 'date unavailable'}${item.summary ? `; ${item.summary}` : ''}.`)
-    }
-    lines.push('')
-  }
   lines.push(`## ${sections.contact.heading}`, '', sections.contact.description, '', `[Email ${profile.email}](mailto:${profile.email})`, '')
   return lines.join('\n')
 }

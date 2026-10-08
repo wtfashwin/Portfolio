@@ -205,7 +205,14 @@
   ],
   "writing": [
     {
-      "title": "Harnessing Future Insights: A Beginner\u2019s Guide to Predictive Analytics",
+      "title": "SHAR: Scalable Human Activity Recognition",
+      "url": "https://tijer.org/TIJER/papers/TIJER2505180.pdf",
+      "platform": "TIJER",
+      "publishedAt": "2025-05",
+      "role": "Co-author"
+    },
+    {
+      "title": "Harnessing Future Insights: A Beginner’s Guide to Predictive Analytics",
       "url": "https://ashwinupadhyay.medium.com/harnessing-future-insights-a-beginners-guide-to-predictive-analytics-769254e74a8d",
       "platform": "Medium",
       "publishedAt": "2024-03-29T15:58:19+00:00"
@@ -227,13 +234,6 @@
       "url": "https://ashwinupadhyay.medium.com/from-code-to-insights-navigating-the-journey-from-web-development-to-data-science-452018749e8f",
       "platform": "Medium",
       "publishedAt": "2024-03-02T10:50:59+00:00"
-    },
-    {
-      "title": "SHAR: Scalable Human Activity Recognition",
-      "url": "https://tijer.org/TIJER/papers/TIJER2505180.pdf",
-      "platform": "TIJER",
-      "publishedAt": "2025-05",
-      "role": "Co-author"
     }
   ]
 }

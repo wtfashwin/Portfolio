@@ -1,4 +1,4 @@
-import { readFile, writeFile, rename } from 'node:fs/promises'
+import { readFile, writeFile, rename, mkdir } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
@@ -191,12 +191,13 @@ export async function pullLatestWork({
 
 async function runCli() {
   const project = fileURLToPath(new URL('..', import.meta.url))
-  const output = resolve(project, 'src/work-feed.json')
+  const output = resolve(project, '.cache/work-feed.json')
   const manifest = JSON.parse(await readFile(resolve(project, 'src/platforms.json'), 'utf8'))
   let previous = { schemaVersion: 1, platforms: [] }
   try { previous = JSON.parse(await readFile(output, 'utf8')) }
   catch (error) { if (error.code !== 'ENOENT') throw error }
   const result = await pullLatestWork({ profiles: manifest.profiles, previous })
+  await mkdir(dirname(output), { recursive: true })
   const temporary = resolve(dirname(output), `.work-feed-${process.pid}.json`)
   await writeFile(temporary, `${JSON.stringify(result, null, 2)}\n`)
   await rename(temporary, output)

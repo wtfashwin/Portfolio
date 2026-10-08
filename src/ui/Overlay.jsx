@@ -4,7 +4,7 @@ import {
   openSource, certs, achievements, achievementGroups,
 } from '../data.js'
 import KaggleEvidence from './KaggleEvidence.jsx'
-import OnlineProfiles, { LatestUpdates } from './OnlineProfiles.jsx'
+import OnlineProfiles from './OnlineProfiles.jsx'
 import PlatformLogo from './PlatformLogo.jsx'
 
 const { links } = identity
@@ -172,7 +172,6 @@ export default function Overlay() {
     <main id="main" className="overlay" tabIndex={-1}>
       <Hero />
       <Work />
-      <LatestUpdates />
       <Capabilities />
       <Proof />
       <OnlineProfiles />

@@ -3,6 +3,7 @@ dist
 .DS_Store
 *.local
 .vite
+.cache/
 
 # local backups / source assets (not part of the deployed site)
 index_local_backup.html

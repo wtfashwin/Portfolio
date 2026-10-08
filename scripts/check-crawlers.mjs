@@ -13,10 +13,14 @@ export async function checkCrawlerBuild(directory) {
       .map((name) => readFile(resolve(directory, name), 'utf8')),
   )
   const portfolio = JSON.parse(json)
+  assert.ok(!('workFeed' in portfolio) && !('publicUpdates' in portfolio), 'Unreviewed activity feeds must not enter public exports.')
+  for (const content of [html, json, markdown]) {
+    assert.ok(!/Recent public work|JanSetu/.test(content), 'Removed activity must not appear in the portfolio or crawler exports.')
+  }
   const site = new URL(portfolio.url)
   const profilesSection = html.match(/<section\b[^>]*id="profiles"[^>]*>[\s\S]*?<\/section>/)?.[0] || ''
-  assert.equal((profilesSection.match(/<img\b/g) || []).length, portfolio.directory.profiles.length, 'Every public platform must display its logo.')
-  const logoSources = [...html.matchAll(/<img\b[^>]*src="([^"]*platform-logos\/[^\"]+)"/g)].map((match) => match[1])
+  assert.equal((profilesSection.match(/data-logo-src=/g) || []).length, portfolio.directory.profiles.length, 'Every public platform must display its logo.')
+  const logoSources = [...html.matchAll(/data-logo-src="([^"]+)"/g)].map((match) => match[1])
   for (const source of new Set(logoSources)) {
     const url = new URL(source, site)
     assert.equal(url.origin, site.origin, 'Platform logos must ship with the portfolio.')
@@ -59,10 +63,6 @@ export async function checkCrawlerBuild(directory) {
     assert.ok(main.includes(escapeHtml(item.title)), 'Writing titles must appear in raw HTML.')
     assert.ok(main.includes(`href="${escapeHtml(item.url)}"`), 'Writing sources must appear in raw HTML.')
   }
-  for (const item of portfolio.publicUpdates) {
-    assert.ok(main.includes(`href="${escapeHtml(item.url)}"`), 'Selected recent public work links must appear in raw HTML.')
-    assert.ok(main.includes(escapeHtml(item.title)), 'Selected recent public work titles must appear in raw HTML.')
-  }
   const structuredData = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1])
   assert.equal(structuredData['@type'], 'ProfilePage')
   assert.equal(structuredData.mainEntity.name, portfolio.profile.name)
@@ -71,7 +71,7 @@ export async function checkCrawlerBuild(directory) {
   assert.ok(sitemap.includes(`<loc>${portfolio.url}</loc>`))
   assert.ok(llms.includes(`${portfolio.url}portfolio.md`))
   assert.ok(!html.includes('<!-- portfolio:html -->'))
-  console.log(`Crawler check passed: raw HTML contains ${portfolio.experience.length} work entries, ${portfolio.openSource.length} selected PRs, ${awarded.length} Kaggle badges, ${portfolio.directory.profiles.length} public platforms, ${portfolio.writing.length} writing records, ${portfolio.publicUpdates.length} recent updates, and dated work/score exports.`)
+  console.log(`Crawler check passed: raw HTML contains ${portfolio.experience.length} work entries, ${portfolio.openSource.length} selected PRs, ${awarded.length} Kaggle badges, ${portfolio.directory.profiles.length} public platforms, ${portfolio.writing.length} writing records, and dated score exports. Automatic activity feeds are excluded.`)
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {

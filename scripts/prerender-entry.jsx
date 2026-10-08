@@ -7,8 +7,6 @@ import {
 } from '../src/data.js'
 import kaggle from '../src/kaggle-evidence.json'
 import directory from '../src/platforms.json'
-import workFeed from '../src/work-feed.json'
-import { latestPublicUpdates, writingEntries } from '../src/workSelectors.js'
 
 export function render() {
   return renderToString(<React.StrictMode><App /></React.StrictMode>)
@@ -44,7 +42,5 @@ export const portfolio = {
   badgeGroups: achievementGroups,
   kaggle,
   directory,
-  workFeed,
-  publicUpdates: latestPublicUpdates(workFeed),
-  writing: writingEntries(directory, workFeed),
+  writing: directory.writing,
 }
