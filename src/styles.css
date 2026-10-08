@@ -42,7 +42,8 @@ html, body {
 }
 ::selection { background: var(--b); color: #fff; }
 a { color: inherit; }
-html { scroll-behavior: smooth; }
+.project-source { display: inline-block; margin-top: 14px; color: var(--b2); font-size: var(--ui0); }
+.credentials { background: rgba(5, 5, 5, 0.9); padding: 24px; border-radius: 18px; }
 
 /* Fixed full-viewport canvas behind natively-scrolling content. */
 .r3f-canvas {
@@ -231,7 +232,74 @@ html { scroll-behavior: smooth; }
 .cert-strip-label { font-family: var(--mono); font-size: var(--ui1); letter-spacing: 3px; text-transform: uppercase; color: var(--wd); margin-right: 6px; }
 .cert-pill { font-family: var(--mono); font-size: var(--ui1); color: rgba(180, 205, 255, 0.82); padding: 7px 13px; border: 1px solid rgba(59, 130, 246, 0.22); border-radius: 999px; }
 
-/* Evidence snapshot fits the existing proof scene; no additional canvas scene. */
+/* ── Contact ────────────────────────────────────────────────────────────── */
+.links-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 26px; }
+.links-row a { font-size: var(--ui0); color: var(--wm); text-decoration: none; transition: color 0.3s; }
+.links-row a:hover { color: var(--b2); }
+.foot { font-family: var(--mono); font-size: var(--ui1); letter-spacing: 1px; color: var(--wd); margin-top: 30px; line-height: 1.7; }
+
+/* ── Responsive: collapse flanks into stacked flow ──────────────────────── */
+@media (max-width: 1180px) {
+  .scene-head { max-width: 680px; }
+  .flank { position: static; width: 100%; max-width: 640px; margin: 0 auto; flex-direction: column; }
+  .flank.left { margin-top: 30px; }
+  .flank.right { margin-top: 16px; }
+  .scene { padding-top: 120px; padding-bottom: 100px; }
+}
+@media (max-width: 860px) {
+  .nav-sep, .nav-brand, .nav-ico, .nav-cta { display: none; }
+  .nav-links { gap: 16px; }
+  .nav { padding: 12px 16px; }
+  .nav-brand { min-width: 70px; }
+  .hero { flex-direction: column; justify-content: center; align-items: flex-start; gap: 24px; }
+  .hero-l, .hero-r { align-self: stretch; max-width: none; margin-top: 0; }
+  .hero-l .h1 { text-align: left; }
+  .proof-band { grid-template-columns: 1fr 1fr; }
+  .scene-head { max-width: 90vw; }
+}
+@media (max-width: 520px) {
+  .scene { padding: 100px 18px 80px; }
+  .proof-band { grid-template-columns: 1fr; }
+}
+
+/* Evidence stays readable and directly reachable without animation. */
+.scene, .credentials { scroll-margin-top: 90px; }
+.credentials { width: 100%; margin-top: 40px; text-align: left; }
+.credentials h3 { font-size: 22px; font-weight: 500; margin-bottom: 18px; }
+.achievement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.achievement-card { display: flex; flex-direction: column; gap: 10px; padding: 20px; text-decoration: none; }
+.achievement-card strong { font-size: 20px; font-weight: 500; }
+.achievement-card span, .credential-link span { font-size: 14px; line-height: 1.6; color: var(--wm); }
+.achievement-card .achievement-source { color: #9dbcff; margin-top: auto; }
+.credential-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.credential-link { display: flex; flex-direction: column; gap: 6px; padding: 16px 0; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.16); }
+.credential-link strong { font-size: 16px; font-weight: 500; }
+.badge-details { margin-top: 24px; padding: 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; }
+.badge-details summary { cursor: pointer; font-size: 15px; }
+.badge-groups { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; margin-top: 24px; }
+.badge-groups h4 { margin-bottom: 12px; font-weight: 500; }
+.badge-groups ul { padding-left: 20px; }
+.badge-groups li { font-size: 14px; line-height: 1.7; color: var(--wm); margin-bottom: 6px; }
+.achievement-record { display: inline-block; margin-top: 20px; font-size: 14px; color: #9dbcff; }
+a:focus-visible, summary:focus-visible { outline: 2px solid #9dbcff; outline-offset: 5px; }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 11000; padding: 12px 18px; background: #f0f2f5; color: #020308; transform: translateY(-160%); }
+.skip-link:focus { transform: none; }
+@media (max-width: 860px) {
+  .nav-links a { opacity: .85; font-size: 13px; }
+  .nav-links a[href="#capabilities"], .nav-links a[href="#iris"] { display: none; }
+}
+@media (max-width: 520px) {
+  .achievement-grid, .credential-list, .badge-groups { grid-template-columns: 1fr; }
+  .nav-links { gap: 12px; }
+  .nav { padding: 12px; }
+  .nav-links a { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; filter: none; }
+}
+
+/* Measured Kaggle scores and confirmed awards. */
 .kaggle-evidence { width: 100%; margin-top: 36px; text-align: left; }
 .kaggle-heading { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
 .kaggle-heading .float-label { margin-bottom: 8px; }
@@ -253,31 +321,3 @@ html { scroll-behavior: smooth; }
 .kaggle-badges a { font-size: var(--ui1); }
 .kaggle-badges .cert-pill { background: rgba(7, 13, 24, 0.92); color: #b4cdff; }
 .kaggle-note { margin-top: 14px; }
-
-/* ── Contact ────────────────────────────────────────────────────────────── */
-.links-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 26px; }
-.links-row a { font-size: var(--ui0); color: var(--wm); text-decoration: none; transition: color 0.3s; }
-.links-row a:hover { color: var(--b2); }
-.foot { font-family: var(--mono); font-size: var(--ui1); letter-spacing: 1px; color: var(--wd); margin-top: 30px; line-height: 1.7; }
-
-/* ── Responsive: collapse flanks into stacked flow ──────────────────────── */
-@media (max-width: 1180px) {
-  .scene-head { max-width: 680px; }
-  .flank { position: static; width: 100%; max-width: 640px; margin: 0 auto; flex-direction: column; }
-  .flank.left { margin-top: 30px; }
-  .flank.right { margin-top: 16px; }
-  .scene { padding-top: 120px; padding-bottom: 100px; }
-}
-@media (max-width: 860px) {
-  .nav-links, .nav-sep { display: none; }
-  .nav-brand { min-width: 70px; }
-  .hero { flex-direction: column; justify-content: center; align-items: flex-start; gap: 24px; }
-  .hero-l, .hero-r { align-self: stretch; max-width: none; margin-top: 0; }
-  .hero-l .h1 { text-align: left; }
-  .proof-band { grid-template-columns: 1fr 1fr; }
-  .scene-head { max-width: 90vw; }
-}
-@media (max-width: 520px) {
-  .scene { padding: 100px 18px 80px; }
-  .proof-band { grid-template-columns: 1fr; }
-}

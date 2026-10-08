@@ -1,9 +1,16 @@
 import { useEffect } from 'react'
 import {
   identity, scenes, skills, irisStats, experience,
-  principles, openSource, certs, velocity,
+  principles, openSource, certs, velocity, achievements, achievementGroups,
 } from '../data.js'
 import KaggleEvidence from './KaggleEvidence.jsx'
+function scrollToSection(event, id) {
+  const target = document.getElementById(id)
+  if (!target) return
+  event.preventDefault()
+  history.replaceState(null, '', `#${id}`)
+  target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+}
 
 const { links } = identity
 
@@ -11,7 +18,7 @@ function Head({ s, sm }) {
   return (
     <div className="scene-head">
       <div className="kicker">{s.kicker}</div>
-      <h1 className={`h1${sm ? ' sm' : ''}`}>{s.h}</h1>
+      <h2 className={`h1${sm ? ' sm' : ''}`}>{s.h}</h2>
       {s.sub && <p className="sub">{s.sub}</p>}
     </div>
   )
@@ -21,13 +28,13 @@ function Head({ s, sm }) {
 function Hero() {
   const s = scenes.hero
   return (
-    <section className="scene center hero-ball">
+    <section id="hero" className="scene center hero-ball">
       <div className="scene-head hero-head">
         <div className="badge"><span className="badge-dot">✦</span> {identity.role} · {identity.location}</div>
         <h1 className="h1 xl name">{identity.name}</h1>
         <p className="sub hero-sub">{s.sub}</p>
         <div className="cta-row center-row">
-          <a className="pill primary" href="#work">
+          <a className="pill primary" href="#work" onClick={(e) => scrollToSection(e, 'work')}>
             Explore my work <span className="ci">↗</span>
           </a>
           <a className="pill" href={links.github} target="_blank" rel="noreferrer">GitHub</a>
@@ -50,7 +57,7 @@ function Capabilities() {
     </div>
   )
   return (
-    <section className="scene" id="capabilities">
+    <section id="capabilities" className="scene">
       <Head s={s} sm />
       <div className="flank left">{groups.slice(0, 3).map(card)}</div>
       <div className="flank right">{groups.slice(3).map(card)}</div>
@@ -62,7 +69,7 @@ function Capabilities() {
 function Core() {
   const s = scenes.core
   return (
-    <section className="scene center statement">
+    <section id="core" className="scene center statement">
       <div className="scrim">
         <Head s={s} />
         <div className="proof-band">
@@ -88,7 +95,7 @@ function Iris() {
     </div>
   )
   return (
-    <section className="scene" id="iris">
+    <section id="iris" className="scene">
       <Head s={s} sm />
       <div className="flank left">{irisStats.slice(0, 2).map(card)}</div>
       <div className="flank right">{irisStats.slice(2).map(card)}</div>
@@ -108,10 +115,11 @@ function Work() {
       <div className="exp-flag">{x.flagship}</div>
       <ul className="exp-points">{x.points.slice(0, 3).map((p, i) => <li key={i}>{p}</li>)}</ul>
       <div className="tags">{x.tags.map((t) => <span key={t}>{t}</span>)}</div>
+      {x.url && <a className="project-source" href={x.url} target="_blank" rel="noreferrer">View source code</a>}
     </article>
   )
   return (
-    <section className="scene" id="work">
+    <section id="work" className="scene">
       <Head s={s} sm />
       <div className="flank left">{experience.slice(0, 2).map(card)}</div>
       <div className="flank right">{experience.slice(2).map(card)}</div>
@@ -129,7 +137,7 @@ function Principles() {
     </div>
   )
   return (
-    <section className="scene">
+    <section id="principles" className="scene">
       <Head s={s} sm />
       <div className="flank left">{principles.slice(0, 3).map(card)}</div>
       <div className="flank right">{principles.slice(3).map(card)}</div>
@@ -141,7 +149,7 @@ function Principles() {
 function Proof() {
   const s = scenes.proof
   return (
-    <section className="scene center">
+    <section id="proof" className="scene center">
       <div className="scrim widest">
         <Head s={s} sm />
         <div className="oss-list">
@@ -154,9 +162,32 @@ function Proof() {
             </a>
           ))}
         </div>
-        <div className="cert-strip">
-          <span className="cert-strip-label">Certified</span>
-          {certs.map((c) => <span className="cert-pill" key={c.issuer}>{c.issuer}</span>)}
+        <a className="achievement-record" href={links.oss} target="_blank" rel="noreferrer">All 11 merged contributions and full OSS history</a>
+        <div id="credentials" className="credentials">
+          <h3>Achievements & credentials</h3>
+          <div className="achievement-grid">
+            {achievements.map((a) => (
+              <a className="achievement-card glass" key={a.v} href={a.url} target="_blank" rel="noreferrer">
+                <strong>{a.v}</strong><span>{a.l}</span><span className="achievement-source">View profile ↗</span>
+              </a>
+            ))}
+          </div>
+          <div className="credential-list">
+            {certs.map((c) => (
+              <a className="credential-link" key={c.url} href={c.url} target="_blank" rel="noreferrer">
+                <strong>{c.issuer}</strong><span>{c.items} ↗</span>
+              </a>
+            ))}
+          </div>
+          <details className="badge-details">
+            <summary>Browse all Kaggle and LeetCode badges</summary>
+            <div className="badge-groups">
+              {achievementGroups.map((group) => (
+                <div key={group.title}><h4>{group.title}</h4><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></div>
+              ))}
+            </div>
+          </details>
+          <a className="achievement-record" href={links.achievements} target="_blank" rel="noreferrer">Full achievement record and verification links ↗</a>
         </div>
         <KaggleEvidence />
       </div>
@@ -168,7 +199,7 @@ function Proof() {
 function Contact() {
   const s = scenes.contact
   return (
-    <section className="scene center" id="contact">
+    <section id="contact" className="scene center">
       <div className="scrim">
         <Head s={s} />
         <div className="cta-row center-row">
@@ -179,6 +210,7 @@ function Contact() {
           <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <a href={links.leetcode} target="_blank" rel="noreferrer">LeetCode</a>
           <a href={links.kaggle} target="_blank" rel="noreferrer">Kaggle</a>
+          <a href={links.credly} target="_blank" rel="noreferrer">Credly</a>
           <a href={links.medium} target="_blank" rel="noreferrer">Medium</a>
           <a href={links.paper} target="_blank" rel="noreferrer">TIJER Paper</a>
           <a href={`mailto:${identity.email}`}>{identity.email}</a>
@@ -202,7 +234,9 @@ export default function Overlay() {
     return () => io.disconnect()
   }, [])
   return (
-    <div className="overlay">
+    <>
+    <a className="skip-link" href="#main">Skip to content</a>
+    <main id="main" className="overlay" tabIndex={-1}>
       <Hero />
       <Capabilities />
       <Core />
@@ -211,6 +245,7 @@ export default function Overlay() {
       <Principles />
       <Proof />
       <Contact />
-    </div>
+    </main>
+    </>
   )
 }

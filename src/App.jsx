@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react'
+import { Component, Suspense, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { AdaptiveDpr } from '@react-three/drei'
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
@@ -8,7 +8,6 @@ import ParticleField from './three/ParticleField.jsx'
 import Background from './three/Background.jsx'
 import Overlay from './ui/Overlay.jsx'
 import Nav from './ui/Nav.jsx'
-import Loader from './ui/Loader.jsx'
 import { scrollStore } from './scrollStore.js'
 
 // Gentle mouse parallax on the camera (subtle, like the reference).
@@ -36,8 +35,21 @@ function CameraRig() {
   return null
 }
 
+// Decorative WebGL must never prevent visitors from reading the portfolio.
+class VisualBoundary extends Component {
+  state = { failed: false }
+  static getDerivedStateFromError() { return { failed: true } }
+  render() { return this.state.failed ? null : this.props.children }
+}
+
 export default function App() {
-  const [ready, setReady] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches)
+  useEffect(() => {
+    const query = matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReducedMotion(query.matches)
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
 
   // Native scroll → normalized progress (the canvas is fixed behind content).
   useEffect(() => {
@@ -58,14 +70,14 @@ export default function App() {
 
   return (
     <>
-      <Loader done={ready} />
       <Nav />
+      {!reducedMotion && <VisualBoundary>
       <Canvas
         className="r3f-canvas"
         gl={{ antialias: true, powerPreference: 'high-performance', toneMapping: THREE.NoToneMapping }}
         dpr={[1, 2]}
         camera={{ position: [0, 0, 20], fov: 55, near: 0.1, far: 300 }}
-        onCreated={({ gl }) => { setTimeout(() => setReady(true), 600) }}
+        fallback={null}
       >
         <color attach="background" args={['#050505']} />
         <Suspense fallback={null}>
@@ -79,6 +91,7 @@ export default function App() {
         </Suspense>
         <AdaptiveDpr pixelated />
       </Canvas>
+      </VisualBoundary>}
       <Overlay />
     </>
   )

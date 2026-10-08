@@ -25,13 +25,19 @@ export default function Nav() {
   return (
     <>
       <div className="progress"><div className="progress-bar" ref={barRef} /></div>
-      <nav className="nav">
+      <nav className="nav" aria-label="Main navigation">
         <div className="nav-ico">AU</div>
         <span className="nav-brand">{BRAND_WORDS[brandIdx]}</span>
         <div className="nav-sep" />
         <div className="nav-links">
           {NAV.map((n) => (
-            <a key={n.label} href={`#${n.id}`}>{n.label}</a>
+            <a key={n.label} href={`#${n.id}`} onClick={(event) => {
+              const target = document.getElementById(n.id)
+              if (!target) return
+              event.preventDefault()
+              history.replaceState(null, '', `#${n.id}`)
+              target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+            }}>{n.label}</a>
           ))}
         </div>
         <a className="nav-cta" href={`mailto:${identity.email}`}>
