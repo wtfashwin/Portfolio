@@ -25,7 +25,21 @@ postprocessing bloom + vignette, mouse-parallax camera.
 - `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`
 - `three`
 
-All content lives in [`src/data.js`](src/data.js) — edit there to update copy.
+Portfolio copy lives in [`src/data.js`](src/data.js). The Kaggle panel in the Open Source section reads a dated snapshot from [`src/kaggle-evidence.json`](src/kaggle-evidence.json). It separates validation metrics from Kaggle public scores, displays each receipt's check time and submission reference, and links confirmed awarded badges with their award dates. It does not fetch live results.
+
+To refresh from the companion Kaggle workspace after checking new receipts:
+
+```bash
+# Run from the Kaggle workspace root, with this repository at work/portfolio-site.
+work/kaggle-portfolio/.venv/bin/python work/kaggle-portfolio/portfolio_export.py --badge-evidence outputs/kaggle-badges-earned.json
+cp outputs/kaggle-portfolio-public.json work/portfolio-site/src/kaggle-evidence.json
+cd work/portfolio-site
+npm run build
+```
+
+[The full badge roadmap](docs/kaggle-badge-roadmap.md) records all 61 catalog criteria and actual/planned states. [The aggregate benchmark dataset](https://www.kaggle.com/datasets/ashwinupadhyay/measured-cpu-ml-benchmarks) contains 16 verified measurements; its version-1 files were read back after publication.
+
+Copy only the public snapshot, which excludes local evidence paths. Keep estimated scores and planned badges out of it. Export time and evidence check time are distinct: generating a snapshot does not reverify old receipts.
 
 ## Develop
 ```bash

@@ -1,3 +1,7 @@
+import kaggleEvidence from './kaggle-evidence.json'
+
+const verifiedKaggleBadges = kaggleEvidence.badges.filter((badge) => badge.status === 'awarded').map((badge) => badge.name)
+
 // ─────────────────────────────────────────────────────────────────────────────
 //  Content checked 2026-10-08 against the supplied resume, public GitHub PRs,
 //  and live LeetCode, Kaggle, and Credly profiles.
@@ -41,6 +45,10 @@ export const NAV = [
     "label": "Credentials",
     "id": "credentials",
     "at": 0.8571428571428571
+  },
+  {
+    "label": "Kaggle",
+    "id": "kaggle-heading"
   },
   {
     "label": "Contact",
@@ -229,7 +237,7 @@ export const achievements = [
   },
   {
     "v": "ML experiments",
-    "l": "Kaggle: an LLM preference CPU baseline, one dataset, and 15 profile badges.",
+    "l": `Kaggle: measured ML experiments, a public benchmark dataset, and ${verifiedKaggleBadges.length} confirmed badges.`,
     "url": "https://www.kaggle.com/ashwinupadhyay"
   },
   {
@@ -392,24 +400,8 @@ export const scenes = {
 
 export const achievementGroups = [
   {
-    "title": "Kaggle · 15 profile badges",
-    "items": [
-      "1 Year on Kaggle",
-      "2 Years on Kaggle",
-      "Playground Competitor",
-      "Code Submitter",
-      "Python Coder",
-      "API Notebook Creator",
-      "Colab Coder",
-      "Code Tagger",
-      "Notebook Modeler",
-      "Dataset Creator",
-      "Dataset Tagger",
-      "Competition Modeler",
-      "Kaggle Community Member",
-      "Collector",
-      "Bookmarker"
-    ]
+    "title": `Kaggle · ${verifiedKaggleBadges.length} confirmed badges`,
+    "items": verifiedKaggleBadges
   },
   {
     "title": "LeetCode · 32 earned badges",
