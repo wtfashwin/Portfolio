@@ -1,0 +1,156 @@
+{
+  "badges": [
+    {
+      "awardedAt": "2024-09-13",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "1 Year on Kaggle",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2025-06-01",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "2 Years on Kaggle",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "API Notebook Creator",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Bookmarker",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Code Submitter",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Code Tagger",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Colab Coder",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2025-01-21",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Collector",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Competition Modeler",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2024-09-25",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Dataset Creator",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Dataset Tagger",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Getting Started Competitor",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2023-04-18",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Kaggle Community Member",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Notebook Modeler",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2026-10-08",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Playground Competitor",
+      "status": "awarded"
+    },
+    {
+      "awardedAt": "2024-09-13",
+      "checkedAt": "2026-10-08T12:41:08.457000+00:00",
+      "evidenceUrl": "https://www.kaggle.com/progression/badges",
+      "name": "Python Coder",
+      "status": "awarded"
+    }
+  ],
+  "competitions": [
+    {
+      "checkedAt": "2026-10-08T11:55:42.727668+00:00",
+      "id": "llm-classification-finetuning",
+      "notebookUrl": "https://www.kaggle.com/code/ashwinupadhyay/llm-preference-measured-cpu-baseline",
+      "publicMetric": "Log loss",
+      "publicScore": 1.04297,
+      "scoreState": "scored",
+      "status": "COMPLETE",
+      "submissionRef": 56951809,
+      "title": "LLM Classification Finetuning",
+      "url": "https://www.kaggle.com/competitions/llm-classification-finetuning",
+      "validationMetric": "Log loss",
+      "validationScope": "Prompt-grouped development holdout (Kaggle execution; used for model selection)",
+      "validationScore": 1.0525683147808185
+    },
+    {
+      "checkedAt": "2026-10-08T11:36:58.861865+00:00",
+      "id": "playground-series-s6e10",
+      "notebookUrl": null,
+      "publicMetric": "ROC AUC",
+      "publicScore": 0.95843,
+      "scoreState": "scored",
+      "status": "COMPLETE",
+      "submissionRef": 56951780,
+      "title": "Predicting Airline Satisfaction",
+      "url": "https://www.kaggle.com/competitions/playground-series-s6e10",
+      "validationMetric": "ROC AUC",
+      "validationScope": "Untouched holdout",
+      "validationScore": 0.9593093506656138
+    }
+  ],
+  "generatedAt": "2026-10-08T12:42:52.647753+00:00",
+  "profile": {
+    "checkedAt": "2026-10-08T11:55:16.452000+00:00",
+    "url": "https://www.kaggle.com/ashwinupadhyay",
+    "username": "ashwinupadhyay",
+    "verified": true
+  },
+  "schemaVersion": 1
+}

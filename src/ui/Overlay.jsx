@@ -3,6 +3,7 @@ import {
   identity, scenes, skills, irisStats, experience,
   principles, openSource, certs, velocity, achievements, achievementGroups,
 } from '../data.js'
+import KaggleEvidence from './KaggleEvidence.jsx'
 function scrollToSection(event, id) {
   const target = document.getElementById(id)
   if (!target) return
@@ -188,6 +189,7 @@ function Proof() {
           </details>
           <a className="achievement-record" href={links.achievements} target="_blank" rel="noreferrer">Full achievement record and verification links ↗</a>
         </div>
+        <KaggleEvidence />
       </div>
     </section>
   )
