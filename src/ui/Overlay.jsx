@@ -17,7 +17,6 @@ const { links } = identity
 function Head({ s, sm }) {
   return (
     <div className="scene-head">
-      <div className="kicker">{s.kicker}</div>
       <h2 className={`h1${sm ? ' sm' : ''}`}>{s.h}</h2>
       {s.sub && <p className="sub">{s.sub}</p>}
     </div>
