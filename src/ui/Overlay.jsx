@@ -223,6 +223,14 @@ function Contact() {
 }
 
 export default function Overlay() {
+  // The section target exists only after React renders the portfolio.
+  useEffect(() => {
+    let id
+    try { id = decodeURIComponent(window.location.hash.slice(1)) }
+    catch { return }
+    if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'auto' })
+  }, [])
+
   // Scroll reveal: glass elements rise out of the particle field as they enter.
   useEffect(() => {
     const els = document.querySelectorAll('.float, .oss, .band-stat, .cert-strip')
