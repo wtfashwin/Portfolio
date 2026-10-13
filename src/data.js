@@ -17,9 +17,11 @@ export const identity = {
   "email": "ashwinupadhyay09@gmail.com",
   "links": {
     "github": "https://github.com/wtfashwin",
-    "linkedin": "https://www.linkedin.com/in/wtfashwin/",
+    "linkedin": "https://www.linkedin.com/in/upadhyayashwin/",
+    "certifications": "https://www.linkedin.com/in/upadhyayashwin/details/certifications/",
     "leetcode": "https://leetcode.com/u/wtfashwin/",
     "kaggle": "https://www.kaggle.com/ashwinupadhyay",
+    "geeksforgeeks": "https://www.geeksforgeeks.org/profile/wtfashwin",
     "credly": "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly",
     "achievements": "https://github.com/wtfashwin/wtfashwin/blob/main/ACHIEVEMENTS.md",
     "oss": "https://github.com/wtfashwin/wtfashwin/blob/main/OPEN_SOURCE.md",
@@ -28,6 +30,16 @@ export const identity = {
   },
   "bio": "I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows."
 }
+
+export const profileLinks = [
+  { label: 'GitHub', url: identity.links.github },
+  { label: 'LinkedIn', url: identity.links.linkedin },
+  { label: 'LeetCode', url: identity.links.leetcode },
+  { label: 'Kaggle', url: identity.links.kaggle },
+  { label: 'Credly', url: identity.links.credly },
+  { label: 'GeeksforGeeks', url: identity.links.geeksforgeeks },
+  { label: 'Medium', url: identity.links.medium },
+]
 
 // Section anchors used by nav + scroll. `at` = scroll offset 0..1 (8 scenes).
 export const NAV = [
@@ -199,15 +211,191 @@ export const principles = [
 // ── Scene 6, Certifications + achievements (starfield constellation) ───────
 export const certs = [
   {
-    "issuer": "Astronomer",
-    "items": "Apache Airflow 3 Fundamentals",
-    "url": "https://www.credly.com/badges/ef9a1b33-9899-46b7-b25e-5a2acb979e69"
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Fusion AI Agent Studio Certified Foundations Associate · Rel 1",
+    "when": "May 2026",
+    "summary": "Foundations for building agents with Oracle Fusion AI Agent Studio.",
+    "image": "/images/oracle-fusion-ai-agent-studio-badge.png",
+    "url": "https://catalog-education.oracle.com/pls/certview/sharebadge?id=32E3D22C92D717455374A138EDB6F9D13FD05BC72298FBA0430F7B64E25A92C1"
   },
   {
+    "group": "professional",
+    "issuer": "Securiti AI",
+    "mark": "SA",
+    "items": "AI Security & Governance",
+    "when": "Feb 2026",
+    "summary": "Generative AI risk, compliance, and responsible governance frameworks.",
+    "url": "https://education.securiti.ai/verification/1451D2717-1451D2586-13EEB4DC5/"
+  },
+  {
+    "group": "professional",
+    "issuer": "Saviynt",
+    "mark": "SV",
+    "items": "Identity Security for AI Age",
+    "when": "Dec 2025",
+    "summary": "Identity security concepts for systems shaped by AI.",
+    "url": "https://www.linkedin.com/in/upadhyayashwin/overlay/Certifications/1941196376/treasury/?profileId=ACoAACoEXhsBoRSy1GtJ2ZRN8QPPUEeXhcKrgNU"
+  },
+  {
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    "when": "Dec 2025",
+    "summary": "Core artificial intelligence and machine learning concepts on OCI.",
+    "url": "https://catalog-education.oracle.com/pls/certview/sharebadge?id=8A67E3A33AECF97AAEB719CB796CB04A057F8BDE066F19BF1C47CE965C9A6733"
+  },
+  {
+    "group": "professional",
+    "issuer": "Calyptus",
+    "mark": "CA",
+    "items": "AI Fluent Tech Professional",
+    "when": "Nov 2025",
+    "summary": "AI fluency credential issued by Calyptus.",
+    "url": "https://certificate.calyptus.co/ai-fluency/14-ashwin-upadhyay"
+  },
+  {
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Oracle Cloud Infrastructure 2025 Certified Developer Professional",
+    "when": "Oct 2025",
+    "summary": "Developing and deploying applications with Oracle Cloud Infrastructure.",
+    "url": "https://catalog-education.oracle.com/pls/certview/sharebadge?id=00D3CEA936F13F2D2905235F947DED4EA6503F96C7E69973D265C93E05AD3DC5"
+  },
+  {
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Oracle Cloud Infrastructure 2025 Certified Architect Associate",
+    "when": "Oct 2025",
+    "summary": "Oracle Cloud Infrastructure architecture and cloud design fundamentals.",
+    "url": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=B292D02B22DF5A1C895F880AA38DAE04CFECC912C094910A7609F4C7B8AD45CF"
+  },
+  {
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Oracle AI Vector Search Certified Professional",
+    "when": "Oct 2025",
+    "summary": "Vector indexing and semantic search in Oracle Database 23ai.",
+    "url": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=3185B297B63CFB0C026C0932DC7862BD722B907FC3332D6BDA2A5D96C927D306"
+  },
+  {
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Oracle Cloud Infrastructure 2025 Certified Data Science Professional",
+    "when": "Oct 2025",
+    "summary": "End-to-end cloud machine learning workflows and MLOps on OCI.",
+    "url": "https://catalog-education.oracle.com/pls/certview/sharebadge?id=D9C78F28D89D65279F354EEE901A5B40788333EB0F3B9E5C2B36AE2DFF6599D1"
+  },
+  {
+    "group": "professional",
+    "issuer": "Oracle",
+    "mark": "OR",
+    "items": "Oracle Cloud Infrastructure 2025 Certified Generative AI Professional",
+    "when": "Oct 2025",
+    "summary": "Generative AI workloads, fine-tuning, and OCI services.",
+    "url": "https://catalog-education.oracle.com/ords/certview/sharebadge?id=3C89FBEBDA81EC0D06C13927A10CA75773E4117F437F99B4B06AF7356D24CC99"
+  },
+  {
+    "group": "professional",
     "issuer": "Astronomer",
-    "items": "DAG Authoring for Apache Airflow 3",
-    "url": "https://www.credly.com/badges/863162ef-ee67-4e23-b577-82a36d96ebfa"
+    "mark": "AS",
+    "items": "Astronomer Certification for Apache Airflow 3 Fundamentals",
+    "when": "Oct 2025",
+    "summary": "Core concepts for authoring and operating Apache Airflow workflows.",
+    "url": "https://www.credly.com/badges/ef9a1b33-9899-46b7-b25e-5a2acb979e69/linked_in_profile"
+  },
+  {
+    "group": "professional",
+    "issuer": "Astronomer",
+    "mark": "AS",
+    "items": "Astronomer Certification DAG Authoring for Apache Airflow 3",
+    "when": "Oct 2025",
+    "summary": "Building and scheduling DAGs with Apache Airflow 3.",
+    "url": "https://www.credly.com/badges/863162ef-ee67-4e23-b577-82a36d96ebfa/linked_in_profile"
+  },
+  {
+    "group": "course",
+    "issuer": "Databricks",
+    "mark": "DB",
+    "items": "Academy Accreditation - Generative AI Fundamentals",
+    "when": "Oct 2025",
+    "summary": "Generative AI concepts and workloads in the Databricks platform.",
+    "url": "https://credentials.databricks.com/d0424f1c-b0e0-4b02-beef-5fbbb4c6d80e"
+  },
+  {
+    "group": "course",
+    "issuer": "Databricks",
+    "mark": "DB",
+    "items": "Academy Accreditation - AI Agent Fundamentals",
+    "when": "Oct 2025",
+    "summary": "Foundations for building AI agents with Databricks tools and patterns.",
+    "url": "https://credentials.databricks.com/bd8fd17f-12f6-4f9b-8da0-4c68b628ed02"
+  },
+  {
+    "group": "course",
+    "issuer": "KodeKloud",
+    "mark": "KK",
+    "items": "Kubernetes for Absolute Beginners",
+    "when": "Oct 2025",
+    "summary": "Container orchestration, deployments, services, and cluster basics.",
+    "url": "https://certificates.kodekloud.com/a22750a7-822e-449c-bcb9-6e048a98f5ca/2c52f2b1-b94a-467d-89da-a6317ba68b4f/fe7d88e3-8261-42c6-86ae-707143cda34f.pdf"
+  },
+  {
+    "group": "course",
+    "issuer": "KodeKloud",
+    "mark": "KK",
+    "items": "RAG Crash Course",
+    "when": "Oct 2025",
+    "summary": "Retrieval-augmented generation concepts and implementation basics.",
+    "url": "https://certificates.kodekloud.com/81da9e5d-809c-466c-a3b0-614ce677b524/74039b22-3f2e-45bc-acc7-e2aefe8e63ba/89a6ef67-6aba-4d40-983d-67112d3ce2be.pdf"
+  },
+  {
+    "group": "course",
+    "issuer": "Udemy",
+    "mark": "UD",
+    "items": "JavaScript 2019: JavaScript ES6 Certification Course",
+    "when": "Nov 2024",
+    "summary": "JavaScript ES6 language features and modern JavaScript fundamentals.",
+    "url": "https://udemy-certificate.s3.amazonaws.com/pdf/UC-b337ecb9-867b-48e8-b3b2-6800d07daf62.pdf"
+  },
+  {
+    "group": "simulation",
+    "issuer": "Forage",
+    "mark": "AWS",
+    "items": "AWS - Solutions Architecture Job Simulation",
+    "when": "Jul 2025",
+    "summary": "Designed scalable Elastic Beanstalk hosting and explained its cost model.",
+    "url": "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_GbrwZJ7GpEHHpCD3m_1752581762033_completion_certificate.pdf"
+  },
+  {
+    "group": "simulation",
+    "issuer": "Forage",
+    "mark": "LL",
+    "items": "Lloyds Banking Group - Technology Engineering Job Simulation",
+    "when": "Jul 2025",
+    "summary": "Designed and presented a customer-focused mortgage calculator.",
+    "url": "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Zbnc2o4ok6kD2NEXx/8AFfeg9k5udSCu6r5_Zbnc2o4ok6kD2NEXx_GbrwZJ7GpEHHpCD3m_1752586634915_completion_certificate.pdf"
+  },
+  {
+    "group": "simulation",
+    "issuer": "Forage",
+    "mark": "DA",
+    "items": "Deloitte Australia - Data Analytics Job Simulation",
+    "when": "Jul 2025",
+    "summary": "Analyzed data, built a Tableau dashboard, and used Excel to draw conclusions.",
+    "url": "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_GbrwZJ7GpEHHpCD3m_1752579647907_completion_certificate.pdf"
   }
+]
+
+export const credentialGroups = [
+  { id: 'professional', title: 'Professional certifications', items: certs.filter((cert) => cert.group === 'professional') },
+  { id: 'course-simulation', title: 'Course certificates & job simulations', items: certs.filter((cert) => cert.group !== 'professional') },
 ]
 
 export const achievements = [
@@ -217,14 +405,15 @@ export const achievements = [
     "url": "https://leetcode.com/u/wtfashwin/"
   },
   {
-    "v": "ML experiments",
-    "l": `Kaggle: measured ML experiments, a public benchmark dataset, and ${verifiedKaggleBadges.length} confirmed badges.`,
-    "url": "https://www.kaggle.com/ashwinupadhyay"
+    "v": `${verifiedKaggleBadges.length} Kaggle badges`,
+    "l": "Badges across coding, competitions, notebooks, and datasets.",
+    "url": identity.links.kaggle
   },
   {
-    "v": "2 verified credentials",
-    "l": "Astronomer: Airflow 3 Fundamentals and DAG Authoring, verified through Credly.",
-    "url": "https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly"
+    "v": "20 credentials",
+    "l": "Oracle, Astronomer, Databricks, AI security, GenAI, and job simulations.",
+    "cta": "View credentials ↓",
+    "url": "#certifications-list"
   }
 ]
 
@@ -283,7 +472,7 @@ export const openSource = [
     "repo": "ParisNeo/lollms-webui",
     "num": "#690",
     "title": "security: harden sanitize_path regex against #641 traversal class + regression tests",
-    "note": "Harden path sanitization with traversal regression tests.",
+    "note": "Clarify path sanitization and add traversal regression tests.",
     "domain": "Path safety",
     "url": "https://github.com/ParisNeo/lollms-webui/pull/690"
   }
@@ -371,7 +560,7 @@ export const scenes = {
   "proof": {
     "kicker": "Open source & achievements",
     "h": "Open-source contributions",
-    "sub": "11 merged PRs across seven projects. Selected fixes below cover memory use, calculation correctness, safer defaults, and compatibility."
+    "sub": "11 merged PRs across seven projects, covering memory use, calculation correctness, safer defaults, and compatibility."
   },
   "contact": {
     "kicker": "Contact",
@@ -382,7 +571,7 @@ export const scenes = {
 
 export const achievementGroups = [
   {
-    "title": `Kaggle · ${verifiedKaggleBadges.length} confirmed badges`,
+    "title": "Kaggle badges",
     "items": verifiedKaggleBadges
   },
   {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /Portfolio/
+
+Sitemap: https://wtfashwin.github.io/Portfolio/sitemap.xml

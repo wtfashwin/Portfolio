@@ -17,6 +17,12 @@ export default function KaggleEvidence({ snapshot = evidence }) {
         </div>
         <a className="ghost" href={snapshot.profile.url} target="_blank" rel="noreferrer">View Kaggle profile ↗</a>
       </div>
+      <details className="kaggle-badges">
+        <summary>All {badges.length} awarded badge records <span aria-hidden="true">+</span></summary>
+        <div className="kaggle-badge-records">
+          {badges.map((badge) => <a className="kaggle-badge-record" key={badge.name} href={badge.evidenceUrl} target="_blank" rel="noreferrer"><span>{badge.name} <span aria-hidden="true">↗</span></span>{badge.awardedAt ? <time dateTime={badge.awardedAt}>Awarded {badge.awardedAt}</time> : <span className="badge-date-note">Award date not recorded</span>}</a>)}
+        </div>
+      </details>
       <div className="kaggle-grid">
         {snapshot.competitions.map((entry) => (
           <article className="kaggle-card glass" key={entry.id}>
@@ -35,13 +41,7 @@ export default function KaggleEvidence({ snapshot = evidence }) {
           </article>
         ))}
       </div>
-      <details className="badge-details"><summary>{badges.length} earned Kaggle badges</summary><div className="kaggle-badges">
-        <span className="cert-strip-label">Verified badges</span>
-        {badges.length ? badges.map((badge) => <a className="cert-pill" key={badge.name} href={badge.evidenceUrl || 'https://www.kaggle.com/progression/badges'} target="_blank" rel="noreferrer" title={`Awarded ${badge.awardedAt || 'date unavailable'}; checked ${checkedDate(badge.checkedAt)}`}>{badge.name}</a>) : <span className="kaggle-scope">Awarded badges are not verified in this snapshot.</span>}
-        <a href="https://www.kaggle.com/progression/badges" target="_blank" rel="noreferrer">All badge criteria ↗</a>
-      </div>
-      </details>
-      <p className="kaggle-note">Validation and Kaggle public scores use different samples. Badges are separate from medals and rankings. Snapshot updated {checkedDate(snapshot.generatedAt)}.</p>
+      <p className="kaggle-note">Badge records checked {checkedDate(snapshot.generatedAt)}. Competition scores show their own check times; validation and public scores use different samples.</p>
     </aside>
   )
 }

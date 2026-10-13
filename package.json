@@ -6,7 +6,8 @@
   "description": "Ashwin Upadhyay \u2014 AI systems and backend engineering portfolio.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/generate-profile.mjs && vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

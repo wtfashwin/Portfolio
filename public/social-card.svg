@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Ashwin Upadhyay — AI Systems &amp; Backend Engineer</title>
+  <desc id="desc">I build AI applications. And the systems behind them.</desc>
+  <rect width="1200" height="630" fill="#171613"/>
+  <path d="M0 50h1200" stroke="#4b463b"/>
+  <circle cx="80" cy="102" r="6" fill="#bd765a"/>
+  <text x="102" y="110" fill="#b1ada1" font-family="Arial, sans-serif" font-size="24">Ashwin Upadhyay · PUNE, INDIA</text>
+  <text x="76" y="258" fill="#edece7" font-family="Arial, sans-serif" font-size="64" letter-spacing="-2">I build AI applications.</text>
+  <text x="76" y="338" fill="#edece7" font-family="Arial, sans-serif" font-size="64" letter-spacing="-2">And the systems behind them.</text>
+  <path d="M80 399h80" stroke="#bd765a" stroke-width="3"/>
+  <text x="80" y="454" fill="#bdb8aa" font-family="Arial, sans-serif" font-size="28">AI Systems &amp; Backend Engineer</text>
+  <text x="80" y="564" fill="#8f8a7c" font-family="monospace" font-size="21">wtfashwin.github.io/Portfolio</text>
+</svg>

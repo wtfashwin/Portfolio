@@ -1,0 +1,43 @@
+# Ashwin Upadhyay
+
+> AI Systems & Backend Engineer. Pune, India. I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows.
+
+## Canonical sources
+
+- [Portfolio](https://wtfashwin.github.io/Portfolio/): Human-readable work, public evidence, and contact details.
+- [Structured profile](https://wtfashwin.github.io/Portfolio/profile.json): Profile, selected source records, and evidence dates.
+- [GitHub](https://github.com/wtfashwin): Public projects and contribution records.
+- [Complete upstream record](https://github.com/wtfashwin/wtfashwin/blob/main/OPEN_SOURCE.md): Merged, open, and closed submissions are distinguished.
+- [LinkedIn](https://www.linkedin.com/in/upadhyayashwin/): Professional profile.
+- [Contact](mailto:ashwinupadhyay09@gmail.com): Email Ashwin.
+
+## Public projects
+
+- [Customer Support System](https://github.com/wtfashwin/Customer-Support-System): AI support workflows and retrieval. Public implementation; deployment and production outcomes are not asserted.
+- [Context Dock](https://github.com/wtfashwin/ContextDock): Native macOS developer tool. Public implementation; deployment and production outcomes are not asserted.
+
+## Selected accepted upstream changes
+
+Checked 2026-10-12: 11 visible merged PRs across seven upstream repositories. The 7 selected records below are a subset. This is not a lifetime census or a claim of endorsement.
+
+- [PrefectHQ/prefect #22035](https://github.com/PrefectHQ/prefect/pull/22035): Allow cached task results in Azure Blob Storage to be overwritten on reruns.
+- [dlt-hub/dlt #3947](https://github.com/dlt-hub/dlt/pull/3947): Load Parquet row groups individually to limit SQL Server ingestion memory.
+- [VictoriaMetrics/VictoriaMetrics #10974](https://github.com/VictoriaMetrics/VictoriaMetrics/pull/10974): Stop integrate() from adding data beyond the end of a metric series.
+- [unslothai/unsloth #5551](https://github.com/unslothai/unsloth/pull/5551): Release a stuck IME typing state so users can send their messages.
+- [langfuse/langfuse-python #1664](https://github.com/langfuse/langfuse-python/pull/1664): Support installation with wrapt 2.x.
+- [TracecatHQ/tracecat #2715](https://github.com/TracecatHQ/tracecat/pull/2715): Request only the Elastic alert fields a workflow needs.
+- [ParisNeo/lollms-webui #690](https://github.com/ParisNeo/lollms-webui/pull/690): Clarify path sanitization and add traversal regression tests.
+
+## Evidence scope
+
+- Professional experience is supplied by Ashwin. Employer code is private; implementation and runtime outcomes are not independently established by this page.
+- Interactive notebook flows are illustrative. Use the linked PRs to inspect accepted changes.
+- Platform statistics are dated snapshots, not live counters. Kaggle badge records were checked 2026-10-11; competition scores keep their individual check times. LeetCode records were checked 2026-10-08.
+- Credentials include professional certifications, course completion certificates, and job simulations. These are distinct categories; source URLs are in profile.json.
+- No ranking, speedup, business impact, production readiness, or employer endorsement should be inferred from accepted code or credential records.
+
+## Additional profiles
+
+- [Kaggle](https://www.kaggle.com/ashwinupadhyay)
+- [LeetCode](https://leetcode.com/u/wtfashwin/)
+- [Credly](https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly)
