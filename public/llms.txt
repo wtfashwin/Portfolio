@@ -6,6 +6,8 @@
 
 - [Portfolio](https://wtfashwin.github.io/Portfolio/): Human-readable work, public evidence, and contact details.
 - [Structured profile](https://wtfashwin.github.io/Portfolio/profile.json): Profile, selected source records, and evidence dates.
+- [Portfolio JSON](https://wtfashwin.github.io/Portfolio/portfolio.json): The same structured profile at the existing public endpoint.
+- [Text portfolio](https://wtfashwin.github.io/Portfolio/portfolio.md): Public facts, records, and dated sources in Markdown.
 - [GitHub](https://github.com/wtfashwin): Public projects and contribution records.
 - [Complete upstream record](https://github.com/wtfashwin/wtfashwin/blob/main/OPEN_SOURCE.md): Merged, open, and closed submissions are distinguished.
 - [LinkedIn](https://www.linkedin.com/in/upadhyayashwin/): Professional profile.
@@ -41,3 +43,30 @@ Checked 2026-10-12: 11 visible merged PRs across seven upstream repositories. Th
 - [Kaggle](https://www.kaggle.com/ashwinupadhyay)
 - [LeetCode](https://leetcode.com/u/wtfashwin/)
 - [Credly](https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly)
+
+## Public profile directory
+
+Directory checked 2026-10-08T16:14:10.336314+00:00. These dates are retained from the existing published source.
+
+- [GitHub](https://github.com/wtfashwin): Code & open source; checked 2026-10-08T16:14:10.336314+00:00.
+- [LinkedIn](https://www.linkedin.com/in/wtfashwin/): Professional profile; checked 2026-10-08T16:14:10.336314+00:00.
+- [Kaggle](https://www.kaggle.com/ashwinupadhyay): ML experiments; checked 2026-10-08T16:14:10.336314+00:00.
+- [Medium](https://medium.com/@ashwinupadhyay): Technical writing; checked 2026-10-08T16:14:10.336314+00:00.
+- [CodePen](https://codepen.io/wtfashwin-): Frontend demos; checked 2026-10-08T16:14:10.336314+00:00.
+- [LeetCode](https://leetcode.com/u/wtfashwin/): Problem solving; checked 2026-10-08T16:14:10.336314+00:00.
+- [GeeksforGeeks](https://www.geeksforgeeks.org/user/wtfashwin/): Problem solving; checked 2026-10-08T16:14:10.336314+00:00.
+- [Codolio](https://codolio.com/profile/wtfashwin): Coding activity; checked 2026-10-08T16:14:10.336314+00:00.
+- [Credly](https://www.credly.com/users/ashwin-upadhyay.d80bc5d2/badges/credly): Verified credentials; checked 2026-10-08T16:14:10.336314+00:00.
+- [TIJER](https://tijer.org/tijer/viewpaperforall.php?paper=TIJER2505180): Research publication; checked 2026-10-08T16:14:10.336314+00:00.
+- [Twine](https://www.twine.net/AshwinUpadhyay): Freelance profile; checked 2026-10-08T16:14:10.336314+00:00.
+- [Collective](https://www.collective.work/profile/ashwin-upadhyay): Freelance profile; checked 2026-10-08T16:14:10.336314+00:00.
+- [PyPI](https://pypi.org/user/wtfashwin/): Package profile; checked 2026-10-08T16:24:47.736792+00:00.
+- [RemoteOK](https://remoteok.com/@wtfashwin): Professional profile; checked 2026-10-08T16:24:47.736792+00:00.
+
+## Writing and research
+
+- [SHAR: Scalable Human Activity Recognition](https://tijer.org/TIJER/papers/TIJER2505180.pdf): TIJER; Co-author; published 2025-05.
+- [Harnessing Future Insights: A Beginner’s Guide to Predictive Analytics](https://ashwinupadhyay.medium.com/harnessing-future-insights-a-beginners-guide-to-predictive-analytics-769254e74a8d): Medium; Author; published 2024-03-29T15:58:19+00:00.
+- [Stopwatch project using Frontend technologies](https://ashwinupadhyay.medium.com/stopwatch-project-using-frontend-technologies-6b1d091abec4): Medium; Author; published 2024-03-02T15:42:36+00:00.
+- [Building a Password Generator with HTML, CSS, and JavaScript](https://ashwinupadhyay.medium.com/building-a-password-generator-with-html-css-and-javascript-1549198fc5a3): Medium; Author; published 2024-03-02T15:17:02+00:00.
+- [From Code to Insights: Navigating the Journey from Web Development to Data Science](https://ashwinupadhyay.medium.com/from-code-to-insights-navigating-the-journey-from-web-development-to-data-science-452018749e8f): Medium; Author; published 2024-03-02T10:50:59+00:00.

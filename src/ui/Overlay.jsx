@@ -3,6 +3,7 @@ import { identity, experience, openSource, credentialGroups, profileLinks, princ
 import EngineeringNotebook from './EngineeringNotebook.jsx'
 import { RetrievalVisual, ContextVisual } from './ProjectVisuals.jsx'
 import KaggleEvidence from './KaggleEvidence.jsx'
+import OnlineProfiles from './OnlineProfiles.jsx'
 
 const { links } = identity
 const External = ({ href, children, className = '' }) => <a className={className} href={href} target="_blank" rel="noreferrer">{children}<span className="external-arrow" aria-hidden="true">↗</span></a>
@@ -85,6 +86,7 @@ function Credentials() {
       <details className="record-disclosure" id="certifications-list"><summary><span>Certifications & learning<span>{count} linked records across cloud, AI, data, and security</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body">{credentialGroups.map((group) => <section className="credential-group" key={group.id}><h3>{group.title}<span>{group.items.length}</span></h3><div className="credential-grid">{group.items.map((c) => <article className="credential-card" key={c.issuer + '-' + c.items}><External href={c.url} className="credential-main"><div className="credential-meta"><span className="credential-mark" aria-hidden="true">{c.mark}</span><span>{c.issuer}</span><time>{c.when}</time></div><h4>{c.items}</h4><p>{c.summary}</p><span className="credential-open">Open credential</span></External>{c.verificationUrl && <External href={c.verificationUrl} className="credential-verify">Credly verification</External>}</article>)}</div></section>)}</div></details>
       <details className="record-disclosure"><summary><span>Experiments & competitive practice<span>Kaggle notebooks, competition records, and coding profiles</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body"><KaggleEvidence /><div className="practice-profiles"><External href={links.leetcode}>LeetCode profile</External><External href={links.geeksforgeeks}>GeeksforGeeks profile</External><External href={links.credly}>Credly records</External></div></div></details>
       <details className="record-disclosure"><summary><span>Tools & working knowledge<span>Application code, backend services, data, and delivery</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body skills-grid">{Object.entries(skills).map(([group, items]) => <div key={group}><h3>{group}</h3><p>{items.join(', ')}</p></div>)}</div></details>
+      <OnlineProfiles />
     </section>
   )
 }

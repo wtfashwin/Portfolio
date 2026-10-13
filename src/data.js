@@ -47,6 +47,8 @@ export const NAV = [
   { label: 'Work', id: 'work' },
   { label: 'Open source', id: 'proof' },
   { label: 'Achievements', id: 'credentials' },
+  { label: 'Writing', id: 'writing' },
+  { label: 'Profiles', id: 'profiles' },
   { label: 'Contact', id: 'contact' },
 ]
 

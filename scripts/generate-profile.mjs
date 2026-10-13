@@ -17,8 +17,9 @@ const server = await createServer({ root, server: { middlewareMode: true, hmr: f
 try {
   const { identity, experience, skills, openSource, certs, achievements } = await server.ssrLoadModule('/src/data.js')
   const kaggle = JSON.parse(await readFile(join(root, 'src/kaggle-evidence.json'), 'utf8'))
+  const directory = JSON.parse(await readFile(join(root, 'src/platforms.json'), 'utf8'))
   const profile = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     generatedAt: new Date().toISOString(),
     canonicalUrl,
     identity: {
@@ -61,6 +62,8 @@ try {
       })),
     },
     skills,
+    directory,
+    writing: directory.writing,
     credentialRecords: certs.map((entry) => ({
       issuer: entry.issuer, title: entry.items, category: entry.group,
       period: entry.when, summary: entry.summary, url: entry.url,
@@ -86,6 +89,8 @@ try {
 
 - [Portfolio](${canonicalUrl}): Human-readable work, public evidence, and contact details.
 - [Structured profile](${canonicalUrl}profile.json): Profile, selected source records, and evidence dates.
+- [Portfolio JSON](${canonicalUrl}portfolio.json): The same structured profile at the existing public endpoint.
+- [Text portfolio](${canonicalUrl}portfolio.md): Public facts, records, and dated sources in Markdown.
 - [GitHub](${identity.links.github}): Public projects and contribution records.
 - [Complete upstream record](${identity.links.oss}): Merged, open, and closed submissions are distinguished.
 - [LinkedIn](${identity.links.linkedin}): Professional profile.
@@ -114,7 +119,18 @@ ${openSource.map((entry) => `- [${entry.repo} ${entry.num}](${entry.url}): ${ent
 - [Kaggle](${identity.links.kaggle})
 - [LeetCode](${identity.links.leetcode})
 - [Credly](${identity.links.credly})
+
+## Public profile directory
+
+Directory checked ${directory.checkedAt}. These dates are retained from the existing published source.
+
+${directory.profiles.map(entry => `- [${entry.platform}](${entry.url}): ${entry.kind}; checked ${entry.checkedAt}.`).join('\n')}
+
+## Writing and research
+
+${directory.writing.map(entry => `- [${entry.title}](${entry.url}): ${entry.platform}; ${entry.role || 'Author'}; published ${entry.publishedAt}.`).join('\n')}
 `
+  const markdown = `${llms}\n## Professional experience\n\n${profile.professionalExperience.map(entry => `### ${entry.role} · ${entry.organization}\n\n${entry.period}. Supplied professional summary.\n\n${entry.summary.map(point => `- ${point}`).join('\n')}`).join('\n\n')}\n\n## Credential records\n\n${profile.credentialRecords.map(entry => `- [${entry.title}](${entry.url}): ${entry.issuer}; ${entry.period}; ${entry.category}.`).join('\n')}\n\n## Awarded Kaggle badge records\n\n${kaggle.badges.filter(entry => entry.status === 'awarded').map(entry => `- [${entry.name}](${entry.evidenceUrl}): ${entry.awardedAt ? `awarded ${entry.awardedAt}` : 'award date not recorded'}; checked ${entry.checkedAt}.`).join('\n')}\n\n## Dated competition records\n\n${kaggle.competitions.map(entry => `- [${entry.title}](${entry.url}): validation ${entry.validationMetric} ${entry.validationScore}; public ${entry.publicMetric} ${entry.scoreState === 'scored' ? entry.publicScore : 'not verified'}; checked ${entry.checkedAt}. ${entry.validationScope}`).join('\n')}\n`
   const socialCard = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">${escapeXml(identity.name)} — ${escapeXml(identity.role)}</title>
   <desc id="desc">I build AI applications. And the systems behind them.</desc>
@@ -132,6 +148,8 @@ ${openSource.map((entry) => `- [${entry.repo} ${entry.num}](${entry.url}): ${ent
   await mkdir(publicDirectory, { recursive: true })
   await Promise.all([
     writeFile(join(publicDirectory, 'profile.json'), `${JSON.stringify(profile, null, 2)}\n`),
+    writeFile(join(publicDirectory, 'portfolio.json'), `${JSON.stringify(profile, null, 2)}\n`),
+    writeFile(join(publicDirectory, 'portfolio.md'), markdown),
     writeFile(join(publicDirectory, 'llms.txt'), llms),
     writeFile(join(publicDirectory, 'robots.txt'), `User-agent: *\nAllow: /Portfolio/\n\nSitemap: ${canonicalUrl}sitemap.xml\n`),
     writeFile(join(publicDirectory, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${canonicalUrl}</loc></url></urlset>\n`),

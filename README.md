@@ -25,3 +25,13 @@ Read back awarded cards from Kaggle before editing the snapshot. Include only ve
 ## Deploy
 
 [GitHub Actions](.github/workflows/deploy.yml) builds and publishes GitHub Pages on pushes to `main`. Vite uses a relative asset base for static hosting.
+
+## Public profiles and writing
+
+The existing `src/platforms.json` directory is retained: 14 public profiles, four technical articles, and one co-authored paper. Writing and profiles open through native disclosures; existing `#writing` and `#profiles` links remain valid. Original evidence dates are preserved.
+
+The build publishes `profile.json`, its `portfolio.json` alias (schema version 2), `portfolio.md`, and `llms.txt`. `npm run check:crawlers` verifies source links and dated records in the actual HTML and text exports.
+
+`npm run refresh:work` remains a local candidate review utility; its ignored cache never enters the website or public exports. `npm run check:refresh` tests its recovery behavior. Automatic activity feeds remain excluded.
+
+Crawler rules must be published at the origin's `/robots.txt` to govern crawling; the project-level `/Portfolio/robots.txt` is only informational. The earlier scroll-theme utilities remain in source but are not mounted by this fixed-palette design.
