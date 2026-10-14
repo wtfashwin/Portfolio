@@ -10,7 +10,7 @@ A portfolio for AI systems and backend engineering, with source-linked projects,
 - Uses React and Three.js for the interface and background visuals.
 - Pre-renders the React application so work and contact links are present in the initial HTML.
 - Generates `profile.json`, its `portfolio.json` alias, `portfolio.md`, and `llms.txt` for readers and crawlers.
-- Includes an engineering notebook and project diagrams that explain selected work.
+- Includes an engineering notebook and project diagrams that explain the work.
 
 The notebook and diagrams are explanations of the work, not live sessions or benchmark results.
 
