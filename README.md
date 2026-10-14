@@ -1,37 +1,70 @@
 # Ashwin Upadhyay — Portfolio
 
-A portfolio for AI systems and backend engineering: source-linked projects, merged upstream contributions, professional experience, and dated credential records. An interactive engineering notebook explains two accepted changes; original diagrams make the public projects inspectable.
+A portfolio for AI systems and backend engineering, with source-linked projects, upstream contributions, professional experience, and dated credential records.
 
-Built with React and Vite. Content lives in `src/data.js`. The Kaggle panel reads `src/kaggle-evidence.json`, a dated public snapshot. Badge awards and competition scores retain their separate check times; refreshing badges does not reverify older scores.
+[View the portfolio](https://wtfashwin.github.io/Portfolio/)
 
-The build generates `profile.json` and `llms.txt`, then pre-renders the real React application into the initial HTML. Work and contact links remain available without JavaScript. Fonts are self-hosted, controls support keyboard input, and nonessential motion respects the system preference. The notebook and project diagrams are explanations, not live application sessions or benchmark results.
+## What it does
 
-[The badge roadmap](docs/kaggle-badge-roadmap.md) records the Kaggle catalog. [The benchmark dataset](https://www.kaggle.com/datasets/ashwinupadhyay/measured-cpu-ml-benchmarks) contains 16 verified measurements.
+- Presents public projects, accepted upstream changes, profiles, and technical writing.
+- Uses React and Three.js for the interface and background visuals.
+- Pre-renders the React application so work and contact links are present in the initial HTML.
+- Generates `profile.json`, its `portfolio.json` alias, `portfolio.md`, and `llms.txt` for readers and crawlers.
+- Includes an engineering notebook and project diagrams that explain selected work.
+
+The notebook and diagrams are explanations of the work, not live sessions or benchmark results.
 
 ## Develop
 
+Use Node.js 20, as configured in the Pages workflow, and npm.
+
 ```bash
+git clone https://github.com/wtfashwin/Portfolio.git
+cd Portfolio
 npm ci
 npm run dev
+```
+
+Edit the content or interface, then check and preview the production build:
+
+```bash
 npm test
+npm run check:theme
 npm run build
 npm run preview
 ```
 
-## Refresh evidence
+The build generates the public exports, builds with Vite, pre-renders the application, and checks the crawler-facing output. The output directory is `dist/`.
 
-Read back awarded cards from Kaggle before editing the snapshot. Include only verified awards, award dates, source URLs, and evidence check times. Keep planned badges, estimated scores, private paths, and credentials out of the public file. Preserve score receipt times when only badges are refreshed.
+## Content and source guide
 
-## Deploy
+- `src/data.js` — identity, experience, projects, and contribution records.
+- `src/platforms.json` — public profiles and writing links.
+- `src/kaggle-evidence.json` — dated Kaggle evidence.
+- `src/ui/` and `src/three/` — interface and visual components.
+- `scripts/generate-profile.mjs` and `scripts/prerender.mjs` — text/JSON exports and initial HTML.
+- `tests/` and `scripts/refresh-work.test.mjs` — available tests.
 
-[GitHub Actions](.github/workflows/deploy.yml) builds and publishes GitHub Pages on pushes to `main`. Vite uses a relative asset base for static hosting.
+Update public claims against their linked sources and retain the original evidence dates. Badge awards and competition scores have separate check times; refreshing badges does not reverify scores. Keep planned awards, private paths, and credentials out of public data.
 
-## Public profiles and writing
+[Public profiles](https://wtfashwin.github.io/Portfolio/#profiles) and [technical writing](https://wtfashwin.github.io/Portfolio/#writing) use native disclosures. The [Kaggle badge roadmap](docs/kaggle-badge-roadmap.md) and [public benchmark dataset](https://www.kaggle.com/datasets/ashwinupadhyay/measured-cpu-ml-benchmarks) provide supporting records.
 
-The existing `src/platforms.json` directory is retained: 14 public profiles, four technical articles, and one co-authored paper. Writing and profiles open through native disclosures; existing `#writing` and `#profiles` links remain valid. Original evidence dates are preserved.
+## Available checks and utilities
 
-The build publishes `profile.json`, its `portfolio.json` alias (schema version 2), `portfolio.md`, and `llms.txt`. `npm run check:crawlers` verifies source links and dated records in the actual HTML and text exports.
+- `npm test` — notebook-content and refresh-utility tests.
+- `npm run check:theme` — fixed-palette source checks.
+- `npm run check:crawlers` — checks the generated `dist/` HTML and text exports; run after a build.
+- `npm run refresh:work` — local candidate-review utility; its ignored cache is excluded from public exports.
+- `npm run check:refresh` — refresh-utility recovery tests.
 
-`npm run refresh:work` remains a local candidate review utility; its ignored cache never enters the website or public exports. `npm run check:refresh` tests its recovery behavior. Automatic activity feeds remain excluded.
+## Deployment and limits
 
-Crawler rules must be published at the origin's `/robots.txt` to govern crawling; the project-level `/Portfolio/robots.txt` is only informational. The earlier scroll-theme utilities remain in source but are not mounted by this fixed-palette design.
+[GitHub Actions](.github/workflows/deploy.yml) builds and publishes GitHub Pages on pushes to `main`. The workflow runs `npm ci`, `npm test`, and `npm run build`. Vite uses a relative asset base for static hosting.
+
+Credential and platform records are dated snapshots. Automatic activity feeds are excluded. The earlier scroll-theme utilities remain in source but are not mounted by the current fixed-palette design.
+
+Crawler rules need an origin-level `/robots.txt` to govern crawling. A file at `/Portfolio/robots.txt` is informational for this project path.
+
+## License and attribution
+
+No repository-wide license file is included. Instrument Sans is bundled with its [SIL Open Font License](public/fonts/OFL-Instrument-Sans.txt). Platform-logo notes are in [docs/platform-logos.md](docs/platform-logos.md).
