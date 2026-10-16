@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { identity, experience, openSource, credentialGroups, profileLinks, principles, skills } from '../data.js'
 import EngineeringNotebook from './EngineeringNotebook.jsx'
+import FraudVisual from './FraudVisual.jsx'
 import { RetrievalVisual, ContextVisual } from './ProjectVisuals.jsx'
 import KaggleEvidence from './KaggleEvidence.jsx'
 import OnlineProfiles from './OnlineProfiles.jsx'
@@ -57,6 +58,17 @@ function Work() {
           <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Native UI components support task capture and project selection. Local event handling and atomic writes keep the context path explicit and inspectable in source.</p><p>The illustration explains that path. It does not show a running installation.</p><External href="https://github.com/wtfashwin/ContextDock/blob/main/README.md">Read the setup and implementation</External></div></details>
         </div>
         <div className="project-stage context-stage"><ContextVisual /></div>
+      </article>
+      <article className="project-story" id="fraud-detection">
+        <div className="project-copy">
+          <p className="project-kind">Public project / Machine learning systems</p><h3>Fraud Detection</h3>
+          <p className="project-lede">From transaction to a saved explanation.</p>
+          <p>A credit-card feature scoring API with asynchronous model explanations. The prediction, queued work, and persisted result each have an explicit contract.</p>
+          <dl className="project-facts"><div><dt>The work</dt><dd>Validated inputs, background explanations, readiness checks, and bounded input-drift monitoring.</dd></div><div><dt>The stack</dt><dd>FastAPI, Celery, Redis, PostgreSQL</dd></div></dl>
+          <External href="https://github.com/wtfashwin/fraud-detection" className="text-link accent-link">Explore the source</External>
+          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>The API accepts 30 ordered features. A Celery worker uses the same saved preprocessing bundle and persists explanation state in PostgreSQL. Pending, completed, failed, and duplicate-ID responses remain distinguishable.</p><p>Linear explanations describe feature contributions in log-odds relative to a scaled zero reference. They are not causal evidence. Input-drift monitoring checks a bounded Redis window without blocking scoring.</p><p>A separate tuned XGBoost experiment reports ROC AUC 0.973709 on a 56,962-row historical holdout. That benchmark bundle is separate from the packaged demonstration model; it does not establish current production performance.</p><External href="https://github.com/wtfashwin/fraud-detection/blob/4c7cd588c607bac7b47669ca51f711c4faec2417/docs/benchmark-results.md">Read the benchmark and its limits</External><br /><External href="https://github.com/wtfashwin/fraud-detection/pkgs/container/fraud-api">Published container package</External></div></details>
+        </div>
+        <div className="project-stage fraud-stage"><FraudVisual /></div>
       </article>
     </section>
   )

@@ -47,6 +47,7 @@ try {
       name: entry.org, role: entry.role, focus: entry.flagship,
       summary: entry.points, technologies: entry.tags, sourceUrl: entry.url,
       evidenceType: 'public source implementation',
+      ...(entry.evidence ? { evidence: entry.evidence } : {}),
     })),
     upstreamContributions: {
       checkedAt: evidenceCheckedAt,

@@ -178,6 +178,34 @@ export const experience = [
       "macOS"
     ],
     "url": "https://github.com/wtfashwin/ContextDock"
+  },
+  {
+    "role": "Creator",
+    "org": "Fraud Detection",
+    "when": "Independent project",
+    "where": "Public source",
+    "flagship": "Credit-card feature scoring and asynchronous explanations",
+    "blurb": "Public project",
+    "points": [
+      "FastAPI accepts 30 ordered features; Celery persists model explanations through Redis and PostgreSQL.",
+      "Explicit pending, completed, failed, and duplicate-ID responses, plus readiness and bounded input-drift checks.",
+      "Separate historical XGBoost benchmark reports ROC AUC 0.973709 on 56,962 held-out rows; the packaged demonstration model is a different artifact."
+    ],
+    "tags": [
+      "FastAPI",
+      "Celery",
+      "Redis",
+      "PostgreSQL",
+      "XGBoost"
+    ],
+    "url": "https://github.com/wtfashwin/fraud-detection",
+    "evidence": {
+      "checkedAt": "2026-10-16",
+      "sourceCommit": "4c7cd588c607bac7b47669ca51f711c4faec2417",
+      "benchmarkUrl": "https://github.com/wtfashwin/fraud-detection/blob/4c7cd588c607bac7b47669ca51f711c4faec2417/docs/benchmark-results.md",
+      "apiUrl": "https://github.com/wtfashwin/fraud-detection/blob/4c7cd588c607bac7b47669ca51f711c4faec2417/api/app.py",
+      "scope": "Public implementation and a separate historical benchmark. Portfolio visualization is illustrative and makes no API requests."
+    }
   }
 ]
 
