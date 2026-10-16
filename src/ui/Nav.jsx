@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { identity } from '../data.js'
+import CommandPalette from './CommandPalette.jsx'
 
 const sections = [['work', 'Work'], ['proof', 'Open source'], ['practice', 'Approach'], ['about', 'About']]
 
@@ -32,6 +33,7 @@ export default function Nav() {
       <nav className="nav page-width" aria-label="Main navigation">
         <a className="nav-name" href="#hero" aria-label="Ashwin Upadhyay, home">Ashwin Upadhyay<span className="identity-dot" aria-hidden="true" /></a>
         <div className="nav-links">{sections.map(([id, label]) => <a key={id} href={'#' + id} aria-current={active === id ? 'location' : undefined}>{label}</a>)}</div>
+        <CommandPalette />
         <a className="nav-cta" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
         <details className="mobile-menu" ref={menu} onKeyDown={(e) => { if (e.key === 'Escape') { close(); e.currentTarget.querySelector('summary')?.focus() } }}>
           <summary>Menu <span aria-hidden="true">+</span></summary>

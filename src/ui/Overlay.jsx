@@ -1,7 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { identity, experience, openSource, credentialGroups, profileLinks, principles, skills } from '../data.js'
 import EngineeringNotebook from './EngineeringNotebook.jsx'
 import FraudVisual from './FraudVisual.jsx'
+import ProjectExplorer from './ProjectExplorer.jsx'
+import { filterCredentialGroups } from './portfolio-search.js'
 import { RetrievalVisual, ContextVisual } from './ProjectVisuals.jsx'
 import KaggleEvidence from './KaggleEvidence.jsx'
 import OnlineProfiles from './OnlineProfiles.jsx'
@@ -36,28 +38,28 @@ function Hero() {
 function Work() {
   return (
     <section id="work" className="section page-width" aria-labelledby="work-title">
-      <div className="section-intro"><h2 id="work-title">From the interface<br />to the infrastructure.</h2><p>I work across the application and the services beneath it. These public projects show how the pieces connect.</p></div>
-      <article className="project-story">
+      <div className="section-intro"><h2 id="work-title">From the interface<br />to the infrastructure.</h2><p>I work across the application and the services beneath it. Try the browser workbenches, change the inputs, and inspect the public code behind each project.</p></div>
+      <article className="project-story" id="customer-support-system">
         <div className="project-copy">
           <p className="project-kind">Public project / AI applications</p><h3>Customer Support System</h3>
           <p className="project-lede">An AI answer is only as useful as the system around it.</p>
           <p>A support application connecting document ingestion, retrieval, and tool workflows with a FastAPI AI service and a TypeScript application.</p>
           <dl className="project-facts"><div><dt>The work</dt><dd>Streaming responses, authorization forwarding, request correlation, and readiness checks.</dd></div><div><dt>The stack</dt><dd>FastAPI, LangGraph, TypeScript</dd></div></dl>
           <External href="https://github.com/wtfashwin/Customer-Support-System" className="text-link accent-link">Explore the source</External>
-          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Retrieval connects ingestion, embeddings, and search to the answer path. The public implementation also covers JWT verification and tracing so the API boundary can be inspected alongside the AI workflow.</p><p>The repository is implementation evidence. Deployment scale and business impact are not claimed here.</p><External href="https://github.com/wtfashwin/Customer-Support-System/blob/main/apps/aiml-service/README.md">Read the service documentation</External></div></details>
+          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Retrieval connects ingestion, embeddings, and search to the answer path. The public implementation also covers JWT verification and tracing so the API boundary can be inspected alongside the AI workflow.</p><p>The browser workbench searches six project-summary passages by keyword. The actual service connects ingestion, embeddings, and retrieval; the source documents that implementation. Deployment scale and business impact are not claimed here.</p><External href="https://github.com/wtfashwin/Customer-Support-System/blob/main/apps/aiml-service/README.md">Read the service documentation</External></div></details>
         </div>
-        <div className="project-stage"><RetrievalVisual /></div>
+        <div className="project-stage"><ProjectExplorer kind="retrieval"><RetrievalVisual /></ProjectExplorer></div>
       </article>
-      <article className="project-story project-reverse">
+      <article className="project-story project-reverse" id="context-dock">
         <div className="project-copy">
           <p className="project-kind">Public project / Developer tools</p><h3>Context Dock</h3>
           <p className="project-lede">Keep the idea connected to the work.</p>
           <p>A native macOS tool for capturing tasks and matching them to project context. Built around the small moments where an idea is otherwise lost.</p>
           <dl className="project-facts"><div><dt>The work</dt><dd>Local agent events, decision journaling, and atomic note writes.</dd></div><div><dt>The stack</dt><dd>Swift, SwiftUI, AppKit</dd></div></dl>
           <External href="https://github.com/wtfashwin/ContextDock" className="text-link accent-link">Explore the source</External>
-          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Native UI components support task capture and project selection. Local event handling and atomic writes keep the context path explicit and inspectable in source.</p><p>The illustration explains that path. It does not show a running installation.</p><External href="https://github.com/wtfashwin/ContextDock/blob/main/README.md">Read the setup and implementation</External></div></details>
+          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Native UI components support task capture and project selection. Local event handling and atomic writes keep the context path explicit and inspectable in source.</p><p>The browser workbench captures and exports real notes stored on this device. It is a separate interactive sketch of the native app’s workflow.</p><External href="https://github.com/wtfashwin/ContextDock/blob/main/README.md">Read the setup and implementation</External></div></details>
         </div>
-        <div className="project-stage context-stage"><ContextVisual /></div>
+        <div className="project-stage context-stage"><ProjectExplorer kind="context"><ContextVisual /></ProjectExplorer></div>
       </article>
       <article className="project-story" id="fraud-detection">
         <div className="project-copy">
@@ -91,11 +93,16 @@ function Practice() {
 }
 
 function Credentials() {
+  const [credentialQuery, setCredentialQuery] = useState('')
+  const [credentialIssuer, setCredentialIssuer] = useState('')
+  const filteredGroups = filterCredentialGroups(credentialGroups, credentialQuery, credentialIssuer)
+  const matchCount = filteredGroups.reduce((total, group) => total + group.items.length, 0)
+  const issuers = [...new Set(credentialGroups.flatMap(group => group.items.map(item => item.issuer)))].sort()
   const count = credentialGroups.reduce((total, group) => total + group.items.length, 0)
   return (
     <section id="credentials" className="section credentials-section page-width" aria-labelledby="credentials-title">
       <div className="section-intro"><h2 id="credentials-title">A little more context.</h2><p>Professional credentials, technical practice, and experiments. Full records stay close to their sources.</p></div>
-      <details className="record-disclosure" id="certifications-list"><summary><span>Certifications & learning<span>{count} linked records across cloud, AI, data, and security</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body">{credentialGroups.map((group) => <section className="credential-group" key={group.id}><h3>{group.title}<span>{group.items.length}</span></h3><div className="credential-grid">{group.items.map((c) => <article className="credential-card" key={c.issuer + '-' + c.items}><External href={c.url} className="credential-main"><div className="credential-meta"><span className="credential-mark" aria-hidden="true">{c.mark}</span><span>{c.issuer}</span><time>{c.when}</time></div><h4>{c.items}</h4><p>{c.summary}</p><span className="credential-open">Open credential</span></External>{c.verificationUrl && <External href={c.verificationUrl} className="credential-verify">Credly verification</External>}</article>)}</div></section>)}</div></details>
+      <details className="record-disclosure" id="certifications-list"><summary><span>Certifications & learning<span>{count} linked records across cloud, AI, data, and security</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body"><form className="credential-filters" role="search" aria-label="Filter credential records" onSubmit={event => event.preventDefault()}><label>Search credentials<input type="search" value={credentialQuery} onChange={event => setCredentialQuery(event.target.value)} placeholder="Title, technology, or subject" /></label><label>Issuer<select value={credentialIssuer} onChange={event => setCredentialIssuer(event.target.value)}><option value="">All issuers</option>{issuers.map(issuer => <option key={issuer} value={issuer}>{issuer}</option>)}</select></label><button type="button" onClick={() => { setCredentialQuery(''); setCredentialIssuer('') }}>Clear filters</button></form><p className="credential-match-count" role="status">{matchCount} of {count} records</p>{!filteredGroups.length && <p className="credential-empty">No credentials match these filters. Try another subject or clear the filters.</p>}{filteredGroups.map((group) => <section className="credential-group" key={group.id}><h3>{group.title}<span>{group.items.length}</span></h3><div className="credential-grid">{group.items.map((c) => <article className="credential-card" key={c.issuer + '-' + c.items}><External href={c.url} className="credential-main"><div className="credential-meta"><span className="credential-mark" aria-hidden="true">{c.mark}</span><span>{c.issuer}</span><time>{c.when}</time></div><h4>{c.items}</h4><p>{c.summary}</p><span className="credential-open">Open credential</span></External>{c.verificationUrl && <External href={c.verificationUrl} className="credential-verify">Credly verification</External>}</article>)}</div></section>)}</div></details>
       <details className="record-disclosure"><summary><span>Experiments & competitive practice<span>Kaggle notebooks, competition records, and coding profiles</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body"><KaggleEvidence /><div className="practice-profiles"><External href={links.leetcode}>LeetCode profile</External><External href={links.geeksforgeeks}>GeeksforGeeks profile</External><External href={links.credly}>Credly records</External></div></div></details>
       <details className="record-disclosure"><summary><span>Tools & working knowledge<span>Application code, backend services, data, and delivery</span></span><span className="disclosure-plus" aria-hidden="true">+</span></summary><div className="disclosure-body skills-grid">{Object.entries(skills).map(([group, items]) => <div key={group}><h3>{group}</h3><p>{items.join(', ')}</p></div>)}</div></details>
       <OnlineProfiles />

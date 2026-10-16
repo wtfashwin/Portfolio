@@ -15,7 +15,10 @@ export default function GlyphField() {
   useEffect(() => {
     const canvas = ref.current
     const ctx = canvas.getContext('2d')
-    const still = matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!ctx) return
+    const media = matchMedia('(prefers-reduced-motion: reduce)')
+    let paused = false
+    try { paused = localStorage.getItem('portfolio-background-paused') === 'true' } catch {}
     let cols = 0, rows = 0, grid = [], raf = 0, last = 0
 
     const resize = () => {
@@ -53,16 +56,31 @@ export default function GlyphField() {
 
     const loop = (now) => {
       raf = requestAnimationFrame(loop)
-      if (document.hidden || now - last < 1000 / FPS) return
+      if (now - last < 1000 / FPS) return
       last = now
       draw(now)
     }
 
-    resize()
-    addEventListener('resize', resize)
-    if (still) draw(0)
-    else raf = requestAnimationFrame(loop)
-    return () => { cancelAnimationFrame(raf); removeEventListener('resize', resize) }
+    const sync = () => {
+      cancelAnimationFrame(raf)
+      const stopped = paused || media.matches || document.hidden
+      canvas.dataset.motion = stopped ? 'paused' : 'running'
+      if (!stopped) raf = requestAnimationFrame(loop)
+    }
+    const motion = event => { paused = event.detail.paused; sync() }
+    const resized = () => { resize(); draw(performance.now()); sync() }
+    resized()
+    addEventListener('resize', resized)
+    addEventListener('portfolio:background-motion', motion)
+    document.addEventListener('visibilitychange', sync)
+    media.addEventListener('change', sync)
+    return () => {
+      cancelAnimationFrame(raf)
+      removeEventListener('resize', resized)
+      removeEventListener('portfolio:background-motion', motion)
+      document.removeEventListener('visibilitychange', sync)
+      media.removeEventListener('change', sync)
+    }
   }, [])
 
   return <canvas ref={ref} className="glyph-field" aria-hidden="true" />
