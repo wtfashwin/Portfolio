@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-16T15:35:41.608Z",
+  "generatedAt": "2026-10-17T05:42:33.677Z",
   "canonicalUrl": "https://wtfashwin.github.io/Portfolio/",
   "identity": {
     "name": "Ashwin Upadhyay",
@@ -628,6 +628,38 @@
       "period": "Oct 2025",
       "summary": "Building and scheduling DAGs with Apache Airflow 3.",
       "url": "https://www.credly.com/badges/863162ef-ee67-4e23-b577-82a36d96ebfa/linked_in_profile"
+    },
+    {
+      "issuer": "OpenAI Academy",
+      "title": "AI Foundations",
+      "category": "course",
+      "period": "16 Oct 2026",
+      "summary": "Course completion badge, earned with AI assistance. Expires 16 Apr 2027.",
+      "url": "https://oaiacademy.credential.net/3bcda655-d5ca-418f-aac2-f17724f886ad"
+    },
+    {
+      "issuer": "Claude Academy",
+      "title": "Claude 101",
+      "category": "course",
+      "period": "16 Oct 2026",
+      "summary": "Course completion badge, earned with AI assistance.",
+      "url": "https://academy.claude.com/verify/be08d5b205c977103968365dbf95bbc6"
+    },
+    {
+      "issuer": "Claude Academy",
+      "title": "AI Fluency: Framework and foundations",
+      "category": "course",
+      "period": "16 Oct 2026",
+      "summary": "Course completion badge, earned with AI assistance.",
+      "url": "https://academy.claude.com/verify/fd3decdcc20f36553c9678198ae14dcf"
+    },
+    {
+      "issuer": "Kaggle Learn",
+      "title": "Intermediate Machine Learning",
+      "category": "course",
+      "period": "16 Oct 2026",
+      "summary": "Course completion certificate, earned with AI assistance.",
+      "url": "https://www.kaggle.com/learn/certification/ashwinupadhyay/intermediate-machine-learning"
     },
     {
       "issuer": "Databricks",

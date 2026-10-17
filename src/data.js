@@ -351,6 +351,42 @@ export const certs = [
   },
   {
     "group": "course",
+    "issuer": "OpenAI Academy",
+    "mark": "OA",
+    "items": "AI Foundations",
+    "when": "16 Oct 2026",
+    "summary": "Course completion badge, earned with AI assistance. Expires 16 Apr 2027.",
+    "url": "https://oaiacademy.credential.net/3bcda655-d5ca-418f-aac2-f17724f886ad"
+  },
+  {
+    "group": "course",
+    "issuer": "Claude Academy",
+    "mark": "CL",
+    "items": "Claude 101",
+    "when": "16 Oct 2026",
+    "summary": "Course completion badge, earned with AI assistance.",
+    "url": "https://academy.claude.com/verify/be08d5b205c977103968365dbf95bbc6"
+  },
+  {
+    "group": "course",
+    "issuer": "Claude Academy",
+    "mark": "CL",
+    "items": "AI Fluency: Framework and foundations",
+    "when": "16 Oct 2026",
+    "summary": "Course completion badge, earned with AI assistance.",
+    "url": "https://academy.claude.com/verify/fd3decdcc20f36553c9678198ae14dcf"
+  },
+  {
+    "group": "course",
+    "issuer": "Kaggle Learn",
+    "mark": "KG",
+    "items": "Intermediate Machine Learning",
+    "when": "16 Oct 2026",
+    "summary": "Course completion certificate, earned with AI assistance.",
+    "url": "https://www.kaggle.com/learn/certification/ashwinupadhyay/intermediate-machine-learning"
+  },
+  {
+    "group": "course",
     "issuer": "Databricks",
     "mark": "DB",
     "items": "Academy Accreditation - Generative AI Fundamentals",

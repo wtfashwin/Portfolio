@@ -103,6 +103,10 @@ Oct to Nov 2025. Supplied professional summary.
 - [Oracle Cloud Infrastructure 2025 Certified Generative AI Professional](https://catalog-education.oracle.com/ords/certview/sharebadge?id=3C89FBEBDA81EC0D06C13927A10CA75773E4117F437F99B4B06AF7356D24CC99): Oracle; Oct 2025; professional.
 - [Astronomer Certification for Apache Airflow 3 Fundamentals](https://www.credly.com/badges/ef9a1b33-9899-46b7-b25e-5a2acb979e69/linked_in_profile): Astronomer; Oct 2025; professional.
 - [Astronomer Certification DAG Authoring for Apache Airflow 3](https://www.credly.com/badges/863162ef-ee67-4e23-b577-82a36d96ebfa/linked_in_profile): Astronomer; Oct 2025; professional.
+- [AI Foundations](https://oaiacademy.credential.net/3bcda655-d5ca-418f-aac2-f17724f886ad): OpenAI Academy; 16 Oct 2026; course.
+- [Claude 101](https://academy.claude.com/verify/be08d5b205c977103968365dbf95bbc6): Claude Academy; 16 Oct 2026; course.
+- [AI Fluency: Framework and foundations](https://academy.claude.com/verify/fd3decdcc20f36553c9678198ae14dcf): Claude Academy; 16 Oct 2026; course.
+- [Intermediate Machine Learning](https://www.kaggle.com/learn/certification/ashwinupadhyay/intermediate-machine-learning): Kaggle Learn; 16 Oct 2026; course.
 - [Academy Accreditation - Generative AI Fundamentals](https://credentials.databricks.com/d0424f1c-b0e0-4b02-beef-5fbbb4c6d80e): Databricks; Oct 2025; course.
 - [Academy Accreditation - AI Agent Fundamentals](https://credentials.databricks.com/bd8fd17f-12f6-4f9b-8da0-4c68b628ed02): Databricks; Oct 2025; course.
 - [Kubernetes for Absolute Beginners](https://certificates.kodekloud.com/a22750a7-822e-449c-bcb9-6e048a98f5ca/2c52f2b1-b94a-467d-89da-a6317ba68b4f/fe7d88e3-8261-42c6-86ae-707143cda34f.pdf): KodeKloud; Oct 2025; course.
