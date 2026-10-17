@@ -26,6 +26,7 @@ export const identity = {
     "achievements": "https://github.com/wtfashwin/wtfashwin/blob/main/ACHIEVEMENTS.md",
     "oss": "https://github.com/wtfashwin/wtfashwin/blob/main/OPEN_SOURCE.md",
     "medium": "https://medium.com/@ashwinupadhyay",
+    "hashnode": "https://hashnode.com/@wtfashwin",
     "paper": "https://www.tijer.org/paper/TIJER2505180"
   },
   "bio": "I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows."

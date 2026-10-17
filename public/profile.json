@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-17T05:42:33.677Z",
+  "generatedAt": "2026-10-17T06:33:55.796Z",
   "canonicalUrl": "https://wtfashwin.github.io/Portfolio/",
   "identity": {
     "name": "Ashwin Upadhyay",
@@ -19,6 +19,7 @@
       "achievements": "https://github.com/wtfashwin/wtfashwin/blob/main/ACHIEVEMENTS.md",
       "oss": "https://github.com/wtfashwin/wtfashwin/blob/main/OPEN_SOURCE.md",
       "medium": "https://medium.com/@ashwinupadhyay",
+      "hashnode": "https://hashnode.com/@wtfashwin",
       "paper": "https://www.tijer.org/paper/TIJER2505180"
     }
   },
@@ -263,7 +264,7 @@
   "directory": {
     "schemaVersion": 1,
     "checkedAt": "2026-10-08T16:14:10.336314+00:00",
-    "scope": "Verified public profiles found through supplied profiles and linked public evidence. This is not an exhaustive internet search.",
+    "scope": "Public profiles from linked evidence and user-supplied accounts. Each record retains its verification status; this is not an exhaustive internet search.",
     "profiles": [
       {
         "platform": "GitHub",
@@ -320,6 +321,20 @@
         "refresh": {
           "type": "rss",
           "url": "https://medium.com/feed/@ashwinupadhyay"
+        }
+      },
+      {
+        "platform": "Hashnode",
+        "kind": "Technical writing",
+        "handle": "wtfashwin",
+        "url": "https://hashnode.com/@wtfashwin",
+        "status": "user-supplied",
+        "checkedAt": null,
+        "suppliedAt": "2026-10-17",
+        "ownershipMethod": "user-confirmed",
+        "evidenceUrls": [],
+        "refresh": {
+          "type": "manual"
         }
       },
       {

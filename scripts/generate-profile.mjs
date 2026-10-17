@@ -123,9 +123,9 @@ ${openSource.map((entry) => `- [${entry.repo} ${entry.num}](${entry.url}): ${ent
 
 ## Public profile directory
 
-Directory checked ${directory.checkedAt}. These dates are retained from the existing published source.
+Profile evidence dates and user-supplied status are retained separately.
 
-${directory.profiles.map(entry => `- [${entry.platform}](${entry.url}): ${entry.kind}; checked ${entry.checkedAt}.`).join('\n')}
+${directory.profiles.map(entry => `- [${entry.platform}](${entry.url}): ${entry.kind}; ${entry.status === 'user-supplied' ? `user-supplied ${entry.suppliedAt}; profile content not independently verified` : `checked ${entry.checkedAt}`}.`).join('\n')}
 
 ## Writing and research
 

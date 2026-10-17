@@ -27,7 +27,7 @@ const person = {
   description: identity.bio,
   email: `mailto:${identity.email}`,
   homeLocation: { '@type': 'Place', name: identity.location },
-  sameAs: ['github', 'linkedin', 'kaggle', 'leetcode', 'credly', 'geeksforgeeks', 'medium'].map((key) => identity.links[key]).filter(Boolean),
+  sameAs: ['github', 'linkedin', 'kaggle', 'leetcode', 'credly', 'geeksforgeeks', 'medium', 'hashnode'].map((key) => identity.links[key]).filter(Boolean),
 }
 const title = escapeHtml(`${identity.name} · ${identity.role}`)
 const description = escapeHtml(identity.bio)

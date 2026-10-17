@@ -6,7 +6,7 @@ const actions = [
  {target:'certifications-list',title:'Find a credential',description:'Filter the credential records by issuer and subject.',keywords:'certifications credentials oracle ibm cloud courses learning'},
  {target:'proof',title:'Inspect accepted upstream changes',description:'Source links to the checked contribution record.',keywords:'open source merged github contributions prefect dlt victoriametrics unsloth'},
  {target:'work',title:'Explore all projects',description:'Public source, interactive sketches, and engineering details.',keywords:'portfolio projects code applications'},
- {target:'writing',title:'Read writing and research',description:'Technical articles and a co-authored paper.',keywords:'medium articles writing research paper'},
+ {target:'writing',title:'Read writing and research',description:'Technical articles and a co-authored paper.',keywords:'medium hashnode articles writing research paper'},
  {target:'profiles',title:'Find public profiles',description:'Code, experiments, publications, and professional profiles.',keywords:'github linkedin kaggle leetcode profiles'},
  {target:'practice',title:'How I approach engineering',description:'Failure, access boundaries, and recovery.',keywords:'principles approach practice correctness'},
  {target:'about',title:'About Ashwin',description:'Professional experience and education.',keywords:'experience sylox founding engineer education about'},
