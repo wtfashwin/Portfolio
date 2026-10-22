@@ -39,15 +39,17 @@ function Work() {
   return (
     <section id="work" className="section page-width" aria-labelledby="work-title">
       <div className="section-intro"><h2 id="work-title">From the interface<br />to the infrastructure.</h2><p>I work across the application and the services beneath it. Try the browser workbenches, change the inputs, and inspect the public code behind each project.</p></div>
-      {experience.filter(item => item.kind === 'public-tool').map(tool => <article className="public-tool-entry" id="invoice-followup" key={tool.url}>
+      {experience.filter(item => ['public-tool', 'public-example'].includes(item.kind)).map(tool => <article className="public-tool-entry" id={tool.id} key={tool.url}>
         <div className="project-copy">
-          <p className="project-kind">Free tool / Public validation prototype</p>
+          <p className="project-kind">{tool.kind === 'public-example' ? 'Synthetic example / CSV reporting' : 'Free tool / Public validation prototype'}</p>
           <h3>{tool.org}</h3>
           <p className="project-lede">{tool.flagship}</p>
           {tool.points.map(point => <p key={point}>{point}</p>)}
         </div>
         <div className="public-tool-links">
-          <External href={tool.liveUrl} className="text-link accent-link">Open the free invoice follow-up tool</External>
+          {tool.kind === 'public-example'
+            ? <a href={tool.liveUrl} className="text-link accent-link">View the synthetic CSV reporting example <span className="external-arrow" aria-hidden="true">↗</span></a>
+            : <External href={tool.liveUrl} className="text-link accent-link">Open the free invoice follow-up tool</External>}
           <External href={tool.url} className="text-link">Read the source and documentation</External>
         </div>
       </article>)}

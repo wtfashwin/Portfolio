@@ -7,6 +7,7 @@ test('search locates projects by their real behavior and technologies', () => {
  assert.equal(searchPortfolio('swift task')[0].target,'context-dock')
  assert.equal(searchPortfolio('retrieval FastAPI')[0].target,'customer-support-system')
  assert.equal(searchPortfolio('invoice csv')[0]?.target,'invoice-followup')
+ assert.equal(searchPortfolio('reporting csv')[0]?.target,'csv-reporting-example')
 })
 test('search supports keyboard-sized result lists and an empty state', () => {
  assert.equal(searchPortfolio('',4).length,4)

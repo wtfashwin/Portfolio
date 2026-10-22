@@ -16,6 +16,7 @@
 ## Public projects
 
 - [Invoice Followup](https://invoice-followup.zany-hippo-3715.chatgpt.site/): A free invoice queue and editable payment reminders. [Source code](https://github.com/wtfashwin/invoice-followup). Public validation prototype; production readiness and measured outcomes are not established.
+- [CSV Reporting Example](https://wtfashwin.github.io/Portfolio/reporting-example/): A synthetic campaign report from two fictional CSV files. [Source code](https://github.com/wtfashwin/csv-report-pilot). Synthetic example using fictional CSV inputs; no upload, live connector, customer results or production reporting service is established.
 - [Customer Support System](https://github.com/wtfashwin/Customer-Support-System): AI support workflows and retrieval. Public implementation; deployment and production outcomes are not asserted.
 - [Context Dock](https://github.com/wtfashwin/ContextDock): Native macOS developer tool. Public implementation; deployment and production outcomes are not asserted.
 - [Fraud Detection](https://github.com/wtfashwin/fraud-detection): Credit-card feature scoring and asynchronous explanations. Public implementation; deployment and production outcomes are not asserted.

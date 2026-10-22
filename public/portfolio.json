@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T17:34:30.330Z",
+  "generatedAt": "2026-10-22T18:34:46.246Z",
   "canonicalUrl": "https://wtfashwin.github.io/Portfolio/",
   "identity": {
     "name": "Ashwin Upadhyay",
@@ -26,7 +26,7 @@
   "evidenceNotes": {
     "generation": "Generated from the portfolio editorial source. Generation time is not an evidence verification time.",
     "professionalExperience": "Supplied professional summaries. Employer source code is private; public runtime or production outcomes are not asserted.",
-    "publicProjects": "Linked source describes implementation; a liveUrl identifies a separately linked tool or prototype. Neither establishes production readiness or measured outcomes.",
+    "publicProjects": "Linked source describes implementation; a liveUrl identifies a separately linked tool, prototype or synthetic example. Neither establishes production readiness or measured outcomes.",
     "interactiveExplanations": "Illustrative explanations of engineering concepts. The linked source records are the evidence.",
     "platformRecords": "Dated snapshots. Badge, competition, and profile records retain their separate check times; they are not live statistics.",
     "credentials": "Credential records and verification URLs supplied in the portfolio. These were not independently refreshed during this build."
@@ -83,12 +83,37 @@
         "Browser storage"
       ],
       "sourceUrl": "https://github.com/wtfashwin/invoice-followup",
+      "kind": "public-tool",
       "liveUrl": "https://invoice-followup.zany-hippo-3715.chatgpt.site/",
       "evidenceType": "public source and live validation prototype",
       "evidence": {
         "checkedAt": "2026-10-22",
         "sourceCommit": "3ac76427da6fd60fc2199a9b24f27f49a839b98b",
         "scope": "Public browser-local validation prototype. No paying users, collection improvement, traffic or rankings are established."
+      }
+    },
+    {
+      "name": "CSV Reporting Example",
+      "role": "Creator",
+      "focus": "A synthetic campaign report from two fictional CSV files",
+      "summary": [
+        "Inspect six illustrative metrics, their formulas and a JSON calculation receipt generated from fictional CSV inputs.",
+        "No upload or live connector. This example does not establish customer results or a production reporting service."
+      ],
+      "technologies": [
+        "Python",
+        "CSV",
+        "HTML",
+        "Decimal"
+      ],
+      "sourceUrl": "https://github.com/wtfashwin/csv-report-pilot",
+      "kind": "public-example",
+      "liveUrl": "https://wtfashwin.github.io/Portfolio/reporting-example/",
+      "evidenceType": "public source and synthetic reporting example",
+      "evidence": {
+        "checkedAt": "2026-10-23",
+        "sourceCommit": "86065ea65e7b2e55453281e36b6fe06aa9c8fc04",
+        "scope": "Synthetic reporting example using fictional CSV inputs. No upload, live connector, customer results or production reporting service is established."
       }
     },
     {

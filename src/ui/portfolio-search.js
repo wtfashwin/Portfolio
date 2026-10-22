@@ -4,6 +4,7 @@ const actions = [
  {target:'context-dock',title:'Capture a task in Context Dock',description:'Create, edit, and export a browser note with project context.',keywords:'swift task notes markdown local developer macos'},
  {target:'customer-support-system',title:'Try retrieval in Customer Support System',description:'Search passages and assemble context from the project summary.',keywords:'retrieval fastapi rag api document query search authorization'},
  {target:'invoice-followup',title:'Try Invoice Followup',description:'Open the free browser invoice queue and editable payment reminder tool.',keywords:'invoice csv import export payment reminder followup freelancer browser local'},
+ {target:'csv-reporting-example',title:'Inspect the synthetic CSV reporting example',description:'View a six-metric campaign report from fictional CSV inputs, with formulas, receipt and source.',keywords:'reporting csv report campaign metrics python synthetic fictional receipt'},
  {target:'certifications-list',title:'Find a credential',description:'Filter the credential records by issuer and subject.',keywords:'certifications credentials oracle ibm cloud courses learning'},
  {target:'proof',title:'Inspect accepted upstream changes',description:'Source links to the checked contribution record.',keywords:'open source merged github contributions prefect dlt victoriametrics unsloth'},
  {target:'work',title:'Explore all projects',description:'Public source, interactive sketches, and engineering details.',keywords:'portfolio projects code applications'},

@@ -146,6 +146,7 @@ export const experience = [
     "role": "Creator",
     "org": "Invoice Followup",
     "kind": "public-tool",
+    "id": "invoice-followup",
     "when": "Independent project",
     "where": "Public validation prototype",
     "flagship": "A free invoice queue and editable payment reminders",
@@ -161,6 +162,28 @@ export const experience = [
       "checkedAt": "2026-10-22",
       "sourceCommit": "3ac76427da6fd60fc2199a9b24f27f49a839b98b",
       "scope": "Public browser-local validation prototype. No paying users, collection improvement, traffic or rankings are established."
+    }
+  },
+  {
+    "role": "Creator",
+    "org": "CSV Reporting Example",
+    "kind": "public-example",
+    "id": "csv-reporting-example",
+    "when": "Independent example",
+    "where": "Synthetic demonstration",
+    "flagship": "A synthetic campaign report from two fictional CSV files",
+    "blurb": "Synthetic reporting example",
+    "points": [
+      "Inspect six illustrative metrics, their formulas and a JSON calculation receipt generated from fictional CSV inputs.",
+      "No upload or live connector. This example does not establish customer results or a production reporting service."
+    ],
+    "tags": ["Python", "CSV", "HTML", "Decimal"],
+    "url": "https://github.com/wtfashwin/csv-report-pilot",
+    "liveUrl": "https://wtfashwin.github.io/Portfolio/reporting-example/",
+    "evidence": {
+      "checkedAt": "2026-10-23",
+      "sourceCommit": "86065ea65e7b2e55453281e36b6fe06aa9c8fc04",
+      "scope": "Synthetic reporting example using fictional CSV inputs. No upload, live connector, customer results or production reporting service is established."
     }
   },
   {
