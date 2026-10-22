@@ -100,4 +100,16 @@ test('the server-rendered notebook exposes its explanation, source, and correct 
   assert.match(html, /aria-pressed="true"/);
   assert.match(html, /<h2[^>]*>A smaller memory boundary\.<\/h2>/);
   assert.doesNotMatch(html, /notebook-transfer-token/);
+
+  const integrationNote = html.match(/<details\b[^>]*id="integration-boundary"[^>]*>([\s\S]*?)<\/details>/)?.[1];
+  assert.ok(integrationNote, 'the integration explanation must be readable without selecting the interactive results tab');
+  const noteText = integrationNote.replace(/<[^>]*>/g, '');
+  assert.match(noteText, /9 value-seconds/);
+  assert.match(noteText, /6 unsupported value-seconds/);
+  assert.match(noteText, /15 value-seconds/);
+  assert.match(noteText, /toy series/i);
+  assert.match(noteText, /not a production query result/i);
+  assert.match(integrationNote, /<a\b[^>]*href="https:\/\/github.com\/VictoriaMetrics\/VictoriaMetrics\/pull\/10974"/);
+  assert.match(integrationNote, /<a\b[^>]*href="#integration-boundary"/);
+  assert.match(html, /<button\b[^>]*aria-pressed="true"[^>]*>Bounded memory<\/button>/, 'the default interactive scenario must stay on memory');
 });

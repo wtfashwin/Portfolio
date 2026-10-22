@@ -404,6 +404,8 @@ function ResultsExplanation({ state, dispatch, titleId, plotId }) {
 
 export default function EngineeringNotebook() {
   const [state, dispatch] = useReducer(notebookReducer, initialNotebookState);
+  const integrationBefore = getIntegrationModel('before');
+  const integrationAfter = getIntegrationModel('after');
   const id = useId();
   const content = useRef(null);
   const previousHeight = useRef(null);
@@ -455,6 +457,14 @@ export default function EngineeringNotebook() {
           ? <MemoryExplanation state={state} dispatch={interact} titleId={`${id}-memory-title`} />
           : <ResultsExplanation state={state} dispatch={interact} titleId={`${id}-results-title`} plotId={`${id}-integration-plot`} />}
       </div>
+      <details id="integration-boundary" className="notebook-footnote">
+        <summary>Read the integration boundary calculation</summary>
+        <p>Toy values 2, 4, 3 and 3 at 0–3 seconds give {integrationAfter.observedArea} value-seconds of observed step area. The query is at {integrationAfter.queryTime} seconds.</p>
+        <p>Before the fix, extending the last value beyond the final sample adds {integrationBefore.tailArea} unsupported value-seconds, making {integrationBefore.totalArea} value-seconds. The corrected calculation stops at the last observed point, leaving {integrationAfter.totalArea} value-seconds.</p>
+        <p>This fixed toy series explains the boundary. It is not a production query result.</p>
+        <p><a href="https://github.com/VictoriaMetrics/VictoriaMetrics/pull/10974" target="_blank" rel="noreferrer">Read the change <span className="notebook-source-id">VictoriaMetrics #10974</span><ExternalMark /></a></p>
+        <a href="#integration-boundary">Link to this explanation</a>
+      </details>
     </section>
   );
 }
