@@ -52,7 +52,7 @@ Checked 2026-10-12: 11 visible merged PRs across seven upstream repositories. Th
 Profile evidence dates and user-supplied status are retained separately.
 
 - [GitHub](https://github.com/wtfashwin): Code & open source; checked 2026-10-08T16:14:10.336314+00:00.
-- [LinkedIn](https://www.linkedin.com/in/wtfashwin/): Professional profile; checked 2026-10-08T16:14:10.336314+00:00.
+- [LinkedIn](https://www.linkedin.com/in/upadhyayashwin/): Professional profile; checked 2026-10-17T06:28:55.775Z.
 - [Kaggle](https://www.kaggle.com/ashwinupadhyay): ML experiments; checked 2026-10-08T16:14:10.336314+00:00.
 - [Medium](https://medium.com/@ashwinupadhyay): Technical writing; checked 2026-10-08T16:14:10.336314+00:00.
 - [Hashnode](https://hashnode.com/@wtfashwin): Technical writing; user-supplied 2026-10-17; profile content not independently verified.

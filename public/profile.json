@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-22T18:34:46.246Z",
+  "generatedAt": "2026-10-22T19:03:23.901Z",
   "canonicalUrl": "https://wtfashwin.github.io/Portfolio/",
   "identity": {
     "name": "Ashwin Upadhyay",
@@ -330,12 +330,12 @@
       {
         "platform": "LinkedIn",
         "kind": "Professional profile",
-        "handle": "wtfashwin",
-        "url": "https://www.linkedin.com/in/wtfashwin/",
+        "handle": "upadhyayashwin",
+        "url": "https://www.linkedin.com/in/upadhyayashwin/",
         "status": "verified",
-        "checkedAt": "2026-10-08T16:14:10.336314+00:00",
+        "checkedAt": "2026-10-17T06:28:55.775Z",
         "evidenceUrls": [
-          "https://www.linkedin.com/in/wtfashwin/"
+          "https://www.linkedin.com/in/upadhyayashwin/"
         ],
         "refresh": {
           "type": "manual"
