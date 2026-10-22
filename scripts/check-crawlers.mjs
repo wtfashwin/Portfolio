@@ -20,6 +20,13 @@ export async function checkCrawlerBuild(directory) {
     const url = record.url || record.evidenceUrl
     assert.ok(main.includes(`href="${escapeHtml(url)}"`), `Raw HTML must retain the source ${url}`)
   }
+  for (const project of profile.publicProjects.filter(item => item.liveUrl)) {
+    assert.notEqual(project.liveUrl, project.sourceUrl, 'Live tools and source repositories have separate links.')
+    assert.ok(main.includes(`href="${escapeHtml(project.liveUrl)}"`), `Raw HTML must expose the live tool: ${project.name}`)
+    for (const text of [markdown, llms]) {
+      assert.ok(text.includes(`](${project.liveUrl})`) && text.includes(`](${project.sourceUrl})`), `Text exports must expose both live and source links: ${project.name}`)
+    }
+  }
   for (const record of [...profile.platformRecords.kaggle.badges.filter(x => x.status === 'awarded'), ...profile.platformRecords.kaggle.competitions]) {
     assert.ok(markdown.includes(record.checkedAt), 'Record check times must survive text export.')
   }

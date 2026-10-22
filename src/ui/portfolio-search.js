@@ -3,6 +3,7 @@ const actions = [
  {target:'fraud-detection',title:'Operate the Fraud Detection workbench',description:'Submit jobs, inspect saved records, and explore failure recovery.',keywords:'transactions queue worker jobs failure retry finance celery redis postgres'},
  {target:'context-dock',title:'Capture a task in Context Dock',description:'Create, edit, and export a browser note with project context.',keywords:'swift task notes markdown local developer macos'},
  {target:'customer-support-system',title:'Try retrieval in Customer Support System',description:'Search passages and assemble context from the project summary.',keywords:'retrieval fastapi rag api document query search authorization'},
+ {target:'invoice-followup',title:'Try Invoice Followup',description:'Open the free browser invoice queue and editable payment reminder tool.',keywords:'invoice csv import export payment reminder followup freelancer browser local'},
  {target:'certifications-list',title:'Find a credential',description:'Filter the credential records by issuer and subject.',keywords:'certifications credentials oracle ibm cloud courses learning'},
  {target:'proof',title:'Inspect accepted upstream changes',description:'Source links to the checked contribution record.',keywords:'open source merged github contributions prefect dlt victoriametrics unsloth'},
  {target:'work',title:'Explore all projects',description:'Public source, interactive sketches, and engineering details.',keywords:'portfolio projects code applications'},

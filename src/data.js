@@ -144,6 +144,27 @@ export const experience = [
   },
   {
     "role": "Creator",
+    "org": "Invoice Followup",
+    "kind": "public-tool",
+    "when": "Independent project",
+    "where": "Public validation prototype",
+    "flagship": "A free invoice queue and editable payment reminders",
+    "blurb": "Free browser tool",
+    "points": [
+      "Review invoices, prepare a reminder draft and import or export a CSV in the browser.",
+      "No account or automatic sending. Optional browser saving is unencrypted; the tool does not verify payments."
+    ],
+    "tags": ["JavaScript", "CSV", "Browser storage"],
+    "url": "https://github.com/wtfashwin/invoice-followup",
+    "liveUrl": "https://invoice-followup.zany-hippo-3715.chatgpt.site/",
+    "evidence": {
+      "checkedAt": "2026-10-22",
+      "sourceCommit": "3ac76427da6fd60fc2199a9b24f27f49a839b98b",
+      "scope": "Public browser-local validation prototype. No paying users, collection improvement, traffic or rankings are established."
+    }
+  },
+  {
+    "role": "Creator",
     "org": "Customer Support System",
     "when": "Independent project",
     "where": "Public source",

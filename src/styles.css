@@ -102,6 +102,10 @@ a:hover > .external-arrow { transform: translate(2px,-2px); }
 .project-facts dt { color: var(--ink); }
 .project-facts dd { color: var(--muted); }
 .project-copy > .text-link { margin-top: 24px; }
+.public-tool-entry { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; background: var(--surface); border-radius: 5px; margin-block: 24px; }
+.public-tool-links { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; padding: 32px; min-width: 0; }
+.public-tool-links a { overflow-wrap: anywhere; }
+@media (max-width: 760px) { .public-tool-entry { grid-template-columns: 1fr; gap: 0; } .public-tool-links { padding-top: 0; } }
 .project-stage { display: flex; align-items: center; padding: 32px; background: #343128; min-width: 0; }
 .context-stage { background: #2d3027; }
 .project-stage > .pv-visual { box-shadow: 0 20px 50px #0002; }

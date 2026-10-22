@@ -33,7 +33,7 @@ try {
     evidenceNotes: {
       generation: 'Generated from the portfolio editorial source. Generation time is not an evidence verification time.',
       professionalExperience: 'Supplied professional summaries. Employer source code is private; public runtime or production outcomes are not asserted.',
-      publicProjects: 'Linked public source and documentation describe implementation. They do not establish a running deployment or production readiness.',
+      publicProjects: 'Linked source describes implementation; a liveUrl identifies a separately linked tool or prototype. Neither establishes production readiness or measured outcomes.',
       interactiveExplanations: 'Illustrative explanations of engineering concepts. The linked source records are the evidence.',
       platformRecords: 'Dated snapshots. Badge, competition, and profile records retain their separate check times; they are not live statistics.',
       credentials: 'Credential records and verification URLs supplied in the portfolio. These were not independently refreshed during this build.',
@@ -46,7 +46,8 @@ try {
     publicProjects: experience.filter((entry) => entry.url).map((entry) => ({
       name: entry.org, role: entry.role, focus: entry.flagship,
       summary: entry.points, technologies: entry.tags, sourceUrl: entry.url,
-      evidenceType: 'public source implementation',
+      ...(entry.liveUrl ? { liveUrl: entry.liveUrl } : {}),
+      evidenceType: entry.liveUrl ? 'public source and live validation prototype' : 'public source implementation',
       ...(entry.evidence ? { evidence: entry.evidence } : {}),
     })),
     upstreamContributions: {
@@ -99,7 +100,9 @@ try {
 
 ## Public projects
 
-${profile.publicProjects.map((entry) => `- [${entry.name}](${entry.sourceUrl}): ${entry.focus}. Public implementation; deployment and production outcomes are not asserted.`).join('\n')}
+${profile.publicProjects.map((entry) => entry.liveUrl
+  ? `- [${entry.name}](${entry.liveUrl}): ${entry.focus}. [Source code](${entry.sourceUrl}). Public validation prototype; production readiness and measured outcomes are not established.`
+  : `- [${entry.name}](${entry.sourceUrl}): ${entry.focus}. Public implementation; deployment and production outcomes are not asserted.`).join('\n')}
 
 ## Selected accepted upstream changes
 
