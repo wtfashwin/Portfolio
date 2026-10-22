@@ -1,0 +1,70 @@
+{
+  "campaigns": [
+    "DEMO-ONLY"
+  ],
+  "currency": "USD",
+  "demonstration": "Synthetic demonstration using invented formats and data",
+  "formulas": {
+    "clicks": "sum(clicks)",
+    "cost_per_reported_lead": "spend / reported leads",
+    "ctr_percent": "clicks / impressions * 100",
+    "impressions": "sum(impressions)",
+    "reported_leads": "sum(source-reported leads)",
+    "spend": "sum(spend)"
+  },
+  "percent_changes": {
+    "clicks": "50.00",
+    "cost_per_reported_lead": "-25.00",
+    "ctr_percent": "25.00",
+    "impressions": "20.00",
+    "reported_leads": "50.00",
+    "spend": "12.50"
+  },
+  "periods": {
+    "current": {
+      "end": "2026-10-18",
+      "metrics": {
+        "clicks": 210,
+        "cost_per_reported_lead": "15.00",
+        "ctr_percent": "5.00",
+        "impressions": 4200,
+        "reported_leads": 21,
+        "spend": "315.00"
+      },
+      "rows": 7,
+      "start": "2026-10-12"
+    },
+    "previous": {
+      "end": "2026-10-11",
+      "metrics": {
+        "clicks": 140,
+        "cost_per_reported_lead": "20.00",
+        "ctr_percent": "4.00",
+        "impressions": 3500,
+        "reported_leads": 14,
+        "spend": "280.00"
+      },
+      "rows": 7,
+      "start": "2026-10-05"
+    }
+  },
+  "sources": {
+    "leads": {
+      "filename": "leads.csv",
+      "rows": 14,
+      "sha256": "7db741f9e902411fefe2ec6d15fbcf0c90ab408344fa5ef30b01216c2ac477d4"
+    },
+    "performance": {
+      "filename": "performance.csv",
+      "rows": 14,
+      "sha256": "6a9c76b5738b0d8c7ede67c7e1112f058418b821f4591942fa42df9919f82f25"
+    }
+  },
+  "validation": {
+    "complete_dates": true,
+    "max_data_rows": 10000,
+    "max_file_bytes": 2097152,
+    "status": "passed",
+    "unique_matching_keys": true
+  }
+}

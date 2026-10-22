@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:,">
+<title>Synthetic demonstration — campaign report</title><style>
+body{font:16px/1.6 system-ui,sans-serif;color:#17212b;background:#f3f5f7;margin:0}
+main{max-width:960px;margin:auto;padding:28px}section,header{background:white;padding:24px;margin-bottom:18px;border:1px solid #ccd3da;border-radius:8px}
+h1,h2{line-height:1.25}.notice{border-left:4px solid #495c78;padding-left:14px}code{overflow-wrap:anywhere;font-size:.85em}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:10px;text-align:right;border-bottom:1px solid #ccd3da}th:first-child{text-align:left}li{overflow-wrap:anywhere}
+@media(max-width:600px){main{padding:12px}section,header{padding:16px}th,td{padding:8px;font-size:14px}}
+@media print{body{background:white;color:black}main{max-width:none;padding:0}section,header{border:0;padding:10px 0}tr{break-inside:avoid}}
+</style></head><body><main>
+<header><p>LOCAL REPORTING PROOF · USD</p><h1>Synthetic demonstration</h1>
+<p class="notice">All data is fictional and uses invented formats. This is an engineering example, not a customer result, live integration, or evidence of business improvement.</p>
+<p>Campaigns: DEMO-ONLY</p><ul><li>Previous: 2026-10-05 to 2026-10-11 inclusive; 7 joined rows.</li><li>Current: 2026-10-12 to 2026-10-18 inclusive; 7 joined rows.</li></ul></header>
+<section><h2>Six illustrative metrics</h2><div class="table-wrap"><table><thead><tr><th scope="col">Metric / total</th>
+<th scope="col">Previous</th><th scope="col">Current</th><th scope="col">Relative change (%)</th></tr></thead><tbody><tr><th scope='row'>Total spend (USD)</th><td>280.00</td><td>315.00</td><td>12.50</td></tr><tr><th scope='row'>Impressions</th><td>3500</td><td>4200</td><td>20.00</td></tr><tr><th scope='row'>Clicks</th><td>140</td><td>210</td><td>50.00</td></tr><tr><th scope='row'>Source-reported leads</th><td>14</td><td>21</td><td>50.00</td></tr><tr><th scope='row'>Click-through rate (%)</th><td>4.00</td><td>5.00</td><td>25.00</td></tr><tr><th scope='row'>Cost per reported lead (USD)</th><td>20.00</td><td>15.00</td><td>-25.00</td></tr></tbody></table></div>
+<p>Relative change = (current − previous) / previous × 100. N/A means a zero baseline or undefined ratio. Rate changes are relative percentages, not percentage-point differences.</p></section>
+<section><h2>Definitions and formulas</h2><ul><li>Total spend (USD): <code>sum(spend)</code></li><li>Impressions: <code>sum(impressions)</code></li><li>Clicks: <code>sum(clicks)</code></li><li>Source-reported leads: <code>sum(source-reported leads)</code></li><li>Click-through rate (%): <code>clicks / impressions * 100</code></li><li>Cost per reported lead (USD): <code>spend / reported leads</code></li></ul>
+<p>Leads are additive source-reported counts, not unique customers or cross-platform attribution. No inferred or missing values are filled. Ratios and changes are rounded to two decimal places using half-up rounding; JSON preserves exact spend totals as decimal strings.</p></section>
+<section><h2>Sources and validation</h2><p><strong>Validation passed.</strong> Both files have unique, identical date/campaign keys. Every campaign includes every day in both periods.</p><ul><li>performance: <strong>performance.csv</strong>; 14 data rows. SHA-256: <code>6a9c76b5738b0d8c7ede67c7e1112f058418b821f4591942fa42df9919f82f25</code></li><li>leads: <strong>leads.csv</strong>; 14 data rows. SHA-256: <code>7db741f9e902411fefe2ec6d15fbcf0c90ab408344fa5ef30b01216c2ac477d4</code></li></ul>
+<p>Limits: UTF-8 CSV; exact headers and cell counts; at most 2 MiB and 10,000 data rows per file; nonnegative integer counts; nonnegative USD amounts with at most two decimal places; valid nonoverlapping inclusive periods. No network calls or external assets.</p>
+<p>This validates the file contract, not the truth, attribution, or accounting accuracy of source data. Open this file locally. Use your browser’s Print / Save as PDF for a printable copy; no separate PDF generator is included. <a href="receipt.json">Inspect the calculation receipt and source hashes</a>.</p></section>
+</main></body></html>
