@@ -11,6 +11,16 @@ import OnlineProfiles from './OnlineProfiles.jsx'
 const { links } = identity
 const External = ({ href, children, className = '' }) => <a className={className} href={href} target="_blank" rel="noreferrer">{children}<span className="external-arrow" aria-hidden="true">↗</span></a>
 
+function ProjectVerification({ name }) {
+  const evidence = experience.find(project => project.org === name)?.evidence
+  if (!evidence?.verificationLinks) return null
+  return <div className="record-note">
+    <p>Evidence checked <time dateTime={evidence.checkedAt}>{evidence.checkedAt}</time>. Source: <External href={evidence.sourceUrl}>commit {evidence.sourceCommit.slice(0, 7)}</External>.</p>
+    <p>{evidence.scope}</p>
+    {evidence.verificationLinks.map(link => <p key={link.url}><External href={link.url}>{link.label}</External></p>)}
+  </div>
+}
+
 function Hero() {
   return (
     <section id="hero" className="hero page-width" aria-labelledby="hero-title">
@@ -60,7 +70,7 @@ function Work() {
           <p>A support application connecting document ingestion, retrieval, and tool workflows with a FastAPI AI service and a TypeScript application.</p>
           <dl className="project-facts"><div><dt>The work</dt><dd>Streaming responses, authorization forwarding, request correlation, and readiness checks.</dd></div><div><dt>The stack</dt><dd>FastAPI, LangGraph, TypeScript</dd></div></dl>
           <External href="https://github.com/wtfashwin/Customer-Support-System" className="text-link accent-link">Explore the source</External>
-          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Retrieval connects ingestion, embeddings, and search to the answer path. The public implementation also covers JWT verification and tracing so the API boundary can be inspected alongside the AI workflow.</p><p>The browser workbench searches six project-summary passages by keyword. The actual service connects ingestion, embeddings, and retrieval; the source documents that implementation. Deployment scale and business impact are not claimed here.</p><External href="https://github.com/wtfashwin/Customer-Support-System/blob/main/apps/aiml-service/README.md">Read the service documentation</External></div></details>
+          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Retrieval connects ingestion, embeddings, and search to the answer path. The public implementation also covers JWT verification and tracing so the API boundary can be inspected alongside the AI workflow.</p><p>The browser workbench searches six project-summary passages by keyword. The actual service connects ingestion, embeddings, and retrieval; the source documents that implementation. Deployment scale and business impact are not claimed here.</p><External href="https://github.com/wtfashwin/Customer-Support-System/blob/main/apps/aiml-service/README.md">Read the service documentation</External><ProjectVerification name="Customer Support System" /></div></details>
         </div>
         <div className="project-stage"><ProjectExplorer kind="retrieval"><RetrievalVisual /></ProjectExplorer></div>
       </article>
@@ -71,7 +81,7 @@ function Work() {
           <p>A native macOS tool for capturing tasks and matching them to project context. Built around the small moments where an idea is otherwise lost.</p>
           <dl className="project-facts"><div><dt>The work</dt><dd>Local agent events, decision journaling, and atomic note writes.</dd></div><div><dt>The stack</dt><dd>Swift, SwiftUI, AppKit</dd></div></dl>
           <External href="https://github.com/wtfashwin/ContextDock" className="text-link accent-link">Explore the source</External>
-          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Native UI components support task capture and project selection. Local event handling and atomic writes keep the context path explicit and inspectable in source.</p><p>The browser workbench captures and exports real notes stored on this device. It is a separate interactive sketch of the native app’s workflow.</p><External href="https://github.com/wtfashwin/ContextDock/blob/main/README.md">Read the setup and implementation</External></div></details>
+          <details className="project-detail"><summary>Read the engineering details <span aria-hidden="true">+</span></summary><div><p>Native UI components support task capture and project selection. Local event handling and atomic writes keep the context path explicit and inspectable in source.</p><p>The browser workbench captures and exports real notes stored on this device. It is a separate interactive sketch of the native app’s workflow.</p><External href="https://github.com/wtfashwin/ContextDock/blob/main/README.md">Read the setup and implementation</External><ProjectVerification name="Context Dock" /></div></details>
         </div>
         <div className="project-stage context-stage"><ProjectExplorer kind="context"><ContextVisual /></ProjectExplorer></div>
       </article>

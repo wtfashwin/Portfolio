@@ -203,7 +203,18 @@ export const experience = [
       "FastAPI",
       "TypeScript"
     ],
-    "url": "https://github.com/wtfashwin/Customer-Support-System"
+    "url": "https://github.com/wtfashwin/Customer-Support-System",
+    "evidence": {
+      "checkedAt": "2026-10-27",
+      "sourceCommit": "60f711e7d2bec62a0fcc9bf48515027965f071ef",
+      "sourceUrl": "https://github.com/wtfashwin/Customer-Support-System/tree/60f711e7d2bec62a0fcc9bf48515027965f071ef",
+      "verificationLinks": [
+        { "label": "Merged database setup fix", "url": "https://github.com/wtfashwin/Customer-Support-System/pull/12" },
+        { "label": "CI: builds, API checks and fresh database setup", "url": "https://github.com/wtfashwin/Customer-Support-System/actions/runs/38647008014" },
+        { "label": "Python tests and dry fixture evaluation", "url": "https://github.com/wtfashwin/Customer-Support-System/actions/runs/38647007939" }
+      ],
+      "scope": "GitHub Actions passed on 14 Oct 2026: web/API builds and checks, fresh and repeated PostgreSQL 16 setup, Python tests, and dry fixture evaluation. Deployment, external-provider, authentication and live RAG paths remain unverified."
+    }
   },
   {
     "role": "Creator",
@@ -222,7 +233,16 @@ export const experience = [
       "SwiftUI",
       "macOS"
     ],
-    "url": "https://github.com/wtfashwin/ContextDock"
+    "url": "https://github.com/wtfashwin/ContextDock",
+    "evidence": {
+      "checkedAt": "2026-10-27",
+      "sourceCommit": "f20c8fb871f1a89685ffc6e3222dcc14a9eec061",
+      "sourceUrl": "https://github.com/wtfashwin/ContextDock/tree/f20c8fb871f1a89685ffc6e3222dcc14a9eec061",
+      "verificationLinks": [
+        { "label": "Swift package build and tests", "url": "https://github.com/wtfashwin/ContextDock/actions/runs/38643769670" }
+      ],
+      "scope": "GitHub Actions passed shell checks, package build and tests on 14 Oct 2026 at this pull-request commit. These checks do not establish native UI behavior, external CLI compatibility or end-user runtime outcomes."
+    }
   },
   {
     "role": "Creator",
