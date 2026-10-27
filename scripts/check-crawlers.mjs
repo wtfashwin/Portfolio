@@ -75,6 +75,15 @@ export async function checkCrawlerBuild(directory) {
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0]
   assert.ok(main, 'Actual portfolio content must be present without JavaScript.')
   assert.equal((main.match(/<h1\b/g) || []).length, 1)
+  assert.equal(profile.runnableExamples.length, 5, 'The profile must retain five runnable problem groups.')
+  const runnableLinks = profile.runnableExamples.flatMap(example => example.links)
+  assert.equal(runnableLinks.length, 7, 'The profile must retain all seven teaching sources.')
+  assert.equal(new Set(runnableLinks.map(link => link.url)).size, 7, 'Teaching source links must be distinct.')
+  for (const { url } of runnableLinks) {
+    assert.match(url, /^https:\/\/gist\.github\.com\/wtfashwin\/[a-f0-9]{32}$/, 'Runnable examples must link to the curated public gists.')
+    assert.ok(main.includes(`href="${url}"`), `Initial HTML must expose the runnable source: ${url}`)
+    for (const text of [markdown, llms]) assert.ok(text.includes(`](${url})`), `Reader exports must expose the runnable source: ${url}`)
+  }
   const records = [...profile.publicProjects.map(x => ({url: x.sourceUrl})), ...profile.upstreamContributions.selected, ...profile.credentialRecords, ...profile.directory.profiles, ...profile.writing, ...profile.platformRecords.kaggle.badges.filter(x => x.status === 'awarded')]
   for (const record of records) {
     const url = record.url || record.evidenceUrl

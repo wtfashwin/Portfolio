@@ -7,6 +7,7 @@ import { filterCredentialGroups } from './portfolio-search.js'
 import { RetrievalVisual, ContextVisual } from './ProjectVisuals.jsx'
 import KaggleEvidence from './KaggleEvidence.jsx'
 import OnlineProfiles from './OnlineProfiles.jsx'
+import RunnableExamples from './RunnableExamples.jsx'
 
 const { links } = identity
 const External = ({ href, children, className = '' }) => <a className={className} href={href} target="_blank" rel="noreferrer">{children}<span className="external-arrow" aria-hidden="true">↗</span></a>
@@ -49,6 +50,7 @@ function Work() {
   return (
     <section id="work" className="section page-width" aria-labelledby="work-title">
       <div className="section-intro"><h2 id="work-title">From the interface<br />to the infrastructure.</h2><p>I work across the application and the services beneath it. Try the browser workbenches, change the inputs, and inspect the public code behind each project.</p></div>
+      <RunnableExamples />
       {experience.filter(item => ['public-tool', 'public-example'].includes(item.kind)).map(tool => <article className="public-tool-entry" id={tool.id} key={tool.url}>
         <div className="project-copy">
           <p className="project-kind">{tool.kind === 'public-example' ? 'Synthetic example / CSV reporting' : 'Free tool / Public validation prototype'}</p>

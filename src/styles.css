@@ -368,5 +368,5 @@ a:hover > .external-arrow { transform: translate(2px,-2px); }
   .project-copy, .about-section, .practice-inner { padding: 15px; }
 }
 .glyph-field { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
-#root > :not(.glyph-field):not(.skip-link) { position: relative; z-index: 1; }
+#root > :not(.glyph-field):not(.skip-link):not(.site-header) { position: relative; z-index: 1; }
 @media print { .glyph-field { display: none; } }
