@@ -15,7 +15,7 @@ const escapeXml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
 
 const server = await createServer({ root, server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom', logLevel: 'error' })
 try {
-  const { identity, experience, skills, openSource, certs, achievements } = await server.ssrLoadModule('/src/data.js')
+  const { identity, experience, skills, openSource, certs, achievements, runnableExamples } = await server.ssrLoadModule('/src/data.js')
   const kaggle = JSON.parse(await readFile(join(root, 'src/kaggle-evidence.json'), 'utf8'))
   const directory = JSON.parse(await readFile(join(root, 'src/platforms.json'), 'utf8'))
   const profile = {
@@ -43,6 +43,7 @@ try {
       focus: entry.flagship, summary: entry.points, technologies: entry.tags,
       evidenceType: 'supplied professional summary',
     })),
+    runnableExamples,
     publicProjects: experience.filter((entry) => entry.url).map((entry) => ({
       name: entry.org, role: entry.role, focus: entry.flagship,
       summary: entry.points, technologies: entry.tags, sourceUrl: entry.url,
@@ -107,6 +108,12 @@ try {
 - [Complete upstream record](${identity.links.oss}): Merged, open, and closed submissions are distinguished.
 - [LinkedIn](${identity.links.linkedin}): Professional profile.
 - [Contact](mailto:${identity.email}): Email Ashwin.
+
+## Runnable examples
+
+Source, fixtures, checks, and limits for five small engineering problems.
+
+${runnableExamples.map(example => `### ${example.problem}\n\n${example.scope}\n\n${example.links.map(link => `- [${link.label}](${link.url})`).join('\n')}`).join('\n\n')}
 
 ## Public projects
 

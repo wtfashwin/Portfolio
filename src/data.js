@@ -32,6 +32,53 @@ export const identity = {
   "bio": "I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows."
 }
 
+// Curated teaching sources. Publication receipts were checked 2026-10-27;
+// each source keeps its own runnable instructions and evidence limits.
+export const runnableExamples = [
+  {
+    id: 'airflow-retry-policy',
+    problem: 'Airflow retries and exception policy',
+    scope: 'Local examples of a retry and an explicit exception policy. A retry alone does not make writes duplicate-safe.',
+    links: [
+      { label: 'Run the retry example', url: 'https://gist.github.com/wtfashwin/1997b331f3a4a5dc17c621ee3bd97f3a' },
+      { label: 'Inspect the exception policy', url: 'https://gist.github.com/wtfashwin/373319b939b76759dd97cf164b1965cb' },
+    ],
+  },
+  {
+    id: 'csv-meaning',
+    problem: 'Keep meaning when reading a CSV',
+    scope: 'A synthetic five-row batch preserves IDs, integer money units, missing values, and explicit timestamps. The notebook walks through the same boundaries.',
+    links: [
+      { label: 'Run the CSV checks', url: 'https://gist.github.com/wtfashwin/aca8c85f3d6d3da1374c5f1e4945c075' },
+      { label: 'Open the worked notebook', url: 'https://gist.github.com/wtfashwin/dce7ceedb2214464352997b427bff1fd' },
+    ],
+  },
+  {
+    id: 'api-body-boundary',
+    problem: 'Check an API request-body boundary',
+    scope: 'A local ASGI proof checks the body limit against a pinned source commit using fixed test doubles.',
+    links: [
+      { label: 'Run the body-limit proof', url: 'https://gist.github.com/wtfashwin/864824eb480b0f01a13bb2d057447ea7' },
+    ],
+  },
+  {
+    id: 'csv-duplicate-audit',
+    problem: 'Remove exact repeats without hiding conflicts',
+    scope: 'Nine synthetic CSV records become seven retained records, with two exact repeats and two conflicting keys recorded in the audit.',
+    links: [
+      { label: 'Run the duplicate audit', url: 'https://gist.github.com/wtfashwin/d4781a7504c871a5531d0403eeb40652' },
+    ],
+  },
+  {
+    id: 'classification-counts',
+    problem: 'Read classification counts before the score',
+    scope: 'Invented counts make precision, recall, and cutoff tradeoffs inspectable. This is arithmetic, not a model benchmark.',
+    links: [
+      { label: 'Run the toy count example', url: 'https://gist.github.com/wtfashwin/a082d9456219a0e2ef22d26870361ca7' },
+    ],
+  },
+]
+
 export const profileLinks = [
   { label: 'GitHub', url: identity.links.github },
   { label: 'LinkedIn', url: identity.links.linkedin },

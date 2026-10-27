@@ -13,6 +13,42 @@
 - [LinkedIn](https://www.linkedin.com/in/upadhyayashwin/): Professional profile.
 - [Contact](mailto:ashwinupadhyay09@gmail.com): Email Ashwin.
 
+## Runnable examples
+
+Source, fixtures, checks, and limits for five small engineering problems.
+
+### Airflow retries and exception policy
+
+Local examples of a retry and an explicit exception policy. A retry alone does not make writes duplicate-safe.
+
+- [Run the retry example](https://gist.github.com/wtfashwin/1997b331f3a4a5dc17c621ee3bd97f3a)
+- [Inspect the exception policy](https://gist.github.com/wtfashwin/373319b939b76759dd97cf164b1965cb)
+
+### Keep meaning when reading a CSV
+
+A synthetic five-row batch preserves IDs, integer money units, missing values, and explicit timestamps. The notebook walks through the same boundaries.
+
+- [Run the CSV checks](https://gist.github.com/wtfashwin/aca8c85f3d6d3da1374c5f1e4945c075)
+- [Open the worked notebook](https://gist.github.com/wtfashwin/dce7ceedb2214464352997b427bff1fd)
+
+### Check an API request-body boundary
+
+A local ASGI proof checks the body limit against a pinned source commit using fixed test doubles.
+
+- [Run the body-limit proof](https://gist.github.com/wtfashwin/864824eb480b0f01a13bb2d057447ea7)
+
+### Remove exact repeats without hiding conflicts
+
+Nine synthetic CSV records become seven retained records, with two exact repeats and two conflicting keys recorded in the audit.
+
+- [Run the duplicate audit](https://gist.github.com/wtfashwin/d4781a7504c871a5531d0403eeb40652)
+
+### Read classification counts before the score
+
+Invented counts make precision, recall, and cutoff tradeoffs inspectable. This is arithmetic, not a model benchmark.
+
+- [Run the toy count example](https://gist.github.com/wtfashwin/a082d9456219a0e2ef22d26870361ca7)
+
 ## Public projects
 
 - [Invoice Followup](https://invoice-followup.zany-hippo-3715.chatgpt.site/): A free invoice queue and editable payment reminders. [Source code](https://github.com/wtfashwin/invoice-followup). Public validation prototype; production readiness and measured outcomes are not established.
