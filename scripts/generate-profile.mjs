@@ -9,6 +9,9 @@ const root = fileURLToPath(new URL('../', import.meta.url))
 const canonicalUrl = 'https://wtfashwin.github.io/Portfolio/'
 const evidenceCheckedAt = '2026-10-12'
 const publicDirectory = join(root, 'public')
+const projectVerificationText = (evidence) => evidence?.verificationLinks
+  ? ` Evidence checked ${evidence.checkedAt}; [source commit ${evidence.sourceCommit}](${evidence.sourceUrl}). ${evidence.verificationLinks.map(link => `[${link.label}](${link.url})`).join('; ')}. ${evidence.scope}`
+  : ''
 const escapeXml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;',
 }[character]))
@@ -110,11 +113,11 @@ try {
 
 ## Public projects
 
-${profile.publicProjects.map((entry) => entry.kind === 'public-example'
+${profile.publicProjects.map((entry) => (entry.kind === 'public-example'
   ? `- [${entry.name}](${entry.liveUrl}): ${entry.focus}. [Source code](${entry.sourceUrl}). Synthetic example using fictional CSV inputs; no upload, live connector, customer results or production reporting service is established.`
   : entry.liveUrl
     ? `- [${entry.name}](${entry.liveUrl}): ${entry.focus}. [Source code](${entry.sourceUrl}). Public validation prototype; production readiness and measured outcomes are not established.`
-    : `- [${entry.name}](${entry.sourceUrl}): ${entry.focus}. Public implementation; deployment and production outcomes are not asserted.`).join('\n')}
+    : `- [${entry.name}](${entry.sourceUrl}): ${entry.focus}. Public implementation; deployment and production outcomes are not asserted.`) + projectVerificationText(entry.evidence)).join('\n')}
 
 ## Selected accepted upstream changes
 
