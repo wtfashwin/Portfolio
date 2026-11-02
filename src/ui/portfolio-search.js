@@ -20,11 +20,15 @@ export function searchPortfolio(query, limit = 8, runnableExamples = []) {
  const tokens=normalize(query).split(/\s+/).filter(Boolean)
  const exampleActions=runnableExamples.map(example=>({
   target:`${example.id}-title`,title:example.problem,description:example.scope,
-  keywords:example.links.map(link=>link.label).join(' '),
+  searchLabels:example.links.map(link=>link.label).join(' '),
  }))
- return [...actions,...exampleActions].map((entry,index)=>({entry,index,haystack:normalize(`${entry.title} ${entry.description} ${entry.keywords}`)}))
+ // Visible link labels name the examples; incidental prose should not outrank them.
+ return [...actions,...exampleActions].map((entry,index)=>({entry,index,
+  haystack:normalize(`${entry.title} ${entry.description} ${entry.keywords || ''} ${entry.searchLabels || ''}`),
+  titleTerms:normalize(`${entry.title} ${entry.searchLabels || ''}`),
+ }))
   .filter(({haystack})=>tokens.every(token=>haystack.includes(token)))
-  .map(item=>({...item,score:tokens.reduce((sum,token)=>sum+(normalize(item.entry.title).includes(token)?3:1),0)}))
+  .map(item=>({...item,score:tokens.reduce((sum,token)=>sum+(item.titleTerms.includes(token)?3:1),0)}))
   .sort((a,b)=>b.score-a.score||a.index-b.index).slice(0,limit).map(({entry})=>entry)
 }
 export function filterCredentialGroups(groups,query='',issuer='') {

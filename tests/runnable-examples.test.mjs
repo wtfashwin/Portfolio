@@ -72,6 +72,7 @@ test('search finds all six runnable examples and reaches their visible headings'
     for (const [query, target] of queries) {
       const results = searchPortfolio(query, 8, runnableExamples)
       assert.ok(results.some(result => result.target === target), `Search must find the example for: ${query}`)
+      assert.equal(results[0]?.target, target, `Search must put the specific example first for: ${query}`)
       assert.equal(html.split(`id="${target}"`).length - 1, 1, `Search destination must be one visible heading: ${target}`)
     }
     assert.equal(searchPortfolio('', 4, runnableExamples).length, 4)
