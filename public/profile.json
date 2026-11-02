@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T17:14:04.292Z",
+  "generatedAt": "2026-11-02T18:05:12.496Z",
   "canonicalUrl": "https://wtfashwin.github.io/Portfolio/",
   "identity": {
     "name": "Ashwin Upadhyay",
@@ -487,14 +487,17 @@
         "kind": "Technical writing",
         "handle": "wtfashwin",
         "url": "https://hashnode.com/@wtfashwin",
-        "status": "user-supplied",
-        "checkedAt": null,
+        "status": "verified",
+        "checkedAt": "2026-11-02T18:02:38.605821+00:00",
         "suppliedAt": "2026-10-17",
         "ownershipMethod": "user-confirmed",
-        "evidenceUrls": [],
+        "evidenceUrls": [
+          "https://hashnode.com/@wtfashwin"
+        ],
         "refresh": {
           "type": "manual"
-        }
+        },
+        "verificationScope": "Public name, handle, bio and portfolio link checked. No articles or publications were listed at this check."
       },
       {
         "platform": "CodePen",

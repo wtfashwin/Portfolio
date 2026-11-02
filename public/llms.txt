@@ -98,7 +98,7 @@ Profile evidence dates and user-supplied status are retained separately.
 - [LinkedIn](https://www.linkedin.com/in/upadhyayashwin/): Professional profile; checked 2026-10-17T06:28:55.775Z.
 - [Kaggle](https://www.kaggle.com/ashwinupadhyay): ML experiments; checked 2026-10-08T16:14:10.336314+00:00.
 - [Medium](https://medium.com/@ashwinupadhyay): Technical writing; checked 2026-10-08T16:14:10.336314+00:00.
-- [Hashnode](https://hashnode.com/@wtfashwin): Technical writing; user-supplied 2026-10-17; profile content not independently verified.
+- [Hashnode](https://hashnode.com/@wtfashwin): Technical writing; checked 2026-11-02T18:02:38.605821+00:00. Public name, handle, bio and portfolio link checked. No articles or publications were listed at this check.
 - [CodePen](https://codepen.io/wtfashwin-): Frontend demos; checked 2026-10-08T16:14:10.336314+00:00.
 - [LeetCode](https://leetcode.com/u/wtfashwin/): Problem solving; checked 2026-10-08T16:14:10.336314+00:00.
 - [GeeksforGeeks](https://www.geeksforgeeks.org/profile/wtfashwin): Problem solving; checked 2026-10-08T16:14:10.336314+00:00.
