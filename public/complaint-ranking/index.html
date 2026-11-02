@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>How complaint records become ranked problems | Ashwin Upadhyay</title>
+  <meta name="author" content="Ashwin Upadhyay">
+  <meta name="description" content="Follow six synthetic complaint records through deduplication, token clustering and scoring in pain-pipeline, with reproducible commands and pinned source links.">
+  <link rel="canonical" href="https://wtfashwin.github.io/Portfolio/complaint-ranking/">
+  <style>
+    :root{color-scheme:light;--paper:#fff;--surround:#eef3f7;--ink:#1c2c3d;--muted:#4d6073;--line:#becdd9;--link:#174f89;--wash:#eaf2fa}
+    *{box-sizing:border-box}
+    html{scroll-padding-top:1rem}
+    body{margin:0;background:var(--surround);color:var(--ink);font:1rem/1.7 Georgia,"Times New Roman",serif}
+    main{max-width:68rem;margin:0 auto;background:var(--paper);padding:2rem clamp(1.1rem,5vw,4rem) 3rem;min-height:100vh}
+    h1,h2,h3,nav,.byline,table,footer{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    h1{font-size:clamp(2rem,5vw,3rem);line-height:1.12;letter-spacing:-.035em;margin:1.5rem 0 1rem;max-width:22ch}
+    h2{font-size:1.45rem;line-height:1.3;margin:0 0 1rem;letter-spacing:-.015em}
+    h3{font-size:1.05rem;line-height:1.4;margin:1.6rem 0 .5rem}
+    p,ul,ol,dl{max-width:74ch}
+    p{margin:.8rem 0 1.1rem}
+    a{color:var(--link);text-decoration-thickness:.08em;text-underline-offset:.16em}
+    a:hover{text-decoration-thickness:.15em}
+    :focus-visible{outline:3px solid #3673b1;outline-offset:4px}
+    .byline{color:var(--muted);font-size:.95rem}
+    .notice{padding:1rem 1.2rem;background:var(--wash);border-left:4px solid var(--link);margin:1.5rem 0}
+    .notice p{margin:0}
+    nav ul{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;padding:0;list-style:none;font-size:.9rem}
+    section{border-top:1px solid var(--line);padding-top:2rem;margin-top:2rem}
+    li{margin:.45rem 0}
+    code{font: .88em/1.5 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;overflow-wrap:anywhere}
+    pre{padding:1rem 1.2rem;border:1px solid var(--line);background:#f5f8fb;white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%}
+    pre code{font-size:.85rem}
+    .table-wrap{overflow-x:auto;margin:1.3rem 0;max-width:100%}
+    table{width:100%;min-width:36rem;border-collapse:collapse;font-size:.94rem;line-height:1.5;font-variant-numeric:tabular-nums}
+    caption{text-align:left;font-weight:600;padding-bottom:.65rem}
+    th,td{padding:.8rem .65rem;border-bottom:1px solid var(--line);vertical-align:top}
+    thead th{background:var(--wash);text-align:left}
+    tbody th{text-align:left;font-weight:500;width:49%}
+    .number{text-align:right}
+    dt{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:600;margin-top:1rem}
+    dd{margin:.3rem 0 1rem}
+    .source-note{font-size:.95rem;color:var(--muted)}
+    footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+    @media(max-width:40rem){main{padding-top:1.1rem}section{padding-top:1.5rem;margin-top:1.5rem}pre{padding:.85rem}th,td{padding:.65rem .5rem}}
+    @media print{body{background:white;color:black}main{max-width:none;padding:0}nav{display:none}section{break-inside:avoid}a{color:inherit}.table-wrap{overflow:visible}table{min-width:0}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <a href="../#runnable-examples">Back to runnable examples</a>
+    <h1>How complaint records become ranked problems</h1>
+    <p class="byline">By Ashwin Upadhyay</p>
+    <p>The local <a href="https://github.com/wtfashwin/pain-pipeline/tree/03148aa9ae8579211081e9672108f13d7e502578">pain-pipeline</a> CLI groups complaint evidence before ranking it. This worked example follows the included fixture through duplicate detection, word overlap and scoring, so you can inspect what each count means.</p>
+    <div class="notice"><p><strong>All six input records are synthetic.</strong> The pain scores below are demonstration annotations. These records establish no customer demand, unique people, willingness to pay, payments or deployed app.</p></div>
+    <nav aria-label="Guide contents">
+      <ul>
+        <li><a href="#inputs">The six inputs</a></li>
+        <li><a href="#duplicates">Duplicate records</a></li>
+        <li><a href="#clustering">Similar wording</a></li>
+        <li><a href="#results">Ranked results</a></li>
+        <li><a href="#reproduce">Run the example</a></li>
+        <li><a href="#review">Review a ranking</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inputs" aria-labelledby="inputs-title">
+    <h2 id="inputs-title">Start with six records, not six people</h2>
+    <p>The <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/examples/complaints.toon#L1-L7">frozen TOON fixture</a> contains two identical CSV-export complaints, one longer CSV variant, two saved-link variants and one invoice complaint. Every record has <code>kind: fixture</code>; the source names are fixture provenance labels, not evidence of live collection.</p>
+    <ol>
+      <li><code>fixture_hn_1</code> and <code>fixture_hn_2</code> both say “CSV export is broken when a field contains commas” and share <code>https://example.com/fixtures/hn/1</code>.</li>
+      <li><code>fixture_forum_1</code> adds “and quotes” to the CSV complaint and has its own URL.</li>
+      <li><code>fixture_reddit_1</code> says “My saved links are hard to organize by topic”; <code>fixture_app_1</code> adds “and tags”. They have different URLs.</li>
+      <li><code>fixture_forum_2</code> says “I lose track of invoices sent to my clients”.</li>
+    </ol>
+    <p>The first pair collapses into one duplicate group. That leaves <strong>five deduplicated evidence groups</strong>. Similarity clustering then gathers those groups into <strong>three problems</strong>. Neither operation establishes how many distinct people experienced a problem.</p>
+  </section>
+
+  <section id="duplicates" aria-labelledby="duplicates-title">
+    <h2 id="duplicates-title">First, join records that share a duplicate key</h2>
+    <p>The <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/src/ranking.ts#L6-L65">deduplication implementation</a> gives each record three keys: its exact ID, its canonical URL and its normalized text. Sharing <em>any</em> key joins records into the same group.</p>
+    <ul>
+      <li><strong>ID:</strong> IDs are compared as supplied, without a source namespace. Reuse of an ID across two sources can join their records. Choose IDs deliberately when preparing an import.</li>
+      <li><strong>URL:</strong> the code parses the URL, removes its fragment and serializes it. For example, <code>https://example.com/item#one</code> and <code>https://example.com/item#two</code> share a URL key. Query strings remain: <code>?page=1</code> and <code>?page=2</code> are different URL keys, although an ID or text match can still join them.</li>
+      <li><strong>Text:</strong> normalization applies Unicode NFKC, lowercases the text, replaces runs of nonletter/nondigit characters with a space, then trims the ends. Case and punctuation differences can therefore collapse. It does not remove stop words, stem words or recognize synonyms.</li>
+    </ul>
+    <p>Key matching is transitive. If record A shares an ID with B, and B shares a URL with C, all three join even when A and C do not directly match. This groups connected evidence; it does not prove that the records came from the same person.</p>
+    <p>Each duplicate group gets one representative. The code first favors a normalized text variant supported by more distinct <code>(ID, canonical URL)</code> pairs, then breaks ties deterministically. Reimporting an unchanged record does not add another vote. In the fixture’s identical CSV pair, <code>fixture_hn_1</code> is the representative; <code>fixture_hn_2</code> contributes no extra mention.</p>
+  </section>
+
+  <section id="clustering" aria-labelledby="clustering-title">
+    <h2 id="clustering-title">Then compare sets of words</h2>
+    <p>For each duplicate group, the representative’s normalized text becomes a set of unique words. The <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/src/ranking.ts#L68-L82">clustering step</a> measures Jaccard similarity:</p>
+    <pre><code>similarity = shared unique words / all unique words in either set</code></pre>
+    <p>The short CSV complaint has nine unique words. Its longer variant adds “and” and “quotes”, so the pair shares nine words out of eleven in their combined set: <code>9 / 11 = 0.818181…</code>. That exceeds the <code>0.65</code> threshold. The saved-link pair also shares nine of eleven words after “and” and “tags” are added.</p>
+    <p>The implementation visits representatives in a deterministic order. It places each one into the <strong>first qualifying cluster</strong>, provided its similarity is at least <code>0.65</code> against <strong>every existing representative in that cluster</strong>. If none qualifies, it starts a new cluster. This is greedy complete-link grouping, not semantic clustering or an exhaustive search for the best grouping.</p>
+    <p>Requiring every comparison prevents a chain from pulling dissimilar endpoints together. The existing test uses “alpha bravo”, “alpha bravo charlie” and “bravo charlie”: neighboring pairs score <code>2 / 3</code>, but the endpoints score only <code>1 / 3</code>. The result is two problems rather than one. See the <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/test/ranking.test.ts#L33-L52">similarity and chain regression tests</a>.</p>
+    <p>Word overlap can miss paraphrases and can join wording that a human would separate. Review the underlying evidence before acting on a cluster.</p>
+  </section>
+
+  <section id="results" aria-labelledby="results-title">
+    <h2 id="results-title">Five mentions become three scored problems</h2>
+    <p>The <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/src/cli.ts#L32-L39">demo command</a> supplies pain <code>8</code> to CSV problems and <code>6</code> to the others. It also supplies four-hour scope, <code>regulated: false</code> and <code>hardware: false</code>. These are synthetic demonstration annotations, not observed pain or a measured implementation estimate.</p>
+    <div class="table-wrap" role="region" aria-label="Synthetic ranking results" tabindex="0">
+      <table>
+        <caption>Expected demo order; every row has kind fixture and eligible false</caption>
+        <thead><tr><th scope="col">Representative complaint text</th><th scope="col" class="number">Mentions</th><th scope="col" class="number">Demo pain</th><th scope="col" class="number">Score</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">CSV export is broken when a field contains commas</th><td class="number">2</td><td class="number">8</td><td class="number">16</td></tr>
+          <tr><th scope="row">My saved links are hard to organize by topic</th><td class="number">2</td><td class="number">6</td><td class="number">12</td></tr>
+          <tr><th scope="row">I lose track of invoices sent to my clients</th><td class="number">1</td><td class="number">6</td><td class="number">6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><code>score = mentions × pain</code>. Without a pain annotation, <code>pain</code> remains <code>null</code> and contributes zero to the score. Score ties use willingness to pay (<code>wtp</code>), then competitor gap (<code>gap</code>), then problem ID. Both annotations are <code>null</code> in this demo; they mean unknown, not measured zero. The comparator puts unknown values below supplied values. See the <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/src/ranking.ts#L83-L108">result fields and ordering</a>.</p>
+    <h3>Problem IDs and representative evidence</h3>
+    <p>A problem ID uses the first 16 hexadecimal characters of a SHA-256 hash of its cluster representative’s normalized text. The <code>evidence_ids</code> field lists one representative ID per duplicate group, sorted by ID. It is not the full list of raw imported records.</p>
+    <dl>
+      <dt>CSV exports</dt>
+      <dd><code>id: p_fa7aa7ad5d8ad01d</code><br><code>evidence_ids: fixture_forum_1,fixture_hn_1</code><br><code>source: forum,hn</code></dd>
+      <dt>Saved links</dt>
+      <dd><code>id: p_55cf1b4b601d5d9c</code><br><code>evidence_ids: fixture_app_1,fixture_reddit_1</code><br><code>source: appstore,reddit</code></dd>
+      <dt>Invoice tracking</dt>
+      <dd><code>id: p_147060d67c344b5e</code><br><code>evidence_ids: fixture_forum_2</code><br><code>source: forum</code></dd>
+    </dl>
+    <p>A high score does not unlock selection. Eligibility separately requires a pain annotation, reviewed scope of at most eight hours, no regulated or hardware work, and exclusively live provenance. Fixture-only and mixed fixture/live clusters are blocked, including when a fixture and live record collapse into the same duplicate group. The <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/test/ranking.test.ts#L54-L116">annotation, eligibility and sorting tests</a> cover these distinctions.</p>
+  </section>
+
+  <section id="reproduce" aria-labelledby="reproduce-title">
+    <h2 id="reproduce-title">Reproduce the fixture locally</h2>
+    <p>Use Node 24 and npm. Start in a directory where you can create a fresh clone, then check out the exact source revision used in this guide. Keep the included fixture unchanged.</p>
+    <pre><code>git clone https://github.com/wtfashwin/pain-pipeline.git
+cd pain-pipeline
+git checkout --detach 03148aa9ae8579211081e9672108f13d7e502578
+npm ci --ignore-scripts
+npm run demo</code></pre>
+    <p>The demo creates a fresh private local directory named <code>runs/demo-…</code> and prints its absolute path in the JSON <code>root</code> field. Repeat demos preserve earlier runs. To inspect the same run, replace the placeholder below with that printed path:</p>
+    <pre><code>npm start -- status --run &lt;printed-run-path&gt;</code></pre>
+    <p>The status should contain the three problem rows above and these fields:</p>
+    <pre><code>{
+  "imported_records": 6,
+  "live_records": 0,
+  "fixture_records": 6,
+  "selected_problem": null,
+  "real_users": 0,
+  "spec_id": null,
+  "app_id": null,
+  "last_check": null,
+  "deployment": null,
+  "next_gate": "human_selection"
+}</code></pre>
+    <p>This is a selected field excerpt, not the complete status response. Reaching <code>human_selection</code> identifies the next workflow gate; it does not make fixture problems selectable. The demo stops without building or deploying a customer app.</p>
+    <p>Keep run directories and any private evidence local. The public example here contains only the shipped synthetic records and expected fields. See the pinned <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/README.md#run-it">run instructions</a>, <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/README.md#evidence-storage-and-limits">evidence-storage limits</a> and <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/src/workflow.ts#L142-L151">status implementation</a>.</p>
+  </section>
+
+  <section id="review" aria-labelledby="review-title">
+    <h2 id="review-title">Review the evidence before selecting a problem</h2>
+    <p>For an authorized live import, inspect the duplicate groups, URLs and complaint wording first. Check whether distinct IDs are accidental aliases and whether similar wording really describes the same problem. A mention is an evidence group, not a buyer, a person or a payment.</p>
+    <p>New records can change grouping, representatives and therefore problem IDs. After importing complaints or changing assessments, run <code>rank</code> again, inspect the current IDs and refresh annotations where needed. Selection must refer to the fresh ranking; an earlier selection does not carry over to a new ranking. The <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/src/workflow.ts#L38-L76">workflow binds selection to a ranking event</a>.</p>
+    <p>Selection also does not establish demand. The later build-ready gate requires five distinct operator-attested live demand records. Those records remain separate from complaint mentions and are not independently verified users or payments. Read the <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/README.md#first-live-run">live-run requirements</a> and <a href="https://github.com/wtfashwin/pain-pipeline/blob/03148aa9ae8579211081e9672108f13d7e502578/docs/source-policy.md">source policy</a> before collecting real data.</p>
+    <p class="source-note">All implementation links on this page are pinned to commit <code>03148aa9ae8579211081e9672108f13d7e502578</code>. This guide describes that revision, so later changes can be compared against a fixed reference.</p>
+  </section>
+
+  <footer>
+    <a href="../#runnable-examples">Back to Ashwin Upadhyay’s runnable examples</a>
+  </footer>
+</main>
+</body>
+</html>

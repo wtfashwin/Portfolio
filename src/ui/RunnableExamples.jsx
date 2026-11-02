@@ -6,7 +6,7 @@ export default function RunnableExamples() {
       <div className="project-copy">
         <p className="project-kind">Code / Runnable examples</p>
         <h3 id="runnable-examples-title">Runnable examples</h3>
-        <p>Source, fixtures, checks, and limits for five small engineering problems.</p>
+        <p>Source, fixtures, checks, and limits for six small engineering problems.</p>
       </div>
       {runnableExamples.map(example => (
         <article className="public-tool-entry" key={example.id} aria-labelledby={`${example.id}-title`}>

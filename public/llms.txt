@@ -15,7 +15,14 @@
 
 ## Runnable examples
 
-Source, fixtures, checks, and limits for five small engineering problems.
+Source, fixtures, checks, and limits for six small engineering problems.
+
+### Audit how complaint records become ranked problems
+
+Six synthetic complaint records become five deduplicated mentions and three ranked problems. Follow the calculation and the fixture-only selection boundary.
+
+- [Read the worked ranking guide](https://wtfashwin.github.io/Portfolio/complaint-ranking/)
+- [Run the fixture pipeline](https://github.com/wtfashwin/pain-pipeline/tree/03148aa9ae8579211081e9672108f13d7e502578)
 
 ### Airflow retries and exception policy
 

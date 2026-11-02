@@ -5,9 +5,11 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { createServer } from 'vite'
 
-// Independent visitor-facing contract from the seven verified public sources.
+// Independent visitor-facing contract from the existing sources and worked guide.
 // Removing a source from the page or an export must fail this contract.
 const expectedUrls = [
+  'https://wtfashwin.github.io/Portfolio/complaint-ranking/',
+  'https://github.com/wtfashwin/pain-pipeline/tree/03148aa9ae8579211081e9672108f13d7e502578',
   'https://gist.github.com/wtfashwin/1997b331f3a4a5dc17c621ee3bd97f3a',
   'https://gist.github.com/wtfashwin/373319b939b76759dd97cf164b1965cb',
   'https://gist.github.com/wtfashwin/aca8c85f3d6d3da1374c5f1e4945c075',
@@ -17,7 +19,7 @@ const expectedUrls = [
   'https://gist.github.com/wtfashwin/a082d9456219a0e2ef22d26870361ca7',
 ]
 
-test('Work exposes all seven runnable sources before existing project entries', async () => {
+test('Work exposes all nine teaching links before existing project entries', async () => {
   const server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom', logLevel: 'error' })
   try {
     const { default: App } = await server.ssrLoadModule('/src/App.jsx')
@@ -35,12 +37,12 @@ test('Work exposes all seven runnable sources before existing project entries', 
   }
 })
 
-test('generated reader exports retain five problem groups and the same seven sources', async () => {
+test('generated reader exports retain six problem groups and the same nine links', async () => {
   const profile = JSON.parse(await readFile(new URL('../public/profile.json', import.meta.url), 'utf8'))
   assert.ok(Array.isArray(profile.runnableExamples), 'Generated profile has no runnable-source collection')
-  assert.equal(profile.runnableExamples.length, 5)
+  assert.equal(profile.runnableExamples.length, 6)
   const urls = profile.runnableExamples.flatMap(group => group.links.map(link => link.url))
-  assert.equal(urls.length, 7)
+  assert.equal(urls.length, 9)
   assert.deepEqual([...urls].sort(), [...expectedUrls].sort())
   const alias = await readFile(new URL('../public/portfolio.json', import.meta.url), 'utf8')
   assert.deepEqual(JSON.parse(alias).runnableExamples, profile.runnableExamples)

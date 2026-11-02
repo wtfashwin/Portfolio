@@ -32,9 +32,19 @@ export const identity = {
   "bio": "I build AI applications and the backend systems behind them: retrieval, secure APIs, data models, and reliable workflows."
 }
 
-// Curated teaching sources. Publication receipts were checked 2026-10-27;
-// each source keeps its own runnable instructions and evidence limits.
+// Original gist publication receipts were checked 2026-10-27. The ranking guide's
+// worked values were checked against its pinned CLI source on 2026-11-02.
+// Each source keeps its own runnable instructions and evidence limits.
 export const runnableExamples = [
+  {
+    id: 'complaint-ranking',
+    problem: 'Audit how complaint records become ranked problems',
+    scope: 'Six synthetic complaint records become five deduplicated mentions and three ranked problems. Follow the calculation and the fixture-only selection boundary.',
+    links: [
+      { label: 'Read the worked ranking guide', url: 'https://wtfashwin.github.io/Portfolio/complaint-ranking/' },
+      { label: 'Run the fixture pipeline', url: 'https://github.com/wtfashwin/pain-pipeline/tree/03148aa9ae8579211081e9672108f13d7e502578' },
+    ],
+  },
   {
     id: 'airflow-retry-policy',
     problem: 'Airflow retries and exception policy',

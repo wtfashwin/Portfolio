@@ -75,12 +75,15 @@ export async function checkCrawlerBuild(directory) {
   const main = html.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0]
   assert.ok(main, 'Actual portfolio content must be present without JavaScript.')
   assert.equal((main.match(/<h1\b/g) || []).length, 1)
-  assert.equal(profile.runnableExamples.length, 5, 'The profile must retain five runnable problem groups.')
+  assert.equal(profile.runnableExamples.length, 6, 'The profile must retain six runnable problem groups.')
   const runnableLinks = profile.runnableExamples.flatMap(example => example.links)
-  assert.equal(runnableLinks.length, 7, 'The profile must retain all seven teaching sources.')
-  assert.equal(new Set(runnableLinks.map(link => link.url)).size, 7, 'Teaching source links must be distinct.')
+  assert.equal(runnableLinks.length, 9, 'The profile must retain all nine teaching links.')
+  assert.equal(new Set(runnableLinks.map(link => link.url)).size, 9, 'Teaching source links must be distinct.')
   for (const { url } of runnableLinks) {
-    assert.match(url, /^https:\/\/gist\.github\.com\/wtfashwin\/[a-f0-9]{32}$/, 'Runnable examples must link to the curated public gists.')
+    assert.ok(/^https:\/\/gist\.github\.com\/wtfashwin\/[a-f0-9]{32}$/.test(url)
+      || url === 'https://wtfashwin.github.io/Portfolio/complaint-ranking/'
+      || url === 'https://github.com/wtfashwin/pain-pipeline/tree/03148aa9ae8579211081e9672108f13d7e502578',
+    'Teaching links must identify the curated public gists or the worked guide and its pinned source.')
     assert.ok(main.includes(`href="${url}"`), `Initial HTML must expose the runnable source: ${url}`)
     for (const text of [markdown, llms]) assert.ok(text.includes(`](${url})`), `Reader exports must expose the runnable source: ${url}`)
   }
@@ -123,6 +126,7 @@ export async function checkCrawlerBuild(directory) {
   assert.ok(sitemap.includes(`<loc>${profile.canonicalUrl}</loc>`))
   const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url)
   assert.ok(sitemapUrls.includes(reportLiveUrl), 'The sitemap must discover the existing report HTML page.')
+  assert.ok(sitemapUrls.includes('https://wtfashwin.github.io/Portfolio/complaint-ranking/'), 'The sitemap must discover the worked ranking guide.')
   for (const url of sitemapUrls) {
     const location = new URL(url)
     const canonical = new URL(profile.canonicalUrl)

@@ -90,12 +90,13 @@ try {
     },
   }
   const siteUrl = new URL(canonicalUrl)
-  const sitemapUrls = [canonicalUrl, ...profile.publicProjects
-    .filter(entry => entry.kind === 'public-example' && entry.liveUrl)
-    .map(entry => new URL(entry.liveUrl))
+  const sitemapUrls = [...new Set([canonicalUrl, ...[
+    ...profile.publicProjects.filter(entry => entry.kind === 'public-example' && entry.liveUrl).map(entry => entry.liveUrl),
+    ...runnableExamples.flatMap(example => example.links.map(link => link.url)),
+  ].map(url => new URL(url))
     .filter(url => url.origin === siteUrl.origin && url.pathname.startsWith(siteUrl.pathname)
       && (url.pathname.endsWith('/') || url.pathname.endsWith('.html')) && !url.search && !url.hash)
-    .map(url => url.href)]
+    .map(url => url.href)])]
 
   const llms = `# ${identity.name}
 
@@ -114,7 +115,7 @@ try {
 
 ## Runnable examples
 
-Source, fixtures, checks, and limits for five small engineering problems.
+Source, fixtures, checks, and limits for six small engineering problems.
 
 ${runnableExamples.map(example => `### ${example.problem}\n\n${example.scope}\n\n${example.links.map(link => `- [${link.label}](${link.url})`).join('\n')}`).join('\n\n')}
 
