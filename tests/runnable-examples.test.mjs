@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { createServer } from 'vite'
+import { searchPortfolio } from '../src/ui/portfolio-search.js'
 
 // Independent visitor-facing contract from the existing sources and worked guide.
 // Removing a source from the page or an export must fail this contract.
@@ -49,5 +50,36 @@ test('generated reader exports retain six problem groups and the same nine links
   for (const name of ['portfolio.md', 'llms.txt']) {
     const text = await readFile(new URL(`../public/${name}`, import.meta.url), 'utf8')
     for (const url of expectedUrls) assert.ok(text.includes(`](${url})`), `${name} is missing a usable source link: ${url}`)
+  }
+})
+
+
+test('search finds all six runnable examples and reaches their visible headings', async () => {
+  const server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false }, appType: 'custom', logLevel: 'error' })
+  try {
+    const { runnableExamples } = await server.ssrLoadModule('/src/data.js')
+    const { default: App } = await server.ssrLoadModule('/src/App.jsx')
+    const html = renderToStaticMarkup(createElement(App))
+    const queries = [
+      ['ranking', 'complaint-ranking-title'],
+      ['AIRFLOW retry', 'airflow-retry-policy-title'],
+      ['integer money', 'csv-meaning-title'],
+      ['body-limit', 'api-body-boundary-title'],
+      ['duplicate audit', 'csv-duplicate-audit-title'],
+      ['precision recall', 'classification-counts-title'],
+      ['runnable examples', 'runnable-examples'],
+    ]
+    for (const [query, target] of queries) {
+      const results = searchPortfolio(query, 8, runnableExamples)
+      assert.ok(results.some(result => result.target === target), `Search must find the example for: ${query}`)
+      assert.equal(html.split(`id="${target}"`).length - 1, 1, `Search destination must be one visible heading: ${target}`)
+    }
+    assert.equal(searchPortfolio('', 4, runnableExamples).length, 4)
+    assert.deepEqual(searchPortfolio('unmatched-xyz-990', 8, runnableExamples), [])
+    for (const query of ['fraud queue', 'invoice csv', 'credentials']) {
+      assert.deepEqual(searchPortfolio(query, 8, runnableExamples)[0], searchPortfolio(query)[0], `Existing first result changed: ${query}`)
+    }
+  } finally {
+    await server.close()
   }
 })

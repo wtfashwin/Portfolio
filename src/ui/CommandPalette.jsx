@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { searchPortfolio } from './portfolio-search.js'
+import { runnableExamples } from '../data.js'
 import './portfolio-actions.css'
 
 export default function CommandPalette() {
@@ -23,7 +24,7 @@ export default function CommandPalette() {
  const dialog=useRef(null)
  const input=useRef(null)
  const listId=useId()
- const results=searchPortfolio(query)
+ const results=searchPortfolio(query,8,runnableExamples)
  const show=()=>{setQuery('');setSelected(0);setOpen(true)}
  useEffect(()=>{
   const key=event=>{if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();setOpen(value=>!value)}}

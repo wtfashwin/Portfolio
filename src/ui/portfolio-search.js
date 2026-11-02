@@ -14,10 +14,15 @@ const actions = [
  {target:'about',title:'About Ashwin',description:'Professional experience and education.',keywords:'experience sylox founding engineer education about'},
  {target:'contact',title:'Start a conversation',description:'Email and contact links.',keywords:'contact hire email talk'},
  {target:'hero',title:'Explore the engineering notebook',description:'Bounded memory and time-series calculation explanations.',keywords:'memory parquet notebook bounded time series integration'},
+ {target:'runnable-examples',title:'Explore runnable engineering examples',description:'Source, fixtures, checks, and limits for the examples in Work.',keywords:'runnable examples source fixtures'},
 ]
-export function searchPortfolio(query, limit = 8) {
+export function searchPortfolio(query, limit = 8, runnableExamples = []) {
  const tokens=normalize(query).split(/\s+/).filter(Boolean)
- return actions.map((entry,index)=>({entry,index,haystack:normalize(`${entry.title} ${entry.description} ${entry.keywords}`)}))
+ const exampleActions=runnableExamples.map(example=>({
+  target:`${example.id}-title`,title:example.problem,description:example.scope,
+  keywords:example.links.map(link=>link.label).join(' '),
+ }))
+ return [...actions,...exampleActions].map((entry,index)=>({entry,index,haystack:normalize(`${entry.title} ${entry.description} ${entry.keywords}`)}))
   .filter(({haystack})=>tokens.every(token=>haystack.includes(token)))
   .map(item=>({...item,score:tokens.reduce((sum,token)=>sum+(normalize(item.entry.title).includes(token)?3:1),0)}))
   .sort((a,b)=>b.score-a.score||a.index-b.index).slice(0,limit).map(({entry})=>entry)
